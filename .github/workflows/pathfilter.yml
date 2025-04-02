@@ -38,20 +38,26 @@ jobs:
     needs: changes
     if: ${{ needs.changes.outputs.cba == 'true' }}
     runs-on: ubuntu-latest
-    name: 'Auto-Approve for Config-Maintainer'
-
+    name: 'Check for Config-Changes'
+    steps:
+     - run: echo 'CBA-Configs have been altered'
 
 
   template:
     needs: changes
     if: ${{ needs.changes.outputs.template == 'true' }}
     runs-on: ubuntu-latest
+    name: 'Check for Template-Changes'
+    steps:
+     - run: echo 'Template has been altered'
 
   workflows:
     needs: changes
     if: ${{ needs.changes.outputs.workflows == 'true' }}
     runs-on: ubuntu-latest
-    name: 'Auto-Approve for select Users'
+    name: 'Check for Workflows-Changes'
+    steps:
+     - run: echo 'Workflows have been altered'
             
   lint:
     needs: template
