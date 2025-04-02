@@ -1,4 +1,4 @@
-name: Determining touched Filepaths
+name: Determining altered Files
 on:
     pull_request_target:
         branches:
@@ -75,7 +75,8 @@ jobs:
   autoapprove:
     if: |
       always() && 
-      (needs.cba.result == 'success' || needs.workflows.result == 'success')
+      (needs.cba.result == 'success' || needs.workflows.result == 'success') &&
+      (needs.template.result == 'skipped')
     needs: [cba, workflows]
     runs-on: ubuntu-latest
     steps:
