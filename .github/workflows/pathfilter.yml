@@ -29,6 +29,7 @@ jobs:
           template:
             - '!cba_configs/**'
             - '!.github/**'
+            - 'basis_uebungsplatz_2024.Enoch/'
           workflows:
             - '.github/**'
         predicate-quantifier: 'every'
