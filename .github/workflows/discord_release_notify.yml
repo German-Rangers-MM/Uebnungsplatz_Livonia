@@ -18,7 +18,7 @@ jobs:
           username: "GR-MM Bot"
           avatar_url: "https://cdn.discordapp.com/icons/443453801794502656/f12a0eefb27fafdfae2a76680e2747da.png"
           nodetail: true
-          title: "Eine neue Version des `MM-Template` ist verfügbar!"
+          title: "Eine neue Version des `Übungsplatz` ist verfügbar!"
           description: |
             Version `${{ github.event.release.tag_name }}`
             Click [hier](${{ github.event.release.html_url }}) um zum Download gelangen!
@@ -34,7 +34,7 @@ jobs:
           avatar_url: "https://cdn.discordapp.com/icons/443453801794502656/f12a0eefb27fafdfae2a76680e2747da.png"
           username: "GR-MM Bot"
           nodetail: true
-          title: "Eine neue Testversion des `MM-Template` ist verfügbar!"
+          title: "Eine neue Testversion des `Übungsplatz` ist verfügbar!"
           description: |
             Version `${{ github.event.release.tag_name }}`
             Click [hier](${{ github.event.release.html_url }}) um zum Download gelangen!
@@ -50,6 +50,6 @@ jobs:
           avatar_url: "https://cdn.discordapp.com/icons/443453801794502656/f12a0eefb27fafdfae2a76680e2747da.png"
           username: "GR-MM Bot"
           nodetail: false
-          title: "Das `MM-Template` wurde geupdated!"
+          title: "Der `Übungsplatz` wurde geupdated!"
           color: 0x678db0
 
