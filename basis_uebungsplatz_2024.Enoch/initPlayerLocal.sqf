@@ -8,7 +8,7 @@
 waitUntil{!isNull(player)};
 setTerrainGrid 25;
 enableEnvironment [false, true];
-titleText ["Übungsplatz", "Livonia" ];
+titleText ["Missionsvorbereitung", "BLACK FADED" ];
 
 // briefingName
 [] execVM "scripts\core\briefing.sqf";
@@ -217,6 +217,16 @@ if (getMissionConfigValue "allowLoadouts" == "true") then {
 	[player, 1, ["ACE_SelfActions","GR Base"], _loadout_action] call ace_interact_menu_fnc_addActionToObject;	
 };
 
+// Add Würfeln Category to ACE Menu GR Equipment
+_diceMain = ["GR_diceMain","Würfeln","a3\3den\data\displays\display3den\toolbar\widget_local_ca.paa",{  },{true}] call ace_interact_menu_fnc_createAction;
+[player, 1, ["ACE_SelfActions", "GerRng_equip"], _diceMain] call ace_interact_menu_fnc_addActionToObject; 
+
+_actionDice20 = ["GR_rollDice20","(W20)","",{ [player,"(W20)", floor (random 20)+1,8] spawn SGN_fnc_rollDice; },{true}] call ace_interact_menu_fnc_createAction;
+[player, 1, ["ACE_SelfActions","GerRng_equip","GR_diceMain"], _actionDice20] call ace_interact_menu_fnc_addActionToObject; 
+
+_actionDice6 = ["GR_rollDice6","(W6)","",{ [player,"(W6)", floor (random 6)+1,8] spawn SGN_fnc_rollDice; },{true}] call ace_interact_menu_fnc_createAction;
+[player, 1, ["ACE_SelfActions", "GerRng_equip","GR_diceMain"], _actionDice6] call ace_interact_menu_fnc_addActionToObject;
+
 // Debug Funktionen - Nur im Editor / SP verfügbar
 if (! isMultiplayer) then {		
 	// Full ACE Arsenal Action
@@ -241,148 +251,20 @@ if (! isMultiplayer) then {
 //------------------------------------------------------------------
 
 // Creating a Sub Menu Category GR Base with Logo
-/*
 _mission_control = ["Mission Control","Mission Control","images\GermanRangersLogo.paa",{}, {true}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _mission_control] call ace_interact_menu_fnc_addActionToZeus;
 
-_start_mission = ["Missionsstart","Missionsstart","",{ execVM "scripts\core\MCC_chapter_missionstart.sqf"; },{true}] call ace_interact_menu_fnc_createAction;
+_start_mission = ["Missionsstart","Missionsstart","",{ execVM "scripts\core\MCC_chapter_startMissionIntro.sqf"; },{missionstarted == false}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions","Mission Control"], _start_mission] call ace_interact_menu_fnc_addActionToZeus;
 
-_mission_succesful = ["Ende: Mission Erfüllt","Ende: Mission Erfüllt","",{ execVM "scripts\core\MCC_chapter_missionendsuccesfull.sqf"; },{true}] call ace_interact_menu_fnc_createAction;
+_mission_succesful = ["Ende: Mission Erfüllt","Ende: Mission Erfüllt","",{ ["End1"] execVM "scripts\core\MCC_chapter_startMissionOutro.sqf"; },{missionstarted}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions","Mission Control"], _mission_succesful] call ace_interact_menu_fnc_addActionToZeus;
 
-_to_be_continued = ["Ende: TO BE CONTINUED","Ende: TO BE CONTINUED","",{ execVM "scripts\core\MCC_chapter_missionendcontinue.sqf"; },{true}] call ace_interact_menu_fnc_createAction;
+_to_be_continued = ["Ende: TO BE CONTINUED","Ende: TO BE CONTINUED","",{ ["End2"] execVM "scripts\core\MCC_chapter_startMissionOutro.sqf"; },{missionstarted}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions","Mission Control"], _to_be_continued] call ace_interact_menu_fnc_addActionToZeus;
-*/
 
-//------------------------------------------------------------------
-//------------------------------------------------------------------
-//
-//						Teleport Menü
-//
-//------------------------------------------------------------------
-//------------------------------------------------------------------
-
-
-// Hauptkategorien
-
-_tp_menu = ["Schnellreise","Schnellreise","a3\ui_f\data\igui\cfg\simpletasks\types\map_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions"], _tp_menu] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_basis = ["Basis","Basis","a3\3den\data\attributes\namesound\special_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise"], _tp_basis] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_pew = ["Waffentraining","Waffentraining","a3\ui_f\data\igui\cfg\weaponicons\srifle_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise"], _tp_pew] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_ca = ["CombinedArms","Combined Arms","a3\ui_f\data\igui\cfg\simpletasks\types\attack_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise"], _tp_ca] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_sonderausb = ["Sonderausbildung","Sonderausbildung","a3\ui_f\data\igui\cfg\simpletasks\types\whiteboard_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise"], _tp_sonderausb] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_aga = ["AGA","AGA","a3\ui_f\data\igui\cfg\simpletasks\types\whiteboard_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise"], _tp_aga] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_aga1 = ["AGA1","AGA 1: Kommunikation","a3\ui_f\data\igui\cfg\simpletasks\types\radio_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA"], _tp_aga1] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_aga2 = ["AGA2","AGA 2: Formationen","a3\3den\data\displays\display3den\entitymenu\movetoformation_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA"], _tp_aga2] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_aga3 = ["AGA3","AGA 3: Orientierung","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA"], _tp_aga3] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_aga4 = ["AGA4","AGA 4: Erste Hilfe","a3\ui_f\data\igui\cfg\simpletasks\types\heal_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA"], _tp_aga4] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_aga5 = ["AGA5","AGA 5: OHK","a3\modules_f\data\editterrainobject\icon32_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA"], _tp_aga5] call ace_interact_menu_fnc_addActionToClass;
-
-// Konkrete Teleportpositionen
-
-_tp_kaserne = ["Kaserne","Kaserne","ca\ui\data\icon_town_ca.paa",{ player setPos getPos tpad_kaserne },_condition] call ace_interact_menu_fnc_createAction;
-_tp_sr75 = ["SchießbahnHandfeuerwaffen 75m","Schießbahn: Pistolen 75","a3\3den\data\displays\display3den\entitymenu\arsenal_ca.paa",{ player setPos getPos tpad_75m },_condition] call ace_interact_menu_fnc_createAction;
-_tp_150m = ["SchießbahnHandfeuerwaffenAT150mGranaten","Schießbahn: Handfeuerwaffen, AT 150m / Granaten","a3\ui_f\data\igui\cfg\simpletasks\types\rifle_ca.paa",{ player setPos getPos tpad_150m },_condition] call ace_interact_menu_fnc_createAction;
-_tp_lr = ["SchießbahnLRATFz","Schießbahn: LR / AT / Fz","a3\data_f_tank\logos\arma3_tank_logo_small_ca.paa",{ player setPos getPos tpad_lr },_condition] call ace_interact_menu_fnc_createAction;
-_tp_mines = ["Minenfeld","Minenfeld","a3\ui_f\data\igui\cfg\simpletasks\types\mine_ca.paa",{ player setPos getPos tpad_mines },_condition] call ace_interact_menu_fnc_createAction;
-_tp_arty = ["Artillerie","Artillerie","a3\ui_f\data\igui\cfg\simpletasks\types\destroy_ca.paa",{ player setPos getPos tpad_arty },_condition] call ace_interact_menu_fnc_createAction;
-_tp_fzg = ["FahrzeugDepot","Fahrzeug-Depot","a3\3den\data\displays\display3den\entitymenu\garage_ca.paa",{ player setPos getPos tpad_fzg },_condition] call ace_interact_menu_fnc_createAction;
-_tp_fzpark = ["FahrzeugParkours","Fahrzeug-Parkours","a3\ui_f\data\igui\cfg\commandbar\imagedriver_ca.paa",{ player setPos getPos tpad_fzpark },_condition] call ace_interact_menu_fnc_createAction;
-_tp_casa_n = ["CombinedArmsStagingNord","Combined Arms: Staging Nord","a3\ui_f\data\igui\cfg\simpletasks\types\attack_ca.paa",{ player setPos getPos tpad_casa_n },_condition] call ace_interact_menu_fnc_createAction;
-_tp_casa_w = ["CombinedArmsStagingWest","Combined West: Staging West","a3\ui_f\data\igui\cfg\simpletasks\types\attack_ca.paa",{ player setPos getPos tpad_casa_w },_condition] call ace_interact_menu_fnc_createAction;
-_tp_casa_s = ["CombinedArmsStagingSüd","Combined Arms: Staging Süd","a3\ui_f\data\igui\cfg\simpletasks\types\attack_ca.paa",{ player setPos getPos tpad_casa_s },_condition] call ace_interact_menu_fnc_createAction;
-_tp_casa_o = ["CombinedArmsStagingOst","Combined Arms: Staging Ost","a3\ui_f\data\igui\cfg\simpletasks\types\attack_ca.paa",{ player setPos getPos tpad_casa_o },_condition] call ace_interact_menu_fnc_createAction;
-_tp_cqb = ["CQBFactory","CQB-Factory","a3\modules_f\data\editterrainobject\icon32_ca.paa",{ player setPos getPos tpad_cqb },_condition] call ace_interact_menu_fnc_createAction;
-_tp_see = ["Amphibisch","Amphibisch","a3\ui_f\data\igui\cfg\simpletasks\types\boat_ca.paa",{ player setPos getPos tpad_see },_condition] call ace_interact_menu_fnc_createAction;
-_tp_terminal = ["FlugplatzTerminal","Flugplatz: Terminal","a3\ui_f\data\igui\cfg\simpletasks\types\plane_ca.paa",{ player setPos getPos tpad_terminal },_condition] call ace_interact_menu_fnc_createAction;
-_tp_hangar = ["FlugplatzHangar","Flugplatz: Hangar","a3\ui_f\data\igui\cfg\simpletasks\types\heli_ca.paa",{ player setPos getPos tpad_hangar },_condition] call ace_interact_menu_fnc_createAction;
-_tp_logis = ["Logistikzentrum","Logistikzentrum","a3\ui_f\data\igui\cfg\simpletasks\types\container_ca.paa",{ player setPos getPos tpad_logis },_condition] call ace_interact_menu_fnc_createAction;
-
-_tp_aga1 = ["AGA1","AGA 1","a3\ui_f\data\igui\cfg\simpletasks\types\radio_ca.paa",{ player setPos getPos tpad_AGA1 },_condition] call ace_interact_menu_fnc_createAction;
-
-_tp_aga2 = ["AGA2","AGA 2","a3\3den\data\displays\display3den\entitymenu\movetoformation_ca.paa",{ player setPos getPos tpad_AGA2 },_condition] call ace_interact_menu_fnc_createAction;
-
-_tp_aga3_1 = ["AGA3","AGA 3 Start 1","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_1 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_2 = ["AGA3","AGA 3 Start 2","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_2 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_3 = ["AGA3","AGA 3 Start 3","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_3 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_4 = ["AGA3","AGA 3 Start 4","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_4 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_5 = ["AGA3","AGA 3 Start 5","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_5 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_6 = ["AGA3","AGA 3 Start 6","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_6 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_7 = ["AGA3","AGA 3 Start 7","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_7 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_8 = ["AGA3","AGA 3 Start 8","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_8 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_9 = ["AGA3","AGA 3 Start 9","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_9 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_10 = ["AGA3","AGA 3 Start 10","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_10 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_ziel = ["AGA3","AGA 3 Ziel","ca\ui\data\icon_hc_ca.paa",{ player setPos getPos tpad_AGA3_ziel },_condition] call ace_interact_menu_fnc_createAction;
-
-_tp_aga4_1 = ["AGA4","AGA 4 Start 1","a3\ui_f\data\igui\cfg\simpletasks\types\heal_ca.paa",{ player setPos getPos tpad_AGA4_1 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga4_2 = ["AGA4","AGA 4 Start 2","a3\ui_f\data\igui\cfg\simpletasks\types\heal_ca.paa",{ player setPos getPos tpad_AGA4_2 },_condition] call ace_interact_menu_fnc_createAction;
-
-_tp_aga5 = ["AGA5","AGA 5","a3\modules_f\data\editterrainobject\icon32_ca.paa",{ player setPos getPos tpad_cqb },_condition] call ace_interact_menu_fnc_createAction;
-
-// Zuordnung zu Subkategorien
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Basis"], _tp_kaserne] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Basis"], _tp_terminal] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Basis"], _tp_fzg] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Waffentraining"], _tp_sr75] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Waffentraining"], _tp_150m] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Waffentraining"], _tp_lr] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Waffentraining"], _tp_mines] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Waffentraining"], _tp_arty] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","CombinedArms"], _tp_casa_n] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","CombinedArms"], _tp_casa_w] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","CombinedArms"], _tp_casa_s] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","CombinedArms"], _tp_casa_o] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Sonderausbildung"], _tp_cqb] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Sonderausbildung"], _tp_see] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Sonderausbildung"], _tp_fzpark] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Sonderausbildung"], _tp_hangar] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Sonderausbildung"], _tp_logis] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA1"], _tp_aga1] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA2"], _tp_aga2] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_1] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_2] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_3] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_4] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_5] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_6] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_7] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_8] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_9] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_10] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_ziel] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA4"], _tp_aga4_1] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA4"], _tp_aga4_2] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA5"], _tp_aga5] call ace_interact_menu_fnc_addActionToClass;
+_mission_failed = ["Ende: Mission Failed","Ende: Mission Failed","",{ ["End3"] execVM "scripts\core\MCC_chapter_startMissionOutro.sqf"; },{missionstarted}] call ace_interact_menu_fnc_createAction;
+[["ACE_ZeusActions","Mission Control"], _mission_failed] call ace_interact_menu_fnc_addActionToZeus;
 
 //------------------------------------------------------------------
 //------------------------------------------------------------------
@@ -400,11 +282,16 @@ if (_playerGrp == grplima || _playerGrp == grpkilo || _playerGrp == grpfox || _p
 	_avdheal = ["AvD Heal","AvD Heal","a3\ui_f\data\igui\cfg\simpletasks\types\heal_ca.paa",{[player, cursorObject] call ace_medical_treatment_fnc_fullHeal},{true}] call ace_interact_menu_fnc_createAction;
 	[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _avdheal] call ace_interact_menu_fnc_addActionToClass;
 
-	//[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _start_mission] call ace_interact_menu_fnc_addActionToClass;
+	[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _start_mission] call ace_interact_menu_fnc_addActionToClass;
 
-	//[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _mission_succesful] call ace_interact_menu_fnc_addActionToClass;
+	[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _mission_succesful] call ace_interact_menu_fnc_addActionToClass;
 	
-	//[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _to_be_continued] call ace_interact_menu_fnc_addActionToClass;
+	[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _to_be_continued] call ace_interact_menu_fnc_addActionToClass;
+	
+	[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _mission_failed] call ace_interact_menu_fnc_addActionToClass;
+	
+	_checkHCs = ["Check HCs","Check HCs","a3\ui_f\data\igui\cfg\simpletasks\types\intel_ca.paa",{[[player], SGN_fnc_infoHintHC] remoteExec ["spawn", 2];},{true}] call ace_interact_menu_fnc_createAction;
+	[player, 1, ["ACE_SelfActions","GR Admin Menu"], _checkHCs] call ace_interact_menu_fnc_addActionToObject;
 };
 
 if (_playerGrp == grpmike) then {
@@ -432,11 +319,14 @@ if (getMissionConfigValue "limaSupplyPoints" == "true") then {
 		_iconEod = "a3\ui_f\data\igui\cfg\simpletasks\types\mine_ca.paa";
 		_iconCBRN = "z\ace\addons\medical_gui\data\categories\airway_management.paa";
 		_iconWaGru = "a3\ui_f\data\gui\rsc\rscdisplayarsenal\secondaryweapon_ca.paa";
+		_iconWaGruStatic = "a3\ui_f\data\map\vehicleicons\iconcrategrenades_ca.paa";
 		_iconZug = "a3\ui_f\data\gui\rsc\rscdisplayarsenal\cargomagall_ca.paa";
 		_iconErsatz = "a3\ui_f\data\igui\cfg\actions\repair_ca.paa";
 		_iconSan = "a3\ui_f\data\igui\cfg\simpletasks\types\heal_ca.paa";
 		_iconBodybags = "z\ace\addons\medical_gui\ui\grave.paa";
 		_iconSierra = "a3\weapons_f\data\ui\icon_sniper_ca.paa";
+		_iconVerpflegung ="z\ace\addons\field_rations\ui\icon_hud_hungerstatus.paa";
+
 
 		// Lima Supply Point Static & Mobile
 		{
@@ -483,18 +373,60 @@ if (getMissionConfigValue "limaSupplyPoints" == "true") then {
 							
 				_wagru3 = ["wagru3","WaGru Typ 3 - MAAWS",_icon,{[["wagru3",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
 				[_x, 0, ["ACE_MainActions", "WaGru Boxen"], _wagru3] call ace_interact_menu_fnc_addActionToObject;
-							
-				_wagru4 = ["wagru4","WaGru Typ 4 - Titan AT",_icon,{[["wagru4",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+
+				_wagru4 = ["wagru4","WaGru Typ 4 - MAAWS Sondermunition",_icon,{[["wagru4",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
 				[_x, 0, ["ACE_MainActions", "WaGru Boxen"], _wagru4] call ace_interact_menu_fnc_addActionToObject;
 							
-				_wagru5 = ["wagru5","WaGru Typ 5 - Titan AA",_icon,{[["wagru5",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				_wagru5 = ["wagru4","WaGru Typ 5 - Titan AT",_icon,{[["wagru5",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
 				[_x, 0, ["ACE_MainActions", "WaGru Boxen"], _wagru5] call ace_interact_menu_fnc_addActionToObject;
 							
-				_wagru6 = ["wagru6","WaGru Typ 6 - Metis",_icon,{[["wagru6",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				_wagru6 = ["wagru6","WaGru Typ 6 - Titan AA",_icon,{[["wagru6",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
 				[_x, 0, ["ACE_MainActions", "WaGru Boxen"], _wagru6] call ace_interact_menu_fnc_addActionToObject;
-				
-				_wagru7 = ["wagru7","WaGru Typ 7 - Combat Engineering",_icon,{[["wagru7",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+							
+				_wagru7 = ["wagru7","WaGru Typ 7 - Metis",_icon,{[["wagru7",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
 				[_x, 0, ["ACE_MainActions", "WaGru Boxen"], _wagru7] call ace_interact_menu_fnc_addActionToObject;
+				
+				_wagru8 = ["wagru8","WaGru Typ 8 - Combat Engineering",_icon,{[["wagru8",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				[_x, 0, ["ACE_MainActions", "WaGru Boxen"], _wagru8] call ace_interact_menu_fnc_addActionToObject;
+
+			
+			_waGruBoxenStatic = ["WaGru Boxen Static","WaGru Boxen Static",_iconWaGruStatic,{ },{true}] call ace_interact_menu_fnc_createAction;
+			[_x, 0, ["ACE_MainActions"], _waGruBoxenStatic] call ace_interact_menu_fnc_addActionToObject;
+				//------------------------------------------------------------------
+				_wagrustat1 = ["WaGruStat1","WaGruStat Typ 1 - M2 Waffe",_icon,{[["WaGruStat1",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				[_x, 0, ["ACE_MainActions", "WaGru Boxen Static"], _wagrustat1] call ace_interact_menu_fnc_addActionToObject;
+
+				_wagrustat2 = ["WaGruStat2","WaGruStat Typ 2 - M2 Munition",_icon,{[["WaGruStat2",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				[_x, 0, ["ACE_MainActions", "WaGru Boxen Static"], _wagrustat2] call ace_interact_menu_fnc_addActionToObject;
+
+				_wagrustat3 = ["WaGruStat3","WaGruStat Typ 3 - Mk19 Waffe",_icon,{[["WaGruStat3",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				[_x, 0, ["ACE_MainActions", "WaGru Boxen Static"], _wagrustat3] call ace_interact_menu_fnc_addActionToObject;
+
+				_wagrustat4 = ["WaGruStat4","WaGruStat Typ 4 - Mk19 Munition",_icon,{[["WaGruStat4",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				[_x, 0, ["ACE_MainActions", "WaGru Boxen Static"], _wagrustat4] call ace_interact_menu_fnc_addActionToObject;
+
+				_wagrustat5 = ["WaGruStat5","WaGruStat Typ 5 - TOW Waffe",_icon,{[["WaGruStat5",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				[_x, 0, ["ACE_MainActions", "WaGru Boxen Static"], _wagrustat5] call ace_interact_menu_fnc_addActionToObject;
+
+				_wagrustat6 = ["WaGruStat6","WaGruStat Typ 6 - TOW Munition",_icon,{[["WaGruStat6",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				[_x, 0, ["ACE_MainActions", "WaGru Boxen Static"], _wagrustat6] call ace_interact_menu_fnc_addActionToObject;
+
+				_wagrustat7 = ["WaGruStat7","WaGruStat Typ 7 - 82mm Mörser Waffe",_icon,{[["WaGruStat7",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				[_x, 0, ["ACE_MainActions", "WaGru Boxen Static"], _wagrustat7] call ace_interact_menu_fnc_addActionToObject;
+
+				_wagrustat8 = ["WaGruStat8","WaGruStat Typ 8 - 82mm Munition HE",_icon,{[["WaGruStat8",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				[_x, 0, ["ACE_MainActions", "WaGru Boxen Static"], _wagrustat8] call ace_interact_menu_fnc_addActionToObject;
+
+				_wagrustat9 = ["WaGruStat9","WaGruStat Typ 9 - 82mm Sondermunition",_icon,{[["WaGruStat9",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				[_x, 0, ["ACE_MainActions", "WaGru Boxen Static"], _wagrustat9] call ace_interact_menu_fnc_addActionToObject;
+
+				_wagrustat10 = ["WaGruStat10","WaGruStat Typ 10 - 60mm Mörser und Standardmunition",_icon,{[["WaGruStat10",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				[_x, 0, ["ACE_MainActions", "WaGru Boxen Static"], _wagrustat10] call ace_interact_menu_fnc_addActionToObject;
+
+				_wagrustat11 = ["WaGruStat1","WaGruStat Typ 11 - 60mm Sondermunition",_icon,{[["WaGruStat11",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				[_x, 0, ["ACE_MainActions", "WaGru Boxen Static"], _wagrustat11] call ace_interact_menu_fnc_addActionToObject;
+
+
 				//------------------------------------------------------------------
 			// Parent Action für EOD Boxen
 			_eodBoxen = ["EOD Boxen","EOD Boxen",_iconEod,{ },{true}] call ace_interact_menu_fnc_createAction;
@@ -522,7 +454,7 @@ if (getMissionConfigValue "limaSupplyPoints" == "true") then {
 				_cbrn2 = ["CBRN2","Typ 2 - CBRN-Erkundung",_icon,{[["cbrn2",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
 				[_x, 0, ["ACE_MainActions", "CBRN Boxen"], _cbrn2] call ace_interact_menu_fnc_addActionToObject;
 
-				_cbrn3 = ["CBRN2","Typ 3 - CBRN-UGV",_icon,{[["cbrn3",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				_cbrn3 = ["CBRN3","Typ 3 - CBRN-UGV",_icon,{[["cbrn3",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
 				[_x, 0, ["ACE_MainActions", "CBRN Boxen"], _cbrn3] call ace_interact_menu_fnc_addActionToObject;
 				//------------------------------------------------------------------
 			// Parent Action für San Boxen
@@ -532,8 +464,11 @@ if (getMissionConfigValue "limaSupplyPoints" == "true") then {
 				_san1 = ["San1","San Typ 1 - SanMat",_icon,{[["san1",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
 				[_x, 0, ["ACE_MainActions", "San Boxen"], _san1] call ace_interact_menu_fnc_addActionToObject;	
 			
-				_san2 = ["San1","San Typ 2 - Leichensäcke",_iconBodybags,{[["san2",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				_san2 = ["San2","San Typ 2 - Leichensäcke",_iconBodybags,{[["san2",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
 				[_x, 0, ["ACE_MainActions", "San Boxen"], _san2] call ace_interact_menu_fnc_addActionToObject;	
+
+				_san3 = ["San3","San Typ 3 - Verpflegung",_iconVerpflegung,{[["san3",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+				[_x, 0, ["ACE_MainActions", "San Boxen"], _san3] call ace_interact_menu_fnc_addActionToObject;	
 				//------------------------------------------------------------------
 			// Parent Action für Ersatzteile
 			_ersatzteile = ["Ersatzteile","Ersatzteile",_iconErsatz,{ },{true}] call ace_interact_menu_fnc_createAction;
@@ -546,20 +481,20 @@ if (getMissionConfigValue "limaSupplyPoints" == "true") then {
 				[_x, 0, ["ACE_MainActions", "Ersatzteile"], _ersatzRad] call ace_interact_menu_fnc_addActionToObject;
 				//------------------------------------------------------------------
 
-			// Parent Action für Sierra
+// Parent Action für Sierra
 			_Sierra = ["Sierra","Sierra",_iconSierra,{ },{true}] call ace_interact_menu_fnc_createAction;
 			[_x, 0, ["ACE_MainActions"], _Sierra] call ace_interact_menu_fnc_addActionToObject;
 				//------------------------------------------------------------------
-			_sierra1 = ["Sierra1","Sierra Typ 1- GM6 Munition",_icon,{[["sierra1",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+			_sierra1 = ["Sierra1","Sierra Typ 1- Trupp 1 - S",_icon,{[["sierra1",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
 			[_x, 0, ["ACE_MainActions", "Sierra"], _sierra1] call ace_interact_menu_fnc_addActionToObject;
 
-			_sierra2 = ["Sierra2","Sierra Typ 2 - M107 Munition",_icon,{[["sierra2",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+			_sierra2 = ["Sierra2","Sierra Typ 2 - Trupp 1 - A",_icon,{[["sierra2",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
 			[_x, 0, ["ACE_MainActions", "Sierra"], _sierra2] call ace_interact_menu_fnc_addActionToObject;
 
-			_sierra3 = ["Sierra3","Sierra Typ 3 - M200 Munition",_icon,{[["sierra3",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+			_sierra3 = ["Sierra3","Sierra Typ 3 - Trupp 2 - U",_icon,{[["sierra3",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
 			[_x, 0, ["ACE_MainActions", "Sierra"], _sierra3] call ace_interact_menu_fnc_addActionToObject;
 
-			_sierra4 = ["Sierra4","Sierra Typ 4 - Waffen",_icon,{[["sierra4",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
+			_sierra4 = ["Sierra4","Sierra Typ 4 - Trupp 2 - ST",_icon,{[["sierra4",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
 			[_x, 0, ["ACE_MainActions", "Sierra"], _sierra4] call ace_interact_menu_fnc_addActionToObject;
 
 			_sierra5 = ["Sierra5","Sierra Typ 5 - Ausrüstung",_icon,{[["sierra5",_this#0], limapfad + "limaSupplyPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
@@ -571,7 +506,7 @@ if (getMissionConfigValue "limaSupplyPoints" == "true") then {
 
 
 			
-		} forEach [limasupplypointstatic,limasupplypointmobile, limasupplypointstatic_airport,limasupplypointstatic_CASA_S,limasupplypointstatic_CASA_N,limasupplypointstatic_CASA_E,limasupplypointstatic_CASA_W,limasupplypointstatic_kaserne];		
+		} forEach [limasupplypointstatic,limasupplypointmobile];		
 	};
 };
 
@@ -624,7 +559,7 @@ if (getMissionConfigValue "limaSupplyPoints" == "true") then {
 				_plrepair = ["plcasetan","Typ 8 - Instandsetzung",_icon,{[["plrepair",_this#0], limapfad + "limaPalettPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
 				[_x, 0, ["ACE_MainActions", "Luftfracht Paletten - Logistik"], _plrepair] call ace_interact_menu_fnc_addActionToObject;
 				//------------------------------------------------------------------
-		} forEach [limapalettpointstatic,limaPalettPointStatic_airport];
+		} forEach [limapalettpointstatic];
 	};
 };
 
@@ -662,4 +597,7 @@ titleText ["Missionsvorbereitung", "BLACK IN" ];
 //------------------------------------------------------------------
 //------------------------------------------------------------------
 
-[] execVM "scripts\core\modcheck.sqf";
+_modCheck = ["GR_modCheckParam", 1] call BIS_fnc_getParamValue;
+if (_modCheck != 0) then {
+	[] execVM "scripts\core\modcheck.sqf";
+};
