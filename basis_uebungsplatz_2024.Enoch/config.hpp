@@ -9,7 +9,7 @@ dynamicGroupsFeat	= false;		// DynamicGroups_Function; Clients can then use acti
 // Loadouts 
 loadPlayers 		= false;		// Sets if Loadouts for Players are loaded from DB
 fraktion 			= "bw2024"; 	// Sets the Loadout Path for the Mission start: "bwfleck" | "marsoc"
-tarnfarbe			= "bwfleck"		// Deprecated; If the fraktion has different camos, it is changed here.
+tarnfarbe			= "bwfleck";	// Sets Camos of Faction: "bwfleck" | "bwtropen" | "bwwinter"
 
 //avaible Factions via GUI
 fraktionList[] 		= {"bw2023"}; 		// Deprecated
@@ -36,12 +36,12 @@ intro 				= "Video";		// Choose the Intro Music that is played (please delete mm
 									// "Video" Musik wird im Intro-File festgelegt
 
 einleitung 			= "Viribus unitis";
-auftrag 			= "Auftrag: <br/>Gefechtsübungen durchführen";
-titleOrtEinheit		= "L I V O N I A - German Rangers";
-titleMissionsname 	= "Übungsplatz Livonia";
+auftrag 			= "Auftrag: <br/>1. Auftrag<br/>2. Auftrag<br/>3. Auftrag";
+titleOrtEinheit		= "A L T I S - DD.MM.YYYY - German Rangers";
+titleMissionsname 	= "Missionsname";
 
-tickerCountry 		= "Livonia, Nadbór Region";
-tickerLocation 		= "Kaserne Nadbór";
+tickerCountry 		= "Altis, Ost-Region";
+tickerLocation 		= "Map-Location";
 
 outro 				= "Video";		// Hier kannst du die Musik wählen, die bei einem Erfolgreichen Missionsende gespielt wird Rock
 									// "PR1" Pacific Rim | Rockig, Episch | 0:30
