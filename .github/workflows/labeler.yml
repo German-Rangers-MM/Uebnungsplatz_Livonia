@@ -19,6 +19,7 @@ jobs:
     steps:
     - uses: actions/labeler@v5
       with:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         pull-request-number: ${{ github.event.number }}
 
   label-manual:
@@ -31,4 +32,5 @@ jobs:
     steps:
     - uses: actions/labeler@v5
       with:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         pr-number: ${{ fromJSON(github.event.inputs.pr-number) }}
