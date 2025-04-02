@@ -29,6 +29,7 @@ jobs:
           template:
             - '!cba_configs/**'
             - '!.github/**'
+            - 'basis_uebungsplatz_2024.Enoch/'
           workflows:
             - '.github/**'
         predicate-quantifier: 'every'
@@ -69,7 +70,7 @@ jobs:
        - uses: arma-actions/sqflint@v1.0
          name: Validate with SQFLint with custom arguments
          with:
-            args: --directory co79_GerRng_Zug_3_0.VR
+            args: --directory basis_uebungsplatz_2024.Enoch
 
   autoapprove:
     if: |
