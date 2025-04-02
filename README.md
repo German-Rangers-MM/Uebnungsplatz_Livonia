@@ -1,4 +1,4 @@
-## Template für alle zukünftigen Missonen der Rangers
+## Template für den Übungsplatz der Rangers
 
 Um beizutragen, einfach eine Branch eröffnen und loslegen!
 
