@@ -38,16 +38,62 @@ jobs:
     needs: changes
     if: ${{ needs.changes.outputs.cba == 'true' }}
     runs-on: ubuntu-latest
+    name: 'Auto-Approve for Config-Maintainer'
+
+
+
+  template:
+    needs: changes
+    if: ${{ needs.changes.outputs.template == 'true' }}
+    runs-on: ubuntu-latest
+
+  workflows:
+    needs: changes
+    if: ${{ needs.changes.outputs.workflows == 'true' }}
+    runs-on: ubuntu-latest
+    name: 'Auto-Approve for select Users'
+            
+  lint:
+    needs: template
+    runs-on: ubuntu-latest
+    name: SQF Linting
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Auto Approve
+       - name: Checkout
+         uses: actions/checkout@v4
+       - uses: arma-actions/sqflint@v1.0
+         name: Validate with SQFLint with custom arguments
+         with:
+            args: --directory co79_GerRng_Zug_3_0.VR
+
+  autoapprove:
+    if: |
+      always() && 
+      (needs.cba.result == 'success' || needs.workflows.result == 'success')
+    needs: [cba, workflows]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Auto Approve for Workflows
+        if: ${{github.actor == 'ItsGiantCookie' || github.actor == 'HendrikTank' }}
+        uses: hmarr/auto-approve-action@v4
+        with:
+            review-message: "Auto approved Workflow-Update"
+            
+      - name: Auto Approve for Configs
         if: ${{github.actor == 'Cesrap' }}
         uses: hmarr/auto-approve-action@v4
         with:
             review-message: "Auto approved CBA-Config-Update"
 
-      - name: 'Auto-assign PR'
+  autoassign:
+    if: |
+      always() && 
+      (needs.template.result == 'success' || needs.cba.result == 'success' || needs.workflows.result == 'success') &&
+      (needs.autoapprove.result == 'skipped')
+    needs: [template, cba, workflows]
+    runs-on: ubuntu-latest
+    name: 'Auto-assign PR'
+    steps:
+      - name: 'Assigning PR'
         if: ${{github.actor != 'Cesrap' }}
         uses: pozil/auto-assign-issue@v2
         with:
@@ -56,53 +102,3 @@ jobs:
             numOfAssignee: 1
             abortIfPreviousAssignees: true
             allowSelfAssign: false
-
-  template:
-    needs: changes
-    if: ${{ needs.changes.outputs.template == 'true' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: 'Auto-assign PR'
-        uses: pozil/auto-assign-issue@v2
-        with:
-            repo-token: ${{ secrets.GR_MM_TOKEN }}
-            teams: mission-makers-dev
-            numOfAssignee: 1
-            abortIfPreviousAssignees: true
-            allowSelfAssign: false
-
-  workflows:
-    needs: changes
-    if: ${{ needs.changes.outputs.workflows == 'true' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Auto Approve
-        if: ${{github.actor == 'ItsGiantCookie' || github.actor == 'HendrikTank' }}
-        uses: hmarr/auto-approve-action@v4
-        with:
-            review-message: "Auto approved Workflow-Update"
-
-
-      - name: 'Auto-assign PR'
-        if: ${{github.actor != 'ItsGiantCookie' && github.actor != 'HendrikTank' }}
-        uses: pozil/auto-assign-issue@v2
-        with:
-            repo-token: ${{ secrets.GR_MM_TOKEN }}
-            teams: mission-makers-dev
-            numOfAssignee: 1
-            abortIfPreviousAssignees: true
-            allowSelfAssign: false
-  lint:
-    needs: template
-    runs-on: ubuntu-latest
-    steps:
-       - name: Checkout
-         uses: actions/checkout@v4
-       - uses: arma-actions/sqflint@v1.0
-         name: Validate with SQFLint with custom arguments
-         with:
-            args: --directory co79_GerRng_Zug_3_0.VR
