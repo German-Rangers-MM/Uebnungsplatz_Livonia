@@ -1,4 +1,4 @@
-name: Build and Release PBO
+name: Build and Release Arma Mission PBO
 
 on:
   release:
@@ -9,65 +9,66 @@ jobs:
   build-pbo:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Determine version
+      - name: Add Mikero GPG key
+        run: |
+          wget -qO - https://mikero.bytex.digital/apt/mikero.gpg | sudo gpg --dearmor -o /usr/share/keyrings/mikero.gpg
+          echo "deb [signed-by=/usr/share/keyrings/mikero.gpg] https://mikero.bytex.digital/apt/ ./" | sudo tee /etc/apt/sources.list.d/mikero.list
+
+      - name: Install makepbo
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y makepbo
+
+      - name: Determine version and upload URL
         id: version
         run: |
           if [ "${{ github.event_name }}" = "release" ]; then
-            TAG=${{ github.ref_name }}
+            TAG=${{ github.event.release.tag_name }}
+            UPLOAD_URL=${{ github.event.release.upload_url }}
           else
-            TAG=$(curl -sH "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-              "https://api.github.com/repos/${{ github.repository }}/releases/latest" | \
-              jq -r .tag_name)
+            LATEST_RELEASE_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/releases/latest)
+            TAG=$(echo "$LATEST_RELEASE_JSON" | jq -r '.tag_name')
+            UPLOAD_URL=$(echo "$LATEST_RELEASE_JSON" | jq -r '.upload_url')
           fi
-          # Improved version formatting (v6.0.0-2025_build → v6000)
-          SIMPLIFIED_TAG="v$(echo "$TAG" | sed -E 's/^v//; s/\.//g; s/(-.*)//')"
-          echo "simplified_version=$SIMPLIFIED_TAG" >> $GITHUB_OUTPUT
-          echo "original_tag=$TAG" >> $GITHUB_OUTPUT
-        env:
-          GH_TOKEN: ${{ github.token }}
           
-      - name: Find mission folder
+          # Process version tag (v1.2.3 -> v123)
+          CLEAN_VERSION=$(echo "$TAG" | sed -E 's/^v//; s/[^0-9]//g')
+          FORMATTED_VERSION="v${CLEAN_VERSION}"
+          
+          echo "version=$FORMATTED_VERSION" >> $GITHUB_OUTPUT
+          echo "upload_url=$UPLOAD_URL" >> $GITHUB_OUTPUT
+
+      - name: Locate mission folder
         id: mission-folder
         run: |
-          MISSION_DIR=$(find . -maxdepth 1 -type d -name "*.*" ! -name ".*" | head -1)
-          if [ -z "$MISSION_DIR" ] || [ "$MISSION_DIR" = "." ]; then
-            echo "::error::Valid mission folder not found. Ensure there's a directory named like 'missionname.mapname'"
+          MISSION_FOLDER=$(find . -maxdepth 1 -type d -name '*.*' | head -n 1)
+          if [ -z "$MISSION_FOLDER" ]; then
+            echo "::error::No mission folder found with mapname format (name.mapname)"
             exit 1
           fi
-          CLEAN_DIR="${MISSION_DIR#./}"
-          echo "directory=$CLEAN_DIR" >> $GITHUB_OUTPUT
-          FILENAME=$(basename "$CLEAN_DIR" | cut -d. -f1)
-          MAPNAME=$(basename "$CLEAN_DIR" | cut -d. -f2)
-          echo "pbo_name=${FILENAME}_${{ steps.version.outputs.simplified_version }}.${MAPNAME}.pbo" >> $GITHUB_OUTPUT
+          
+          FOLDER_NAME=$(basename "$MISSION_FOLDER")
+          FILENAME="${FOLDER_NAME%.*}"
+          MAPNAME="${FOLDER_NAME##*.}"
+          
+          echo "folder=$MISSION_FOLDER" >> $GITHUB_OUTPUT
+          echo "filename=$FILENAME" >> $GITHUB_OUTPUT
+          echo "mapname=$MAPNAME" >> $GITHUB_OUTPUT
 
       - name: Build PBO
         run: |
-          mkdir -p output
-          echo "🛠 Building PBO from: ${{ steps.mission-folder.outputs.directory }}"
-          
-          # Build with modern PBO parameters
-          docker run --rm -v "$(pwd):/data" jerryhopper/depbo-tools:latest \
-            makepbo -P -X=".txt" -A -B "/data/${{ steps.mission-folder.outputs.directory }}" "/data/output" || true
-          
-          # Verify PBO creation using basename
-          PBO_BASENAME=$(basename "${{ steps.mission-folder.outputs.directory }}")
-          if [ ! -f "output/$PBO_BASENAME.pbo" ]; then
-            echo "::error::PBO file was not created! Check mission file structure."
-            exit 1
-          fi
+          OUTPUT_NAME="${{ steps.mission-folder.outputs.filename }}_${{ steps.version.outputs.version }}.${{ steps.mission-folder.outputs.mapname }}"
+          makepbo -A -P "${{ steps.mission-folder.outputs.folder }}" "$OUTPUT_NAME"
 
-
-      - name: Rename PBO
-        run: |
-          mv "output/$(basename "${{ steps.mission-folder.outputs.directory }}").pbo" "${{ steps.mission-folder.outputs.pbo_name }}"
-
-      - name: Upload to Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: ${{ steps.version.outputs.original_tag }}
-          files: ${{ steps.mission-folder.outputs.pbo_name }}
+      - name: Upload PBO to Release
+        uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.version.outputs.upload_url }}
+          asset_path: ${{ steps.mission-folder.outputs.filename }}_${{ steps.version.outputs.version }}.${{ steps.mission-folder.outputs.mapname }}.pbo
+          asset_name: ${{ steps.mission-folder.outputs.filename }}_${{ steps.version.outputs.version }}.${{ steps.mission-folder.outputs.mapname }}.pbo
+          asset_content_type: application/octet-stream
