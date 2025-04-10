@@ -22,19 +22,20 @@ jobs:
               "https://api.github.com/repos/${{ github.repository }}/releases/latest" | \
               jq -r .tag_name)
           fi
-          # Simplify version format (v26.0.2 -> v2602)
-          SIMPLIFIED_TAG="v$(echo "$TAG" | sed 's/^v//; s/\.//g')"
+          # Improved version formatting (v6.0.0-2025_build → v6000)
+          SIMPLIFIED_TAG="v$(echo "$TAG" | sed -E 's/^v//; s/\.//g; s/(-.*)//')"
           echo "simplified_version=$SIMPLIFIED_TAG" >> $GITHUB_OUTPUT
           echo "original_tag=$TAG" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ github.token }}
-
+          
       - name: Find mission folder
         id: mission-folder
         run: |
-          MISSION_DIR=$(find . -maxdepth 1 -type d -name "*.*" | head -1)
-          if [ -z "$MISSION_DIR" ]; then
-            echo "Error: Mission folder not found. Ensure there's a directory with a dot in its name (e.g., 'mission.Altis')." >&2
+          # More precise folder detection (exclude hidden dirs)
+          MISSION_DIR=$(find . -maxdepth 1 -type d -name "*.*" ! -name ".*" | head -1)
+          if [ -z "$MISSION_DIR" ] || [ "$MISSION_DIR" = "." ]; then
+            echo "Error: Valid mission folder not found." >&2
             exit 1
           fi
           echo "directory=$MISSION_DIR" >> $GITHUB_OUTPUT
@@ -46,7 +47,7 @@ jobs:
         run: |
           mkdir -p output
           docker run --rm -v "$(pwd):/data" jerryhopper/depbo-tools:latest \
-            makepbo -A "/data/${{ steps.mission-folder.outputs.directory }}" "/data/output"
+            makepbo -N "/data/${{ steps.mission-folder.outputs.directory }}" "/data/output"
 
       - name: Rename PBO
         run: |
