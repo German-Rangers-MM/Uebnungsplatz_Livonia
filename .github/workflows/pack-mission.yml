@@ -50,7 +50,7 @@ jobs:
           
           # Build with modern PBO parameters
           docker run --rm -v "$(pwd):/data" jerryhopper/depbo-tools:latest \
-            makepbo -P -X=".txt" -N "/data/${{ steps.mission-folder.outputs.directory }}" "/data/output" || true
+            makepbo -P -X=".txt" -A -B "/data/${{ steps.mission-folder.outputs.directory }}" "/data/output" || true
           
           # Verify PBO creation using basename
           PBO_BASENAME=$(basename "${{ steps.mission-folder.outputs.directory }}")
