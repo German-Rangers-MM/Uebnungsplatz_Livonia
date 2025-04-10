@@ -1,6 +1,6 @@
-#import RscPicture;
-#import RscButton;
-#import RscListBox;
+import RscPicture;
+import RscButton;
+import RscListBox;
 
 class GR_guiNeuDialog
 {
