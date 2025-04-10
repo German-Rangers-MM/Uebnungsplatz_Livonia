@@ -1,4 +1,4 @@
-name: Build and Release Arma Mission PBO
+name: Package and Release Arma Mission
 
 on:
   release:
@@ -6,69 +6,61 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-pbo:
-    runs-on: ubuntu-latest
+  package-mission:
+    runs-on: windows-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+    - name: Get latest release (manual trigger)
+      if: github.event_name == 'workflow_dispatch'
+      shell: bash
+      run: |
+        LATEST_RELEASE=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r .tag_name)
+        echo "TAG_NAME=$LATEST_RELEASE" >> $GITHUB_ENV
 
-      - name: Add Mikero GPG key
-        run: |
-          wget -qO - https://mikero.bytex.digital/apt/mikero.gpg | sudo gpg --dearmor -o /usr/share/keyrings/mikero.gpg
-          echo "deb [signed-by=/usr/share/keyrings/mikero.gpg] https://mikero.bytex.digital/apt/ ./" | sudo tee /etc/apt/sources.list.d/mikero.list
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event_name == 'workflow_dispatch' && env.TAG_NAME || github.ref }}
 
-      - name: Install makepbo
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y makepbo
+    - name: Install MakePbo
+      shell: cmd
+      run: |
+        curl -L -o makepbo.exe "https://mikero.bytex.digital/api/download?filename=MakePbo.2.16.9.36.Installer.exe"
+        start /wait makepbo.exe /S
+        setx PATH "%PATH%;C:\Program Files\MakePbo\"
 
-      - name: Determine version and upload URL
-        id: version
-        run: |
-          if [ "${{ github.event_name }}" = "release" ]; then
-            TAG=${{ github.event.release.tag_name }}
-            UPLOAD_URL=${{ github.event.release.upload_url }}
-          else
-            LATEST_RELEASE_JSON=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" https://api.github.com/repos/${{ github.repository }}/releases/latest)
-            TAG=$(echo "$LATEST_RELEASE_JSON" | jq -r '.tag_name')
-            UPLOAD_URL=$(echo "$LATEST_RELEASE_JSON" | jq -r '.upload_url')
-          fi
-          
-          # Process version tag (v1.2.3 -> v123)
-          CLEAN_VERSION=$(echo "$TAG" | sed -E 's/^v//; s/[^0-9]//g')
-          FORMATTED_VERSION="v${CLEAN_VERSION}"
-          
-          echo "version=$FORMATTED_VERSION" >> $GITHUB_OUTPUT
-          echo "upload_url=$UPLOAD_URL" >> $GITHUB_OUTPUT
+    - name: Find mission folder
+      id: mission-folder
+      shell: bash
+      run: |
+        MISSION_FOLDER=$(find . -maxdepth 1 -type d -name "*.*" | grep -vE "^\./\.git" | head -1)
+        echo "folder_name=${MISSION_FOLDER#./}" >> $GITHUB_OUTPUT
 
-      - name: Locate mission folder
-        id: mission-folder
-        run: |
-          MISSION_FOLDER=$(find . -maxdepth 1 -type d -name '*.*' | head -n 1)
-          if [ -z "$MISSION_FOLDER" ]; then
-            echo "::error::No mission folder found with mapname format (name.mapname)"
-            exit 1
-          fi
-          
-          FOLDER_NAME=$(basename "$MISSION_FOLDER")
-          FILENAME="${FOLDER_NAME%.*}"
-          MAPNAME="${FOLDER_NAME##*.}"
-          
-          echo "folder=$MISSION_FOLDER" >> $GITHUB_OUTPUT
-          echo "filename=$FILENAME" >> $GITHUB_OUTPUT
-          echo "mapname=$MAPNAME" >> $GITHUB_OUTPUT
+    - name: Prepare version and filename
+      id: version-info
+      shell: bash
+      run: |
+        VERSION_TAG=${{ github.event_name == 'workflow_dispatch' && env.TAG_NAME || github.ref_name }}
+        SIMPLIFIED_VERSION=$(echo "$VERSION_TAG" | tr -d '.' | sed 's/v//i')
+        
+        IFS='.' read -ra FOLDER_PARTS <<< "${{ steps.mission-folder.outputs.folder_name }}"
+        FILENAME="${FOLDER_PARTS[0]}"
+        MAPNAME="${FOLDER_PARTS[1]}"
+        
+        echo "pbo_name=${FILENAME}_v${SIMPLIFIED_VERSION}.${MAPNAME}" >> $GITHUB_OUTPUT
+        echo "release_tag=${VERSION_TAG}" >> $GITHUB_OUTPUT
 
-      - name: Build PBO
-        run: |
-          OUTPUT_NAME="${{ steps.mission-folder.outputs.filename }}_${{ steps.version.outputs.version }}.${{ steps.mission-folder.outputs.mapname }}"
-          makepbo -A -P "${{ steps.mission-folder.outputs.folder }}" "$OUTPUT_NAME"
+    - name: Package mission
+      shell: cmd
+      run: |
+        makepbo -P -A -X=".txt" "${{ steps.mission-folder.outputs.folder_name }}" "${{ steps.pbo_name.outputs.pbo_name }}"
 
-      - name: Upload PBO to Release
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.version.outputs.upload_url }}
-          asset_path: ${{ steps.mission-folder.outputs.filename }}_${{ steps.version.outputs.version }}.${{ steps.mission-folder.outputs.mapname }}.pbo
-          asset_name: ${{ steps.mission-folder.outputs.filename }}_${{ steps.version.outputs.version }}.${{ steps.mission-folder.outputs.mapname }}.pbo
-          asset_content_type: application/octet-stream
+    - name: Upload to release
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ github.event.release.upload_url || (github.event_name == 'workflow_dispatch' && format('https://uploads.github.com/repos/{0}/releases/{1}/assets', github.repository, env.RELEASE_ID)) }}
+        asset_path: ./${{ steps.pbo_name.outputs.pbo_name }}.pbo
+        asset_name: ${{ steps.pbo_name.outputs.pbo_name }}.pbo
+        asset_content_type: application/octet-stream
