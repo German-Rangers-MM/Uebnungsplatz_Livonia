@@ -38,11 +38,20 @@ jobs:
         echo "No valid mission folder found"
         exit 1
 
-    - name: Set up armake2
+    - name: Install build dependencies
       run: |
-        sudo add-apt-repository universe
         sudo apt-get update
-        sudo apt-get install -y armake2
+        sudo apt-get install -y build-essential cmake git
+
+    - name: Install Rust and build armake2
+      run: |
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+        source $HOME/.cargo/env
+        git clone https://github.com/KoffeinFlummi/armake2.git
+        cd armake2
+        cargo build --release
+        sudo cp target/release/armake2 /usr/local/bin/
+        armake2 --version
 
     - name: Process version tag
       id: process-version
@@ -63,7 +72,7 @@ jobs:
       run: |
         MISSION_FOLDER="${{ steps.find-folder.outputs.mission_folder }}"
         OUTPUT_FILENAME="${{ steps.find-folder.outputs.mission_name }}_${{ steps.process-version.outputs.simplified_version }}.${{ steps.find-folder.outputs.map_name }}"
-        armake2 build "$MISSION_FOLDER" "$OUTPUT_FILENAME"
+        armake2 pack "$MISSION_FOLDER" "$OUTPUT_FILENAME"
         echo "pbo_filename=$OUTPUT_FILENAME" >> $GITHUB_OUTPUT
 
     - name: Upload to Release
