@@ -32,25 +32,30 @@ jobs:
       - name: Find mission folder
         id: mission-folder
         run: |
-          # More precise folder detection (exclude hidden dirs)
           MISSION_DIR=$(find . -maxdepth 1 -type d -name "*.*" ! -name ".*" | head -1)
           if [ -z "$MISSION_DIR" ] || [ "$MISSION_DIR" = "." ]; then
-            echo "Error: Valid mission folder not found." >&2
+            echo "::error::Valid mission folder not found. Ensure there's a directory named like 'missionname.mapname'"
             exit 1
           fi
-          echo "directory=$MISSION_DIR" >> $GITHUB_OUTPUT
-          FILENAME=$(basename "$MISSION_DIR" | cut -d. -f1)
-          MAPNAME=$(basename "$MISSION_DIR" | cut -d. -f2)
-          echo "pbo_name=${FILENAME}_${{ steps.version.outputs.simplified_version }}.${MAPNAME}" >> $GITHUB_OUTPUT
+          CLEAN_DIR="${MISSION_DIR#./}"
+          echo "directory=$CLEAN_DIR" >> $GITHUB_OUTPUT
+          FILENAME=$(basename "$CLEAN_DIR" | cut -d. -f1)
+          MAPNAME=$(basename "$CLEAN_DIR" | cut -d. -f2)
+          echo "pbo_name=${FILENAME}_${{ steps.version.outputs.simplified_version }}.${MAPNAME}.pbo" >> $GITHUB_OUTPUT
 
       - name: Build PBO
         run: |
           mkdir -p output
+          echo "🛠 Building PBO from: ${{ steps.mission-folder.outputs.directory }}"
+          
+          # Build with modern PBO parameters
           docker run --rm -v "$(pwd):/data" jerryhopper/depbo-tools:latest \
-            makepbo -A -P -X=".txt" "/data/${{ steps.mission-folder.outputs.directory }}" "/data/output" || true
-          # Verify PBO creation
-          if [ ! -f "output/$(basename "${{ steps.mission-folder.outputs.directory }}").pbo ]; then
-            echo "❌ PBO file was not created!"
+            makepbo -P -X=".txt" -N "/data/${{ steps.mission-folder.outputs.directory }}" "/data/output" || true
+          
+          # Verify PBO creation using basename
+          PBO_BASENAME=$(basename "${{ steps.mission-folder.outputs.directory }}")
+          if [ ! -f "output/$PBO_BASENAME.pbo" ]; then
+            echo "::error::PBO file was not created! Check mission file structure."
             exit 1
           fi
 
