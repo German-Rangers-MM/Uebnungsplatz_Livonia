@@ -61,7 +61,7 @@ jobs:
       id: build-pbo
       run: |
         MISSION_FOLDER="${{ steps.find-folder.outputs.mission_folder }}"
-        OUTPUT_FILENAME="${{ steps.find-folder.outputs.mission_name }}_${{ steps.process-version.outputs.simplified_version }}.${{ steps.find-folder.outputs.map_name }}.pbo"
+        OUTPUT_FILENAME="${{ steps.find-folder.outputs.mission_name }}_${{ steps.process-version.outputs.simplified_version }}.${{ steps.find-folder.outputs.map_name }}"
         makepbo -N -P "$MISSION_FOLDER" "$OUTPUT_FILENAME"
         echo "pbo_filename=$OUTPUT_FILENAME" >> $GITHUB_OUTPUT
 
