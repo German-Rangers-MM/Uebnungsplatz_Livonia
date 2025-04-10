@@ -38,18 +38,25 @@ jobs:
         echo "No valid mission folder found"
         exit 1
 
-    - name: Install build dependencies
+    - name: Install OpenSSL and build dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y build-essential cmake git pkg-config
+        sudo apt-get install -y \
+          build-essential \
+          git \
+          libssl-dev \
+          pkg-config
 
-    - name: Install Rust and build armake2 (with vendored OpenSSL)
+    - name: Install Rust toolchain
       run: |
         curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-        source $HOME/.cargo/env
+        echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+    - name: Build armake2 from source
+      run: |
         git clone https://github.com/KoffeinFlummi/armake2.git
         cd armake2
-        cargo build --release --features openssl-sys/vendored
+        cargo build --release
         sudo cp target/release/armake2 /usr/local/bin/
         armake2 --version
 
