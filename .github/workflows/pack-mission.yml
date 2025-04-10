@@ -38,10 +38,11 @@ jobs:
         echo "No valid mission folder found"
         exit 1
 
-    - name: Set up pbo-tools
+    - name: Set up armake2
       run: |
+        sudo add-apt-repository universe
         sudo apt-get update
-        sudo apt-get install -y pbo-tools
+        sudo apt-get install -y armake2
 
     - name: Process version tag
       id: process-version
@@ -62,7 +63,7 @@ jobs:
       run: |
         MISSION_FOLDER="${{ steps.find-folder.outputs.mission_folder }}"
         OUTPUT_FILENAME="${{ steps.find-folder.outputs.mission_name }}_${{ steps.process-version.outputs.simplified_version }}.${{ steps.find-folder.outputs.map_name }}"
-        makepbo -N -P "$MISSION_FOLDER" "$OUTPUT_FILENAME"
+        armake2 build "$MISSION_FOLDER" "$OUTPUT_FILENAME"
         echo "pbo_filename=$OUTPUT_FILENAME" >> $GITHUB_OUTPUT
 
     - name: Upload to Release
