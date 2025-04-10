@@ -63,7 +63,7 @@ jobs:
 
       - name: Build PBO with Docker
         run: |
-          docker run --rm -v "$PWD:/work" thomass/makepbo makepbo -N \
+          docker run --rm -v "$PWD:/work" jerryhopper/depbo-tools -N \
             "/work/${{ steps.find-mission.outputs.mission_dir }}" \
             "/work/${{ steps.mission-components.outputs.mission_name }}_${{ steps.simplify-version.outputs.simplified_version }}.${{ steps.mission-components.outputs.map_name }}.pbo"
 
