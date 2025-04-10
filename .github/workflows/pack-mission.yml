@@ -38,6 +38,7 @@ jobs:
         echo "No valid mission folder found"
         exit 1
 
+
     - name: Install build dependencies
       run: |
         sudo apt-get update
