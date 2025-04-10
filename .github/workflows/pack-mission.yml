@@ -47,7 +47,7 @@ jobs:
         run: |
           mkdir -p output
           docker run --rm -v "$(pwd):/data" jerryhopper/depbo-tools:latest \
-            makepbo -N "/data/${{ steps.mission-folder.outputs.directory }}" "/data/output"
+            makepbo -A "/data/${{ steps.mission-folder.outputs.directory }}" "/data/output"
 
       - name: Rename PBO
         run: |
