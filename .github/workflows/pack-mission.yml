@@ -1,82 +1,64 @@
-name: Package and Release Arma Mission
+name: Pack and Release Arma Mission PBO
 
 on:
+  push:
+    branches:
+      - main
   release:
     types: [published]
   workflow_dispatch:
 
 jobs:
-  package-mission:
-    runs-on: windows-latest
-
+  pack-pbo:
+    runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Get release info (manual trigger)
-      if: github.event_name == 'workflow_dispatch'
-      id: get-release
-      shell: bash
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Find mission folder
+      id: find-folder
       run: |
-        LATEST_RELEASE=$(curl -s -H "Authorization: token $GH_TOKEN" \
-          "https://api.github.com/repos/${{ github.repository }}/releases/latest")
-        TAG_NAME=$(jq -r .tag_name <<< "$LATEST_RELEASE")
-        RELEASE_ID=$(jq -r .id <<< "$LATEST_RELEASE")
-        echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
-        echo "RELEASE_ID=$RELEASE_ID" >> $GITHUB_ENV
+        MISSION_FOLDER=$(find . -regextype posix-extended -regex '.*/[^/]*\.[^/]*' -type d ! -name ".github" ! -path "*/.github/*" | head -n 1)
+        echo "Folder found: $MISSION_FOLDER"
+        FOLDER_NAME=$(basename "$MISSION_FOLDER")
+        MISSION_NAME="${FOLDER_NAME%.*}"
+        MAP_NAME="${FOLDER_NAME#*.}"
+        echo "mission_name=$MISSION_NAME" >> $GITHUB_OUTPUT
+        echo "map_name=$MAP_NAME" >> $GITHUB_OUTPUT
+        echo "folder_path=$MISSION_FOLDER" >> $GITHUB_OUTPUT
+
+    - name: Setup Wine
+      run: |
+        sudo dpkg --add-architecture i386
+        sudo apt update
+        sudo apt install -y wine32
 
     - name: Install MakePbo
-      shell: powershell
       run: |
-        $ProgressPreference = 'SilentlyContinue'
-        Invoke-WebRequest -Uri "https://mikero.bytex.digital/api/download?filename=MakePbo.2.16.9.36.Installer.exe" `
-          -OutFile "makepbo.exe"
-        Start-Process -Wait -FilePath .\makepbo.exe -ArgumentList "/S"
-        $env:Path += ";C:\Program Files\MakePbo\"
-        Write-Output "New PATH: $env:Path"
+        wget https://mikero.bytex.digital/api/download?filename=MakePbo.2.16.9.36.Installer.exe -O MakePbo.exe
+        wine MakePbo.exe /S
+        echo "$HOME/.wine/drive_c/Program Files/MakePbo" >> $GITHUB_PATH
 
-    - name: Find mission folder
-      id: mission-folder
-      shell: bash
+    - name: Pack mission file
       run: |
-        MISSION_FOLDER=$(find . -maxdepth 1 -type d -name "*.*" -not -path "./.git*" -print -quit)
-        MISSION_FOLDER=${MISSION_FOLDER#./}
-        echo "folder_name=$MISSION_FOLDER" >> $GITHUB_OUTPUT
-        echo "Using mission folder: $MISSION_FOLDER"
-        if [ ! -f "$MISSION_FOLDER/mission.sqm" ]; then
-          echo "::error::Mission folder $MISSION_FOLDER is missing mission.sqm"
-          exit 1
-        fi
+        makepbo -N "${{ steps.find-folder.outputs.folder_path }}" packed.pbo
+        mv packed.pbo "${{ steps.find-folder.outputs.mission_name }}.pbo"
 
-    - name: Prepare version and filename
-      id: version-info
-      shell: bash
+    - name: Process version tag
+      id: process-version
       run: |
-        VERSION_TAG=${{ github.event_name == 'workflow_dispatch' && env.TAG_NAME || github.ref_name }}
-        SIMPLIFIED_VERSION=$(echo "$VERSION_TAG" | tr -d '.' | sed 's/v//i')
-        
-        IFS='.' read -ra FOLDER_PARTS <<< "${{ steps.mission-folder.outputs.folder_name }}"
-        FILENAME="${FOLDER_PARTS[0]}"
-        MAPNAME="${FOLDER_PARTS[1]}"
-        
-        PBO_NAME="${FILENAME}_v${SIMPLIFIED_VERSION}.${MAPNAME}"
-        echo "pbo_name=$PBO_NAME" >> $GITHUB_OUTPUT
-        echo "Using PBO name: $PBO_NAME"
+        VERSION=$(echo "${{ github.ref_name }}" | sed 's/^v//; s/\.//g')
+        echo "version=v$VERSION" >> $GITHUB_OUTPUT
 
-    - name: Package mission
-      shell: cmd
+    - name: Rename PBO with version
       run: |
-        makepbo -N -A "${{ steps.mission-folder.outputs.folder_name }}" "%cd%\${{ steps.version-info.outputs.pbo_name }}"
-        dir *.pbo
+        NEW_NAME="${{ steps.find-folder.outputs.mission_name }}_${{ steps.process-version.outputs.version }}.${{ steps.find-folder.outputs.map_name }}.pbo"
+        mv "${{ steps.find-folder.outputs.mission_name }}.pbo" "$NEW_NAME"
+        echo "NEW_NAME=$NEW_NAME" >> $GITHUB_ENV
 
-    - name: Upload to release
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload to Release
+      uses: softprops/action-gh-release@v1
       with:
-        upload_url: ${{ github.event.release.upload_url || format('https://uploads.github.com/repos/{0}/releases/{1}/assets', github.repository, env.RELEASE_ID) }}
-        asset_path: ./${{ steps.version-info.outputs.pbo_name }}.pbo
-        asset_name: ${{ steps.version-info.outputs.pbo_name }}.pbo
-        asset_content_type: application/octet-stream
+        tag_name: ${{ github.ref }}
+        files: ${{ env.NEW_NAME }}
+      if: github.event_name == 'release'
