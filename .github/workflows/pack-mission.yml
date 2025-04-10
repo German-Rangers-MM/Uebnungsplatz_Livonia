@@ -1,76 +1,61 @@
-name: Build and Release Arma Mission PBO
+name: Build and Release PBO
 
 on:
   release:
     types: [published]
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   build-pbo:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install GitHub CLI
-        run: |
-          sudo apt update
-          sudo apt install -y curl
-          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-          sudo apt update
-          sudo apt install -y gh
-
-
-      - name: Determine version tag
+      - name: Determine version
         id: version
         run: |
           if [ "${{ github.event_name }}" = "release" ]; then
-            version_tag="${{ github.ref_name }}"
+            TAG=${{ github.ref_name }}
           else
-            version_tag=$(gh api repos/${{ github.repository }}/releases/latest --jq '.tag_name')
+            TAG=$(curl -sH "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              "https://api.github.com/repos/${{ github.repository }}/releases/latest" | \
+              jq -r .tag_name)
           fi
-          echo "version_tag=$version_tag" >> $GITHUB_OUTPUT
+          # Simplify version format (v26.0.2 -> v2602)
+          SIMPLIFIED_TAG="v$(echo "$TAG" | sed 's/^v//; s/\.//g')"
+          echo "simplified_version=$SIMPLIFIED_TAG" >> $GITHUB_OUTPUT
+          echo "original_tag=$TAG" >> $GITHUB_OUTPUT
         env:
           GH_TOKEN: ${{ github.token }}
 
-      - name: Simplify version tag
-        id: simplify-version
+      - name: Find mission folder
+        id: mission-folder
         run: |
-          simplified_version=$(echo "${{ steps.version.outputs.version_tag }}" | sed 's/^v//; s/\.//g')
-          echo "simplified_version=v$simplified_version" >> $GITHUB_OUTPUT
-
-      - name: Find mission directory
-        id: find-mission
-        run: |
-          MISSION_DIR=$(find . -type d -name "*.*" | head -1)
+          MISSION_DIR=$(find . -maxdepth 1 -type d -name "*.*" | head -1)
           if [ -z "$MISSION_DIR" ]; then
-            echo "::error::No mission directory found (looking for pattern 'NAME.MAP')"
+            echo "Error: Mission folder not found. Ensure there's a directory with a dot in its name (e.g., 'mission.Altis')." >&2
             exit 1
           fi
-          echo "mission_dir=${MISSION_DIR#./}" >> $GITHUB_OUTPUT
+          echo "directory=$MISSION_DIR" >> $GITHUB_OUTPUT
+          FILENAME=$(basename "$MISSION_DIR" | cut -d. -f1)
+          MAPNAME=$(basename "$MISSION_DIR" | cut -d. -f2)
+          echo "pbo_name=${FILENAME}_${{ steps.version.outputs.simplified_version }}.${MAPNAME}" >> $GITHUB_OUTPUT
 
-      - name: Extract mission components
-        id: mission-components
+      - name: Build PBO
         run: |
-          IFS='.' read -ra parts <<< "${{ steps.find-mission.outputs.mission_dir }}"
-          echo "mission_name=${parts[0]}" >> $GITHUB_OUTPUT
-          echo "map_name=${parts[1]}" >> $GITHUB_OUTPUT
+          mkdir -p output
+          docker run --rm -v "$(pwd):/data" jerryhopper/depbo-tools:latest \
+            makepbo -N "/data/${{ steps.mission-folder.outputs.directory }}" "/data/output"
 
-      - name: Build PBO with Docker
+      - name: Rename PBO
         run: |
-          docker run -it -v $PWD:/home jerryhopper/depbo-tools:latest makepbo -N \
-            "/home/${{ steps.find-mission.outputs.mission_dir }}" \
-            "/home/${{ steps.mission-components.outputs.mission_name }}_${{ steps.simplify-version.outputs.simplified_version }}.${{ steps.mission-components.outputs.map_name }}"
+          mv "output/$(basename "${{ steps.mission-folder.outputs.directory }}").pbo" "${{ steps.mission-folder.outputs.pbo_name }}"
 
-      - name: Upload PBO to release
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.version.outputs.original_tag }}
+          files: ${{ steps.mission-folder.outputs.pbo_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release upload ${{ steps.version.outputs.version_tag }} \
-            "${{ steps.mission-components.outputs.mission_name }}_${{ steps.simplify-version.outputs.simplified_version }}.${{ steps.mission-components.outputs.map_name }}.pbo" \
-            --clobber
