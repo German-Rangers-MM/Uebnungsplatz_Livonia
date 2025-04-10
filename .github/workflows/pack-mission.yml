@@ -1,15 +1,16 @@
-name: Pack and Release Arma Mission PBO
+name: Package and Release Arma Mission
 
 on:
-  push:
-    branches:
-      - main
   release:
     types: [published]
   workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'The tag of the release to update'
+        required: true
 
 jobs:
-  pack-pbo:
+  package-mission:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
@@ -18,47 +19,76 @@ jobs:
     - name: Find mission folder
       id: find-folder
       run: |
-        MISSION_FOLDER=$(find . -regextype posix-extended -regex '.*/[^/]*\.[^/]*' -type d ! -name ".github" ! -path "*/.github/*" | head -n 1)
-        echo "Folder found: $MISSION_FOLDER"
-        FOLDER_NAME=$(basename "$MISSION_FOLDER")
-        MISSION_NAME="${FOLDER_NAME%.*}"
-        MAP_NAME="${FOLDER_NAME#*.}"
-        echo "mission_name=$MISSION_NAME" >> $GITHUB_OUTPUT
-        echo "map_name=$MAP_NAME" >> $GITHUB_OUTPUT
-        echo "folder_path=$MISSION_FOLDER" >> $GITHUB_OUTPUT
+        for dir in */; do
+          dir=${dir%/}
+          if [[ "$dir" =~ ^[^.]+\.[^.]+\.[^.]+$ ]]; then
+            echo "Skipping folder with multiple dots: $dir"
+            continue
+          fi
+          if [[ "$dir" =~ ^[^.]+\.[^.]+$ && ! "$dir" =~ ^\. ]]; then
+            echo "Found mission folder: $dir"
+            echo "mission_folder=$dir" >> $GITHUB_OUTPUT
+            mission_name="${dir%.*}"
+            map_name="${dir#*.}"
+            echo "mission_name=$mission_name" >> $GITHUB_OUTPUT
+            echo "map_name=$map_name" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+        done
+        echo "No valid mission folder found"
+        exit 1
 
-    - name: Setup Wine
+    - name: Set up pbo-tools
       run: |
-        sudo dpkg --add-architecture i386
+        sudo apt-get update
+        sudo apt-get install -y pbo-tools
+
+    - name: Install GitHub CLI (for manual dispatch)
+      if: github.event_name == 'workflow_dispatch'
+      run: |
+        curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+        sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
         sudo apt update
-        sudo apt install -y wine32
+        sudo apt install gh -y
 
-    - name: Install MakePbo
+    - name: Get Release Upload URL (Manual Dispatch)
+      if: github.event_name == 'workflow_dispatch'
+      id: get-release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        wget https://mikero.bytex.digital/api/download?filename=MakePbo.2.16.9.36.Installer.exe -O MakePbo.exe
-        wine MakePbo.exe /S
-        echo "$HOME/.wine/drive_c/Program Files/MakePbo" >> $GITHUB_PATH
-
-    - name: Pack mission file
-      run: |
-        makepbo -N "${{ steps.find-folder.outputs.folder_path }}" packed.pbo
-        mv packed.pbo "${{ steps.find-folder.outputs.mission_name }}.pbo"
+        TAG_NAME="${{ github.event.inputs.tag_name }}"
+        UPLOAD_URL=$(gh api "repos/${{ github.repository }}/releases/tags/${TAG_NAME}" --jq '.upload_url' -H "Authorization: token $GITHUB_TOKEN")
+        echo "upload_url=${UPLOAD_URL}" >> $GITHUB_OUTPUT
 
     - name: Process version tag
       id: process-version
       run: |
-        VERSION=$(echo "${{ github.ref_name }}" | sed 's/^v//; s/\.//g')
-        echo "version=v$VERSION" >> $GITHUB_OUTPUT
+        if [[ "${{ github.event_name }}" == "release" ]]; then
+          TAG="${{ github.ref_name }}"
+        else
+          TAG="${{ github.event.inputs.tag_name }}"
+        fi
+        CLEAN_VERSION=$(echo "${TAG#v}" | sed -E 's/[-+].*//')
+        SIMPLIFIED_VERSION="v$(echo "$CLEAN_VERSION" | tr -d .)"
+        echo "simplified_version=$SIMPLIFIED_VERSION" >> $GITHUB_OUTPUT
+        echo "Original: $TAG, Simplified: $SIMPLIFIED_VERSION"
 
-    - name: Rename PBO with version
+    - name: Build PBO
+      id: build-pbo
       run: |
-        NEW_NAME="${{ steps.find-folder.outputs.mission_name }}_${{ steps.process-version.outputs.version }}.${{ steps.find-folder.outputs.map_name }}.pbo"
-        mv "${{ steps.find-folder.outputs.mission_name }}.pbo" "$NEW_NAME"
-        echo "NEW_NAME=$NEW_NAME" >> $GITHUB_ENV
+        MISSION_FOLDER="${{ steps.find-folder.outputs.mission_folder }}"
+        OUTPUT_FILENAME="${{ steps.find-folder.outputs.mission_name }}_${{ steps.process-version.outputs.simplified_version }}.${{ steps.find-folder.outputs.map_name }}"
+        makepbo -N -P "$MISSION_FOLDER" "$OUTPUT_FILENAME"
+        echo "pbo_filename=$OUTPUT_FILENAME" >> $GITHUB_OUTPUT
 
     - name: Upload to Release
-      uses: softprops/action-gh-release@v1
+      uses: actions/upload-release-asset@v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        files: ${{ env.NEW_NAME }}
-      if: github.event_name == 'release'
+        upload_url: ${{ github.event.release.upload_url || steps.get-release.outputs.upload_url }}
+        asset_path: ./${{ steps.build-pbo.outputs.pbo_filename }}
+        asset_name: ${{ steps.build-pbo.outputs.pbo_filename }}
+        asset_content_type: application/octet-stream
