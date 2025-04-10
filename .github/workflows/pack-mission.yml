@@ -10,31 +10,45 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Get latest release (manual trigger)
-      if: github.event_name == 'workflow_dispatch'
-      shell: bash
-      run: |
-        LATEST_RELEASE=$(curl -s https://api.github.com/repos/${{ github.repository }}/releases/latest | jq -r .tag_name)
-        echo "TAG_NAME=$LATEST_RELEASE" >> $GITHUB_ENV
-
     - name: Checkout code
       uses: actions/checkout@v4
-      with:
-        ref: ${{ github.event_name == 'workflow_dispatch' && env.TAG_NAME || github.ref }}
+
+    - name: Get release info (manual trigger)
+      if: github.event_name == 'workflow_dispatch'
+      id: get-release
+      shell: bash
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        LATEST_RELEASE=$(curl -s -H "Authorization: token $GH_TOKEN" \
+          "https://api.github.com/repos/${{ github.repository }}/releases/latest")
+        TAG_NAME=$(jq -r .tag_name <<< "$LATEST_RELEASE")
+        RELEASE_ID=$(jq -r .id <<< "$LATEST_RELEASE")
+        echo "TAG_NAME=$TAG_NAME" >> $GITHUB_ENV
+        echo "RELEASE_ID=$RELEASE_ID" >> $GITHUB_ENV
 
     - name: Install MakePbo
-      shell: cmd
+      shell: powershell
       run: |
-        curl -L -o makepbo.exe "https://mikero.bytex.digital/api/download?filename=MakePbo.2.16.9.36.Installer.exe"
-        start /wait makepbo.exe /S
-        setx PATH "%PATH%;C:\Program Files\MakePbo\"
+        $ProgressPreference = 'SilentlyContinue'
+        Invoke-WebRequest -Uri "https://mikero.bytex.digital/api/download?filename=MakePbo.2.16.9.36.Installer.exe" `
+          -OutFile "makepbo.exe"
+        Start-Process -Wait -FilePath .\makepbo.exe -ArgumentList "/S"
+        $env:Path += ";C:\Program Files\MakePbo\"
+        Write-Output "New PATH: $env:Path"
 
     - name: Find mission folder
       id: mission-folder
       shell: bash
       run: |
-        MISSION_FOLDER=$(find . -maxdepth 1 -type d -name "*.*" | grep -vE "^\./\.git" | head -1)
-        echo "folder_name=${MISSION_FOLDER#./}" >> $GITHUB_OUTPUT
+        MISSION_FOLDER=$(find . -maxdepth 1 -type d -name "*.*" -not -path "./.git*" -print -quit)
+        MISSION_FOLDER=${MISSION_FOLDER#./}
+        echo "folder_name=$MISSION_FOLDER" >> $GITHUB_OUTPUT
+        echo "Using mission folder: $MISSION_FOLDER"
+        if [ ! -f "$MISSION_FOLDER/mission.sqm" ]; then
+          echo "::error::Mission folder $MISSION_FOLDER is missing mission.sqm"
+          exit 1
+        fi
 
     - name: Prepare version and filename
       id: version-info
@@ -47,20 +61,22 @@ jobs:
         FILENAME="${FOLDER_PARTS[0]}"
         MAPNAME="${FOLDER_PARTS[1]}"
         
-        echo "pbo_name=${FILENAME}_v${SIMPLIFIED_VERSION}.${MAPNAME}" >> $GITHUB_OUTPUT
-        echo "release_tag=${VERSION_TAG}" >> $GITHUB_OUTPUT
+        PBO_NAME="${FILENAME}_v${SIMPLIFIED_VERSION}.${MAPNAME}"
+        echo "pbo_name=$PBO_NAME" >> $GITHUB_OUTPUT
+        echo "Using PBO name: $PBO_NAME"
 
     - name: Package mission
       shell: cmd
       run: |
-        makepbo -P -A -X=".txt" "${{ steps.mission-folder.outputs.folder_name }}" "${{ steps.pbo_name.outputs.pbo_name }}"
+        makepbo -N -A "${{ steps.mission-folder.outputs.folder_name }}" "%cd%\${{ steps.version-info.outputs.pbo_name }}"
+        dir *.pbo
 
     - name: Upload to release
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        upload_url: ${{ github.event.release.upload_url || (github.event_name == 'workflow_dispatch' && format('https://uploads.github.com/repos/{0}/releases/{1}/assets', github.repository, env.RELEASE_ID)) }}
-        asset_path: ./${{ steps.pbo_name.outputs.pbo_name }}.pbo
-        asset_name: ${{ steps.pbo_name.outputs.pbo_name }}.pbo
+        upload_url: ${{ github.event.release.upload_url || format('https://uploads.github.com/repos/{0}/releases/{1}/assets', github.repository, env.RELEASE_ID) }}
+        asset_path: ./${{ steps.version-info.outputs.pbo_name }}.pbo
+        asset_name: ${{ steps.version-info.outputs.pbo_name }}.pbo
         asset_content_type: application/octet-stream
