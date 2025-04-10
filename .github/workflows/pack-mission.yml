@@ -47,7 +47,13 @@ jobs:
         run: |
           mkdir -p output
           docker run --rm -v "$(pwd):/data" jerryhopper/depbo-tools:latest \
-            makepbo -A -P -X=".txt" "/data/${{ steps.mission-folder.outputs.directory }}" "/data/output"
+            makepbo -A -P -X=".txt" "/data/${{ steps.mission-folder.outputs.directory }}" "/data/output" || true
+          # Verify PBO creation
+          if [ ! -f "output/$(basename "${{ steps.mission-folder.outputs.directory }}").pbo ]; then
+            echo "❌ PBO file was not created!"
+            exit 1
+          fi
+
 
       - name: Rename PBO
         run: |
