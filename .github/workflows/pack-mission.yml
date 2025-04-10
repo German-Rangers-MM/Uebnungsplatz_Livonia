@@ -44,7 +44,7 @@ jobs:
     - name: Build PBO
       run: |
         cd "${{ steps.find-folder.outputs.folder_path }}"
-        hemtt build --ci
+        hemtt build
         PBO_FILE=$(ls *.pbo)
         NEW_NAME="${{ steps.find-folder.outputs.mission_name}}_${{ steps.version.outputs.version }}.${{ steps.find-folder.outputs.map_name }}.pbo"
         mv "$PBO_FILE" "$NEW_NAME"
