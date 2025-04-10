@@ -43,25 +43,6 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y pbo-tools
 
-    - name: Install GitHub CLI (for manual dispatch)
-      if: github.event_name == 'workflow_dispatch'
-      run: |
-        curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-        sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
-        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-        sudo apt update
-        sudo apt install gh -y
-
-    - name: Get Release Upload URL (Manual Dispatch)
-      if: github.event_name == 'workflow_dispatch'
-      id: get-release
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        TAG_NAME="${{ github.event.inputs.tag_name }}"
-        UPLOAD_URL=$(gh api "repos/${{ github.repository }}/releases/tags/${TAG_NAME}" --jq '.upload_url' -H "Authorization: token $GITHUB_TOKEN")
-        echo "upload_url=${UPLOAD_URL}" >> $GITHUB_OUTPUT
-
     - name: Process version tag
       id: process-version
       run: |
@@ -73,22 +54,20 @@ jobs:
         CLEAN_VERSION=$(echo "${TAG#v}" | sed -E 's/[-+].*//')
         SIMPLIFIED_VERSION="v$(echo "$CLEAN_VERSION" | tr -d .)"
         echo "simplified_version=$SIMPLIFIED_VERSION" >> $GITHUB_OUTPUT
+        echo "original_tag=$TAG" >> $GITHUB_OUTPUT
         echo "Original: $TAG, Simplified: $SIMPLIFIED_VERSION"
 
     - name: Build PBO
       id: build-pbo
       run: |
         MISSION_FOLDER="${{ steps.find-folder.outputs.mission_folder }}"
-        OUTPUT_FILENAME="${{ steps.find-folder.outputs.mission_name }}_${{ steps.process-version.outputs.simplified_version }}.${{ steps.find-folder.outputs.map_name }}"
+        OUTPUT_FILENAME="${{ steps.find-folder.outputs.mission_name }}_${{ steps.process-version.outputs.simplified_version }}.${{ steps.find-folder.outputs.map_name }}.pbo"
         makepbo -N -P "$MISSION_FOLDER" "$OUTPUT_FILENAME"
         echo "pbo_filename=$OUTPUT_FILENAME" >> $GITHUB_OUTPUT
 
     - name: Upload to Release
-      uses: actions/upload-release-asset@v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: softprops/action-gh-release@v2
       with:
-        upload_url: ${{ github.event.release.upload_url || steps.get-release.outputs.upload_url }}
-        asset_path: ./${{ steps.build-pbo.outputs.pbo_filename }}
-        asset_name: ${{ steps.build-pbo.outputs.pbo_filename }}
-        asset_content_type: application/octet-stream
+        tag_name: ${{ steps.process-version.outputs.original_tag }}
+        files: ${{ steps.build-pbo.outputs.pbo_filename }}
+        token: ${{ secrets.GITHUB_TOKEN }}
