@@ -3,7 +3,7 @@
 #include "gui\guiNeuDialog.hpp"
 
 #include "IGC_GUI\IGC_GUI_defines.hpp"
-#include "IGC_CF\gui\IGC_CF_dialog.hpp"
+#include "IGC\IGC_guis.hpp"
 
 //Mission Head ==================================================
 author			= "GerRng Mission Making Team";
@@ -232,5 +232,5 @@ class CfgDebriefing
 class CfgFunctions {
 	#include "gui\CfgFunctions.hpp"	
 	#include "fnc\CfgFunctions.hpp"
-	#include "IGC_CF\IGC_CF_functions.hpp"
+	#include "IGC\IGC_functions.hpp"
 };
