@@ -29,10 +29,9 @@ jobs:
           template:
             - '!cba_configs/**'
             - '!.github/**'
-            - 'basis_uebungsplatz_2024.Enoch/'
+            - 'co79_GerRng_Zug_3_0.VR/'
           workflows:
             - '.github/**'
-        predicate-quantifier: 'every'
 
   # JOB to build and test backend code
   cba:
@@ -70,7 +69,7 @@ jobs:
        - uses: arma-actions/sqflint@v1.0
          name: Validate with SQFLint with custom arguments
          with:
-            args: --directory basis_uebungsplatz_2024.Enoch
+            args: --directory co79_GerRng_Zug_3_0.VR
 
   autoapprove:
     if: |
@@ -94,9 +93,7 @@ jobs:
 
   autoassign:
     if: |
-      always() && 
-      (needs.template.result == 'success' || needs.cba.result == 'success' || needs.workflows.result == 'success') &&
-      (needs.autoapprove.result == 'skipped')
+      always()
     needs: [template, cba, workflows]
     runs-on: ubuntu-latest
     name: 'Auto-assign PR'

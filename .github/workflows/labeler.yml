@@ -13,24 +13,22 @@ jobs:
     # Only runs for automatic pull_request_target events
     if: github.event_name == 'pull_request_target'
     permissions:
-      contents: write
+      contents: read
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
     - uses: actions/labeler@v5
       with:
-        repo-token: ${{secrets.GR_MM_TOKEN}}
         pull-request-number: ${{ github.event.number }}
 
   label-manual:
     # Only runs for manual workflow_dispatch triggers
     if: github.event_name == 'workflow_dispatch'
     permissions:
-      contents: write
+      contents: read
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
     - uses: actions/labeler@v5
       with:
-        repo-token: ${{secrets.GR_MM_TOKEN}}
         pr-number: ${{ fromJSON(github.event.inputs.pr-number) }}
