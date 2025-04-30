@@ -15,23 +15,23 @@ Repo-Update:
 
 Mission-Update:
 - changed-files:
-  - any-glob-to-any-file: ['co79_GerRng_Zug_3_0.VR/*.ext', 'co79_GerRng_Zug_3_0.VR/*.sqm', 'co79_GerRng_Zug_3_0.VR/*.sqf', 'co79_GerRng_Zug_3_0.VR/*.hpp', 'co79_GerRng_Zug_3_0.VR/*.txt']
+  - any-glob-to-any-file: ['basis_uebungsplatz_2024.Enoch/*.ext', 'basis_uebungsplatz_2024.Enoch/*.sqm', 'basis_uebungsplatz_2024.Enoch/*.sqf', 'basis_uebungsplatz_2024.Enoch/*.hpp', 'basis_uebungsplatz_2024.Enoch/*.txt']
 
 Loadout-Update:
 - changed-files:
-  - any-glob-to-any-file: 'co79_GerRng_Zug_3_0.VR/loadouts/**/loadout/*.sqf'
+  - any-glob-to-any-file: 'basis_uebungsplatz_2024.Enoch/loadouts/**/loadout/*.sqf'
 
 Packlisten-Update:
 - changed-files:
-  - any-glob-to-any-file: 'co79_GerRng_Zug_3_0.VR/loadouts/**/packliste/*.sqf'
+  - any-glob-to-any-file: 'basis_uebungsplatz_2024.Enoch/loadouts/**/packliste/*.sqf'
 
 Limakisten-Update:
 - changed-files:
-  - any-glob-to-any-file: 'co79_GerRng_Zug_3_0.VR/loadouts/**/lima/*.sqf'
+  - any-glob-to-any-file: 'basis_uebungsplatz_2024.Enoch/loadouts/**/lima/*.sqf'
 
 Script-Update:
 - changed-files:
-  - any-glob-to-any-file: ['co79_GerRng_Zug_3_0.VR/fnc/**', 'co79_GerRng_Zug_3_0.VR/gui/**', 'co79_GerRng_Zug_3_0.VR/scripts/**', 'co79_GerRng_Zug_3_0.VR/sounds/**']
+  - any-glob-to-any-file: ['basis_uebungsplatz_2024.EnochR/fnc/**', 'basis_uebungsplatz_2024.Enoch/gui/**', 'basis_uebungsplatz_2024.Enoch/scripts/**', 'basis_uebungsplatz_2024.Enoch/sounds/**']
 
 # Add 'feature' label to any PR where the head branch name starts with `feature` or has a `feature` section in the name
 feature:
