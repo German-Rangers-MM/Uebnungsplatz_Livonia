@@ -1,26 +1,39 @@
-name: Package Mission
+name: Package and Update Mission
 
 on:
   release:
-    types: [created,edited]
+    types: [created, edited]
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  sync:
+  package-mission:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Missions
+      - name: Checkout Repository
         uses: actions/checkout@v4
         with:
           path: source
-      - uses: robinraju/release-downloader@v1.7
+
+      - name: Get latest release info
+        if: github.event_name == 'workflow_dispatch'
+        id: release-info
+        run: |
+          LATEST_RELEASE=$(gh release view --json tagName,uploadUrl -q '.tagName + "|" + .uploadUrl')
+          echo "release_data=$LATEST_RELEASE" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download PBO Packer
+        uses: robinraju/release-downloader@v1.7
         with:
           repository: "German-Rangers-MM/PBO-Packer"
           latest: true
           fileName: "pbo-packer"
           out-file-path: "./pbo-packer"
+
       - name: Package Missions
         run: |
           mkdir -p pbos
@@ -34,7 +47,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ github.event.release.upload_url }}
+          upload_url: ${{ github.event.release.upload_url || fromJSON('"' + split(steps.release-info.outputs.release_data, '|')[1] + '"') }}
           asset_path: ./pbos/*.pbo
-          asset_name: ${{ github.event.repository.name }}_${{ github.event.release.tag_name }}.pbo
+          asset_name: ${{ github.event.repository.name }}_${{ github.event.release.tag_name || split(steps.release-info.outputs.release_data, '|')[0] }}.pbo
           asset_content_type: application/octet-stream
