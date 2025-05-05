@@ -8,7 +8,7 @@
 waitUntil{!isNull(player)};
 setTerrainGrid 25;
 enableEnvironment [false, true];
-titleText ["Übungsplatz", "Livonia" ];
+titleText ["Missionsvorbereitung", "BLACK FADED" ];
 
 // briefingName
 [] execVM "scripts\core\briefing.sqf";
@@ -127,7 +127,7 @@ PPeffect_colorC ppEffectCommit 0;
 //------------------------------------------------------------------
 //------------------------------------------------------------------
 //
-//						Sandstorm Effect
+//						Effects
 //
 //------------------------------------------------------------------
 //------------------------------------------------------------------
@@ -142,6 +142,12 @@ PPeffect_colorC ppEffectCommit 0;
 
 //[player, 0.9, 0.5, true] call BIS_fnc_sandstorm;
 
+//FoggyBreath
+//_units = if (!isMultiplayer) then {switchableUnits} else {playableUnits};
+//{[_x, 0.03] execVM "scripts\core\foggy_breath.sqf"} forEach _units;
+
+//Ground Fog
+//null = [] execVM "scripts\core\GroundFog.sqf";
 
 //------------------------------------------------------------------
 //------------------------------------------------------------------
@@ -217,6 +223,16 @@ if (getMissionConfigValue "allowLoadouts" == "true") then {
 	[player, 1, ["ACE_SelfActions","GR Base"], _loadout_action] call ace_interact_menu_fnc_addActionToObject;	
 };
 
+// Add Würfeln Category to ACE Menu GR Equipment
+_diceMain = ["GR_diceMain","Würfeln","a3\3den\data\displays\display3den\toolbar\widget_local_ca.paa",{  },{true}] call ace_interact_menu_fnc_createAction;
+[player, 1, ["ACE_SelfActions", "GerRng_equip"], _diceMain] call ace_interact_menu_fnc_addActionToObject; 
+
+_actionDice20 = ["GR_rollDice20","(W20)","",{ [player,"(W20)", floor (random 20)+1,8] spawn SGN_fnc_rollDice; },{true}] call ace_interact_menu_fnc_createAction;
+[player, 1, ["ACE_SelfActions","GerRng_equip","GR_diceMain"], _actionDice20] call ace_interact_menu_fnc_addActionToObject; 
+
+_actionDice6 = ["GR_rollDice6","(W6)","",{ [player,"(W6)", floor (random 6)+1,8] spawn SGN_fnc_rollDice; },{true}] call ace_interact_menu_fnc_createAction;
+[player, 1, ["ACE_SelfActions", "GerRng_equip","GR_diceMain"], _actionDice6] call ace_interact_menu_fnc_addActionToObject;
+
 // Debug Funktionen - Nur im Editor / SP verfügbar
 if (! isMultiplayer) then {		
 	// Full ACE Arsenal Action
@@ -241,148 +257,20 @@ if (! isMultiplayer) then {
 //------------------------------------------------------------------
 
 // Creating a Sub Menu Category GR Base with Logo
-/*
 _mission_control = ["Mission Control","Mission Control","images\GermanRangersLogo.paa",{}, {true}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions"], _mission_control] call ace_interact_menu_fnc_addActionToZeus;
 
-_start_mission = ["Missionsstart","Missionsstart","",{ execVM "scripts\core\MCC_chapter_missionstart.sqf"; },{true}] call ace_interact_menu_fnc_createAction;
+_start_mission = ["Missionsstart","Missionsstart","",{ execVM "scripts\core\MCC_chapter_startMissionIntro.sqf"; },{missionstarted == false}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions","Mission Control"], _start_mission] call ace_interact_menu_fnc_addActionToZeus;
 
-_mission_succesful = ["Ende: Mission Erfüllt","Ende: Mission Erfüllt","",{ execVM "scripts\core\MCC_chapter_missionendsuccesfull.sqf"; },{true}] call ace_interact_menu_fnc_createAction;
+_mission_succesful = ["Ende: Mission Erfüllt","Ende: Mission Erfüllt","",{ ["End1"] execVM "scripts\core\MCC_chapter_startMissionOutro.sqf"; },{missionstarted}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions","Mission Control"], _mission_succesful] call ace_interact_menu_fnc_addActionToZeus;
 
-_to_be_continued = ["Ende: TO BE CONTINUED","Ende: TO BE CONTINUED","",{ execVM "scripts\core\MCC_chapter_missionendcontinue.sqf"; },{true}] call ace_interact_menu_fnc_createAction;
+_to_be_continued = ["Ende: TO BE CONTINUED","Ende: TO BE CONTINUED","",{ ["End2"] execVM "scripts\core\MCC_chapter_startMissionOutro.sqf"; },{missionstarted}] call ace_interact_menu_fnc_createAction;
 [["ACE_ZeusActions","Mission Control"], _to_be_continued] call ace_interact_menu_fnc_addActionToZeus;
-*/
 
-//------------------------------------------------------------------
-//------------------------------------------------------------------
-//
-//						Teleport Menü
-//
-//------------------------------------------------------------------
-//------------------------------------------------------------------
-
-
-// Hauptkategorien
-
-_tp_menu = ["Schnellreise","Schnellreise","a3\ui_f\data\igui\cfg\simpletasks\types\map_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions"], _tp_menu] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_basis = ["Basis","Basis","a3\3den\data\attributes\namesound\special_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise"], _tp_basis] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_pew = ["Waffentraining","Waffentraining","a3\ui_f\data\igui\cfg\weaponicons\srifle_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise"], _tp_pew] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_ca = ["CombinedArms","Combined Arms","a3\ui_f\data\igui\cfg\simpletasks\types\attack_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise"], _tp_ca] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_sonderausb = ["Sonderausbildung","Sonderausbildung","a3\ui_f\data\igui\cfg\simpletasks\types\whiteboard_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise"], _tp_sonderausb] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_aga = ["AGA","AGA","a3\ui_f\data\igui\cfg\simpletasks\types\whiteboard_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise"], _tp_aga] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_aga1 = ["AGA1","AGA 1: Kommunikation","a3\ui_f\data\igui\cfg\simpletasks\types\radio_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA"], _tp_aga1] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_aga2 = ["AGA2","AGA 2: Formationen","a3\3den\data\displays\display3den\entitymenu\movetoformation_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA"], _tp_aga2] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_aga3 = ["AGA3","AGA 3: Orientierung","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA"], _tp_aga3] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_aga4 = ["AGA4","AGA 4: Erste Hilfe","a3\ui_f\data\igui\cfg\simpletasks\types\heal_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA"], _tp_aga4] call ace_interact_menu_fnc_addActionToClass;
-
-_tp_aga5 = ["AGA5","AGA 5: OHK","a3\modules_f\data\editterrainobject\icon32_ca.paa",{},_condition] call ace_interact_menu_fnc_createAction;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA"], _tp_aga5] call ace_interact_menu_fnc_addActionToClass;
-
-// Konkrete Teleportpositionen
-
-_tp_kaserne = ["Kaserne","Kaserne","ca\ui\data\icon_town_ca.paa",{ player setPos getPos tpad_kaserne },_condition] call ace_interact_menu_fnc_createAction;
-_tp_sr75 = ["SchießbahnHandfeuerwaffen 75m","Schießbahn: Pistolen 75","a3\3den\data\displays\display3den\entitymenu\arsenal_ca.paa",{ player setPos getPos tpad_75m },_condition] call ace_interact_menu_fnc_createAction;
-_tp_150m = ["SchießbahnHandfeuerwaffenAT150mGranaten","Schießbahn: Handfeuerwaffen, AT 150m / Granaten","a3\ui_f\data\igui\cfg\simpletasks\types\rifle_ca.paa",{ player setPos getPos tpad_150m },_condition] call ace_interact_menu_fnc_createAction;
-_tp_lr = ["SchießbahnLRATFz","Schießbahn: LR / AT / Fz","a3\data_f_tank\logos\arma3_tank_logo_small_ca.paa",{ player setPos getPos tpad_lr },_condition] call ace_interact_menu_fnc_createAction;
-_tp_mines = ["Minenfeld","Minenfeld","a3\ui_f\data\igui\cfg\simpletasks\types\mine_ca.paa",{ player setPos getPos tpad_mines },_condition] call ace_interact_menu_fnc_createAction;
-_tp_arty = ["Artillerie","Artillerie","a3\ui_f\data\igui\cfg\simpletasks\types\destroy_ca.paa",{ player setPos getPos tpad_arty },_condition] call ace_interact_menu_fnc_createAction;
-_tp_fzg = ["FahrzeugDepot","Fahrzeug-Depot","a3\3den\data\displays\display3den\entitymenu\garage_ca.paa",{ player setPos getPos tpad_fzg },_condition] call ace_interact_menu_fnc_createAction;
-_tp_fzpark = ["FahrzeugParkours","Fahrzeug-Parkours","a3\ui_f\data\igui\cfg\commandbar\imagedriver_ca.paa",{ player setPos getPos tpad_fzpark },_condition] call ace_interact_menu_fnc_createAction;
-_tp_casa_n = ["CombinedArmsStagingNord","Combined Arms: Staging Nord","a3\ui_f\data\igui\cfg\simpletasks\types\attack_ca.paa",{ player setPos getPos tpad_casa_n },_condition] call ace_interact_menu_fnc_createAction;
-_tp_casa_w = ["CombinedArmsStagingWest","Combined West: Staging West","a3\ui_f\data\igui\cfg\simpletasks\types\attack_ca.paa",{ player setPos getPos tpad_casa_w },_condition] call ace_interact_menu_fnc_createAction;
-_tp_casa_s = ["CombinedArmsStagingSüd","Combined Arms: Staging Süd","a3\ui_f\data\igui\cfg\simpletasks\types\attack_ca.paa",{ player setPos getPos tpad_casa_s },_condition] call ace_interact_menu_fnc_createAction;
-_tp_casa_o = ["CombinedArmsStagingOst","Combined Arms: Staging Ost","a3\ui_f\data\igui\cfg\simpletasks\types\attack_ca.paa",{ player setPos getPos tpad_casa_o },_condition] call ace_interact_menu_fnc_createAction;
-_tp_cqb = ["CQBFactory","CQB-Factory","a3\modules_f\data\editterrainobject\icon32_ca.paa",{ player setPos getPos tpad_cqb },_condition] call ace_interact_menu_fnc_createAction;
-_tp_see = ["Amphibisch","Amphibisch","a3\ui_f\data\igui\cfg\simpletasks\types\boat_ca.paa",{ player setPos getPos tpad_see },_condition] call ace_interact_menu_fnc_createAction;
-_tp_terminal = ["FlugplatzTerminal","Flugplatz: Terminal","a3\ui_f\data\igui\cfg\simpletasks\types\plane_ca.paa",{ player setPos getPos tpad_terminal },_condition] call ace_interact_menu_fnc_createAction;
-_tp_hangar = ["FlugplatzHangar","Flugplatz: Hangar","a3\ui_f\data\igui\cfg\simpletasks\types\heli_ca.paa",{ player setPos getPos tpad_hangar },_condition] call ace_interact_menu_fnc_createAction;
-_tp_logis = ["Logistikzentrum","Logistikzentrum","a3\ui_f\data\igui\cfg\simpletasks\types\container_ca.paa",{ player setPos getPos tpad_logis },_condition] call ace_interact_menu_fnc_createAction;
-
-_tp_aga1 = ["AGA1","AGA 1","a3\ui_f\data\igui\cfg\simpletasks\types\radio_ca.paa",{ player setPos getPos tpad_AGA1 },_condition] call ace_interact_menu_fnc_createAction;
-
-_tp_aga2 = ["AGA2","AGA 2","a3\3den\data\displays\display3den\entitymenu\movetoformation_ca.paa",{ player setPos getPos tpad_AGA2 },_condition] call ace_interact_menu_fnc_createAction;
-
-_tp_aga3_1 = ["AGA3","AGA 3 Start 1","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_1 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_2 = ["AGA3","AGA 3 Start 2","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_2 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_3 = ["AGA3","AGA 3 Start 3","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_3 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_4 = ["AGA3","AGA 3 Start 4","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_4 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_5 = ["AGA3","AGA 3 Start 5","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_5 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_6 = ["AGA3","AGA 3 Start 6","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_6 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_7 = ["AGA3","AGA 3 Start 7","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_7 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_8 = ["AGA3","AGA 3 Start 8","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_8 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_9 = ["AGA3","AGA 3 Start 9","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_9 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_10 = ["AGA3","AGA 3 Start 10","a3\ui_f\data\igui\cfg\simpletasks\types\navigate_ca.paa",{ player setPos getPos tpad_AGA3_10 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga3_ziel = ["AGA3","AGA 3 Ziel","ca\ui\data\icon_hc_ca.paa",{ player setPos getPos tpad_AGA3_ziel },_condition] call ace_interact_menu_fnc_createAction;
-
-_tp_aga4_1 = ["AGA4","AGA 4 Start 1","a3\ui_f\data\igui\cfg\simpletasks\types\heal_ca.paa",{ player setPos getPos tpad_AGA4_1 },_condition] call ace_interact_menu_fnc_createAction;
-_tp_aga4_2 = ["AGA4","AGA 4 Start 2","a3\ui_f\data\igui\cfg\simpletasks\types\heal_ca.paa",{ player setPos getPos tpad_AGA4_2 },_condition] call ace_interact_menu_fnc_createAction;
-
-_tp_aga5 = ["AGA5","AGA 5","a3\modules_f\data\editterrainobject\icon32_ca.paa",{ player setPos getPos tpad_cqb },_condition] call ace_interact_menu_fnc_createAction;
-
-// Zuordnung zu Subkategorien
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Basis"], _tp_kaserne] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Basis"], _tp_terminal] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Basis"], _tp_fzg] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Waffentraining"], _tp_sr75] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Waffentraining"], _tp_150m] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Waffentraining"], _tp_lr] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Waffentraining"], _tp_mines] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Waffentraining"], _tp_arty] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","CombinedArms"], _tp_casa_n] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","CombinedArms"], _tp_casa_w] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","CombinedArms"], _tp_casa_s] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","CombinedArms"], _tp_casa_o] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Sonderausbildung"], _tp_cqb] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Sonderausbildung"], _tp_see] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Sonderausbildung"], _tp_fzpark] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Sonderausbildung"], _tp_hangar] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","Sonderausbildung"], _tp_logis] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA1"], _tp_aga1] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA2"], _tp_aga2] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_1] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_2] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_3] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_4] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_5] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_6] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_7] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_8] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_9] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_10] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA3"], _tp_aga3_ziel] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA4"], _tp_aga4_1] call ace_interact_menu_fnc_addActionToClass;
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA4"], _tp_aga4_2] call ace_interact_menu_fnc_addActionToClass;
-
-[(typeOf player), 1, ["ACE_SelfActions","Schnellreise","AGA","AGA5"], _tp_aga5] call ace_interact_menu_fnc_addActionToClass;
+_mission_failed = ["Ende: Mission Failed","Ende: Mission Failed","",{ ["End3"] execVM "scripts\core\MCC_chapter_startMissionOutro.sqf"; },{missionstarted}] call ace_interact_menu_fnc_createAction;
+[["ACE_ZeusActions","Mission Control"], _mission_failed] call ace_interact_menu_fnc_addActionToZeus;
 
 //------------------------------------------------------------------
 //------------------------------------------------------------------
@@ -400,11 +288,16 @@ if (_playerGrp == grplima || _playerGrp == grpkilo || _playerGrp == grpfox || _p
 	_avdheal = ["AvD Heal","AvD Heal","a3\ui_f\data\igui\cfg\simpletasks\types\heal_ca.paa",{[player, cursorObject] call ace_medical_treatment_fnc_fullHeal},{true}] call ace_interact_menu_fnc_createAction;
 	[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _avdheal] call ace_interact_menu_fnc_addActionToClass;
 
-	//[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _start_mission] call ace_interact_menu_fnc_addActionToClass;
+	[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _start_mission] call ace_interact_menu_fnc_addActionToClass;
 
-	//[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _mission_succesful] call ace_interact_menu_fnc_addActionToClass;
+	[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _mission_succesful] call ace_interact_menu_fnc_addActionToClass;
 	
-	//[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _to_be_continued] call ace_interact_menu_fnc_addActionToClass;
+	[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _to_be_continued] call ace_interact_menu_fnc_addActionToClass;
+	
+	[(typeOf player), 1, ["ACE_SelfActions","GR Admin Menu"], _mission_failed] call ace_interact_menu_fnc_addActionToClass;
+	
+	_checkHCs = ["Check HCs","Check HCs","a3\ui_f\data\igui\cfg\simpletasks\types\intel_ca.paa",{[[player], SGN_fnc_infoHintHC] remoteExec ["spawn", 2];},{true}] call ace_interact_menu_fnc_createAction;
+	[player, 1, ["ACE_SelfActions","GR Admin Menu"], _checkHCs] call ace_interact_menu_fnc_addActionToObject;
 };
 
 if (_playerGrp == grpmike) then {
@@ -424,6 +317,7 @@ if (_playerGrp == grpmike) then {
 //------------------------------------------------------------------
 //------------------------------------------------------------------
 
+//Deprecated moved to IGC_CF
 
 //------------------------------------------------------------------
 //------------------------------------------------------------------
@@ -474,16 +368,17 @@ if (getMissionConfigValue "limaSupplyPoints" == "true") then {
 				_plrepair = ["plcasetan","Typ 8 - Instandsetzung",_icon,{[["plrepair",_this#0], limapfad + "limaPalettPoints.sqf"] remoteExec ["execVM"];},{true}] call ace_interact_menu_fnc_createAction;
 				[_x, 0, ["ACE_MainActions", "Luftfracht Paletten - Logistik"], _plrepair] call ace_interact_menu_fnc_addActionToObject;
 				//------------------------------------------------------------------
-		} forEach [limapalettpointstatic,limaPalettPointStatic_airport];
+		} forEach [limapalettpointstatic];
 	};
 };
 
-//FoggyBreath
-//_units = if (!isMultiplayer) then {switchableUnits} else {playableUnits};
-//{[_x, 0.03] execVM "scripts\core\foggy_breath.sqf"} forEach _units;
-
-//Ground Fog
-//null = [] execVM "scripts\core\GroundFog.sqf";
+//------------------------------------------------------------------
+//------------------------------------------------------------------
+//
+//						
+//
+//------------------------------------------------------------------
+//------------------------------------------------------------------
 
 //Wenn das Missionsintro gestartet wurde, werden alle Spieler die reconnecten oder später dazu kommen in die Basis teleportiert.
 if (getMissionConfigValue "missionstartedfeat" == "true") then {
@@ -512,4 +407,7 @@ titleText ["Missionsvorbereitung", "BLACK IN" ];
 //------------------------------------------------------------------
 //------------------------------------------------------------------
 
-[] execVM "scripts\core\modcheck.sqf";
+_modCheck = ["GR_modCheckParam", 1] call BIS_fnc_getParamValue;
+if (_modCheck != 0) then {
+	[] execVM "scripts\core\modcheck.sqf";
+};
