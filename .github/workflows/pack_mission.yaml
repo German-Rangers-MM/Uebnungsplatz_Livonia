@@ -27,12 +27,11 @@ jobs:
           ./pbo-packer ./source ./pbos
           echo "Packed missions:"
           ls -lh ./pbos/
-      - name: Upload to Release
-        uses: actions/upload-release-asset@v1
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.release.tag_name || steps.get-release.outputs.tag }}
+          files: |
+            pbos/*.pbo
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./pbos/*.pbo
-          asset_name: ${{ github.event.repository.name }}_${{ github.event.release.tag_name }}.pbo
-          asset_content_type: application/octet-stream
