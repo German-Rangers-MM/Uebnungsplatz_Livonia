@@ -48,14 +48,6 @@
 	"SPS_hk417_16_vfg_fde_f",
 	"SPS_hk417_16_afg_fde_f",
 
-	"SPS_hk337_t_ctr_vfg_black_f",
-	"SPS_hk337_t_ctr_afg_black_f",
-	"SPS_hk337_t_ctr_black_f",
-
-	"SPS_hk337_t_ctr_vfg_fde_f",
-	"SPS_hk337_t_ctr_afg_fde_f",
-	"SPS_hk337_t_ctr_fde_f",
-
 //------------------------------------------------------------------
 //------------------------------------------------------------------
 //
@@ -64,22 +56,17 @@
 //------------------------------------------------------------------
 //------------------------------------------------------------------
 
-	"CUP_optic_MicroT1",
-	"CUP_optic_MicroT1_coyote",
-	"CUP_optic_MicroT1_OD",
-	"CUP_optic_MicroT1_low",
-	"CUP_optic_MicroT1_low_coyote",
-	"CUP_optic_MicroT1_low_OD",
-	"CUP_optic_AIMM_MICROT1_BLK",
-	"CUP_optic_AIMM_MICROT1_tan",
-	"CUP_optic_AIMM_MICROT1_OD",
-
 	"SPS_EOTech_Black",
 	"SPS_EOTech_Black_3xMAG_up",
 	"SPS_EOTech_Black_5xMAG_up",
 	"SPS_EOTech_Tan",
 	"SPS_EOTech_Tan_3xMAG_up",
 	"SPS_EOTech_Tan_5xMAG_up",
+
+	"CUP_optic_Elcan_SpecterDR_RMR_black",
+	"CUP_optic_Elcan_SpecterDR_KF_RMR_black",
+	"CUP_optic_Elcan_SpecterDR_RMR",
+	"CUP_optic_Elcan_SpecterDR_KF_RMR",
 
 	"sps_vortex_spitfire_gen2_x5_black",
 	"sps_vortex_spitfire_gen2_x5_RMR_black",
@@ -240,6 +227,8 @@
 	"CUP_V_B_GER_Armatus_BB_Fleck",
 	"CUP_V_B_GER_Armatus_BB_Trop",
 
+	"U_B_Wetsuit",
+
 //------------------------------------------------------------------
 //------------------------------------------------------------------
 //
@@ -264,6 +253,8 @@
 
 	"B_UAV_01_backpack_F",
 	"B_UAV_06_backpack_F",
+
+	"V_RebreatherB",
 
 //------------------------------------------------------------------
 //------------------------------------------------------------------
@@ -313,6 +304,8 @@
 	"CUP_G_PMC_Facewrap_Black_Glasses_Dark",
 	"CUP_G_PMC_Facewrap_Tropical_Glasses_Dark",
 	"CUP_G_PMC_Facewrap_Tan_Glasses_Dark",
+
+	"G_B_Diving",
 
 //------------------------------------------------------------------
 //------------------------------------------------------------------
@@ -398,11 +391,6 @@
 	"SPS_20Rnd_762x51mm_M80A1_EPR",
 	"SPS_20Rnd_762x51mm_M80A1_EPR_Tracer",
 	"SPS_20Rnd_762x51mm_M80A1_EPR_IR",
-
-	"SPS_HKG3PMAG_30Rnd_300BLK_110_B",
-	"SPS_HKG3PMAG_30Rnd_300BLK_110_T",
-	"SPS_HKG3PMAG_30Rnd_300BLK_230_B",
-	"SPS_HKG3PMAG_30Rnd_300BLK_230_T",
 
 	"CUP_200Rnd_TE1_Red_Tracer_556x45_M249_Pouch",
 	"CUP_200Rnd_TE4_Red_Tracer_556x45_M249_Pouch",

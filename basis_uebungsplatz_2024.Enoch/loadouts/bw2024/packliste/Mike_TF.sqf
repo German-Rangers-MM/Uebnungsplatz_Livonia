@@ -48,6 +48,19 @@
     "SPS_hk416_16_5_glm_hk_ctr_sf_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_a7_black_f",
 
+    "SPS_hk416_14_5_glm_hk_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_a7_ral8000_f",
+
     "SPS_hk417_13_vfg_black_f",
     "SPS_hk417_13_afg_black_f",
     "SPS_hk417_13_glm_black_f",
@@ -72,9 +85,6 @@
     // Visiere
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    "CUP_optic_AIMM_MICROT1_BLK",
-    "CUP_optic_AIMM_MICROT1_tan",
-    "CUP_optic_AIMM_MICROT1_OD",
     "ACE_optic_Hamr_piP",
 
     //SPS
@@ -130,10 +140,12 @@
     "CUP_V_B_GER_Pvest_Fleck_TL_LT",
     "CUP_V_B_GER_Pvest_Trop_TL_LT",
     "CUP_V_B_GER_Tactical_Fleck",
-    "CUP_V_B_GER_Armatus_BB_Fleck",
-    "CUP_V_B_GER_Armatus_BB_Fleck",
     "CUP_V_B_GER_Armatus_Trop",
+    "CUP_V_B_GER_Armatus_BB_Trop",
     "CUP_V_B_GER_Armatus_Fleck",
+    "CUP_V_B_GER_Armatus_BB_Fleck",
+    "CUP_V_B_Armatus_Black",
+    "CUP_V_B_Armatus_BB_Black",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // backpacks
@@ -191,6 +203,8 @@
     
     "B_SCBA_01_F",
     "B_CombinationUnitRespirator_01_F",
+
+    "CFP_Kitbag_Olive",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Helme
@@ -220,7 +234,7 @@
     "G_RegulatorMask_F",
     "G_Aviator",
     "G_Bandanna_aviator",
-    
+    "G_Bandanna_blk",    
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // NVGs
