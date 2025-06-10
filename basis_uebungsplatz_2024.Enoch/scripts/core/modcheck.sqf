@@ -19,6 +19,10 @@ _whitelistedMods = 	[
 						"@Eden Mirror Function", "2807516605",
 						"@Snapping for Eden and Zeus","2961167812",
 						"@3DEN Better Inventory","1124993203",
+						"@LAMBS_Danger.fsm","1858075458",
+						"@LAMBS_RPG","1858070328",
+						"@LAMBS_Suppression","1808238502",
+						"@LAMBS_Turrets","1862208264",
 						
 						// CUP
 						"@CUP Terrains - Core", "583496184",
@@ -133,6 +137,7 @@ _whitelistedMods = 	[
 						"@ReColor", "649832908",
 						"@Fawks' Enhanced NVGs", "2513044572",
 						"@BettIR (Legacy v0.2.1)", "2260572637",
+						"@Aaren's Blast Effects", "2424322922",
 						"@German Rangers Intro 29-04-2024", "3234631841",
 						
 						
