@@ -19,6 +19,10 @@ _whitelistedMods = 	[
 						"@Eden Mirror Function", "2807516605",
 						"@Snapping for Eden and Zeus","2961167812",
 						"@3DEN Better Inventory","1124993203",
+						"@LAMBS_Danger.fsm","1858075458",
+						"@LAMBS_RPG","1858070328",
+						"@LAMBS_Suppression","1808238502",
+						"@LAMBS_Turrets","1862208264",
 						
 						// CUP
 						"@CUP Terrains - Core", "583496184",
@@ -39,10 +43,11 @@ _whitelistedMods = 	[
 
 						//German Rangers Extras
 						"@NATO Markers+", "1340701737",
-						"@cTab", "871504836",
 						"@Enhanced Movement", "333310405",
 						"@Enhanced Movement Rework", "2034363662",
 						"@German Rangers Equipment", "2996640864",
+						"@cTAB Connect [BETA]", "3438247879",
+						"@cTAB Advanced [BETA]", "3438246217",
 						"@cTab 1erGTD", "2262006564",
 						"@SIT 1erGTD", "2262009445",
 						"@Breach - Rewrite", "3283645995",
@@ -114,6 +119,8 @@ _whitelistedMods = 	[
 						"@BackpackOnChest - Redux", "2372036642",
 						"@Arma 3 PiShock", "3024239355",
 						"@AWESome : Aerial Warfare Enhanced Somehow", "1301399507",
+						"@Turret Enhanced", "1623498241",
+						"@Hidden Passwords", "2236038667",
 						
 						//Visual
 						"@Blastcore Edited (standalone version)", "767380317",
@@ -133,6 +140,7 @@ _whitelistedMods = 	[
 						"@ReColor", "649832908",
 						"@Fawks' Enhanced NVGs", "2513044572",
 						"@BettIR (Legacy v0.2.1)", "2260572637",
+						"@Aaren's Blast Effects", "2424322922",
 						"@German Rangers Intro 29-04-2024", "3234631841",
 						
 						
@@ -145,8 +153,8 @@ _whitelistedMods = 	[
 						"@JSRS SOUNDMOD - CUP WEAPONS MOD SOUND SUPPORT", "1624803912",
 						"@JSRS SOUNDMOD - CUP VEHICLES MOD SOUND SUPPORT", "1624804924",
 						"@JSRS SOUNDMOD - Reloading Sounds", "1429098683",
-						"@JSRS SOUNDMOD 2025 Beta - RC2.2", "3407948300",
-						"@JSRS SOUNDMOD 2025 Beta - AiO Compat Files RC2.2", "3407970596",
+						"@JSRS SOUNDMOD 2025 Beta - RC3", "3407948300",
+						"@JSRS SOUNDMOD 2025 Beta - AiO Compat Files RC3", "3407970596",
 						
 						
 						//Zeus Mods
