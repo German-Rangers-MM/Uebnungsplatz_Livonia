@@ -69,22 +69,17 @@
 //------------------------------------------------------------------
 //------------------------------------------------------------------
 
-	"CUP_optic_MicroT1",
-	"CUP_optic_MicroT1_coyote",
-	"CUP_optic_MicroT1_OD",
-	"CUP_optic_MicroT1_low",
-	"CUP_optic_MicroT1_low_coyote",
-	"CUP_optic_MicroT1_low_OD",
-	"CUP_optic_AIMM_MICROT1_BLK",
-	"CUP_optic_AIMM_MICROT1_tan",
-	"CUP_optic_AIMM_MICROT1_OD",
-
 	"SPS_EOTech_Black",
 	"SPS_EOTech_Black_3xMAG_up",
 	"SPS_EOTech_Black_5xMAG_up",
 	"SPS_EOTech_Tan",
 	"SPS_EOTech_Tan_3xMAG_up",
 	"SPS_EOTech_Tan_5xMAG_up",
+
+	"CUP_optic_Elcan_SpecterDR_RMR_black",
+	"CUP_optic_Elcan_SpecterDR_KF_RMR_black",
+	"CUP_optic_Elcan_SpecterDR_RMR",
+	"CUP_optic_Elcan_SpecterDR_KF_RMR",
 
 	"sps_vortex_spitfire_gen2_x5_black",
 	"sps_vortex_spitfire_gen2_x5_RMR_black",
@@ -233,6 +228,8 @@
 	"U_B_FullGhillie_sard",
 	"U_B_T_FullGhillie_tna_F",
 
+	"U_B_Wetsuit",
+
 //------------------------------------------------------------------
 //------------------------------------------------------------------
 //
@@ -244,6 +241,8 @@
 	"CUP_V_B_Armatus_BB_Black",
 	"CUP_V_B_GER_Armatus_BB_Fleck",
 	"CUP_V_B_GER_Armatus_BB_Trop",
+
+	"V_RebreatherB",
 
 //------------------------------------------------------------------
 //------------------------------------------------------------------
@@ -268,7 +267,7 @@
 	"CFP_Kitbag_Tropentarn",
 
 	"B_UAV_01_backpack_F",
-	"B_UAV_06_backpack_F",
+	"GerRng_faction_UAV_06_backpack_F",
 
 	"TFAR_rt1523g_big_bwmod",
 	"TFAR_rt1523g_big_bwmod_tropen",
@@ -369,6 +368,8 @@
 	"CUP_G_PMC_Facewrap_Black_Glasses_Dark",
 	"CUP_G_PMC_Facewrap_Tropical_Glasses_Dark",
 	"CUP_G_PMC_Facewrap_Tan_Glasses_Dark",
+
+	"G_B_Diving",
 
 //------------------------------------------------------------------
 //------------------------------------------------------------------
@@ -582,9 +583,11 @@
 //------------------------------------------------------------------
 
 	"tsp_flashbang_m84",
+	"tsp_flashbang_m84s",
 	
 	"tsp_lockpick",
 	"tsp_paperclip",
+
 
 //------------------------------------------------------------------
 //------------------------------------------------------------------
