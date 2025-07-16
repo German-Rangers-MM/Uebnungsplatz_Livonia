@@ -33,6 +33,19 @@
     "SPS_hk416_16_5_glm_hk_ctr_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_sf_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_a7_black_f",
+
+    "SPS_hk416_14_5_glm_hk_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_a7_ral8000_f",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Visiere
@@ -82,10 +95,12 @@
     "CUP_V_B_GER_Pvest_Fleck_RFL_LT",
     "CUP_V_B_GER_Pvest_Trop_RFL_LT",
     "CUP_V_B_GER_Tactical_Fleck",
-    "CUP_V_B_GER_Armatus__BBFleck",
-    "CUP_V_B_GER_Armatus_BB_Fleck",
     "CUP_V_B_GER_Armatus_Trop",
+    "CUP_V_B_GER_Armatus_BB_Trop",
     "CUP_V_B_GER_Armatus_Fleck",
+    "CUP_V_B_GER_Armatus_BB_Fleck",
+    "CUP_V_B_Armatus_Black",
+    "CUP_V_B_Armatus_BB_Black",
     "V_Chestrig_rgr",
 
     "Aircrew_vest_2_NH",
@@ -149,6 +164,8 @@
     
     "B_SCBA_01_F",
     "B_CombinationUnitRespirator_01_F",
+
+    "CFP_Kitbag_Olive",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Helme
@@ -161,10 +178,8 @@
     "CUP_H_Ger_Cap_EP_Grn1",
     "CUP_H_Ger_Cap_EP_tan1",
 
-    "H_CrewHelmetHeli_B",
-    "H_PilotHelmetHeli_B",
-    "H_PilotHelmetHeli_I_E",
-    "H_CrewHelmetHeli_I_E",
+    "GerRng_helmets_helmet_pilot_b",
+    "GerRng_helmets_helmet_pilot_w",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // goggles
@@ -174,6 +189,7 @@
     "G_RegulatorMask_F",
     "G_Aviator",
     "G_Bandanna_aviator",
+    "G_Bandanna_blk",
     "CUP_G_TK_roundGlasses",
     "CUP_G_TK_roundGlasses_blk",
     // ------------------------------------------------------------------

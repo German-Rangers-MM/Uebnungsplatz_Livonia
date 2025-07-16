@@ -41,6 +41,19 @@
     "SPS_hk416_16_5_glm_hk_ctr_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_sf_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_a7_black_f",
+
+    "SPS_hk416_14_5_glm_hk_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_a7_ral8000_f",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Visiere
@@ -88,10 +101,12 @@
     "CUP_V_B_GER_Pvest_Fleck_RFL_LT",
     "CUP_V_B_GER_Pvest_Trop_RFL_LT",
     "CUP_V_B_GER_Tactical_Fleck",
-    "CUP_V_B_GER_Armatus_BB_Fleck",
-    "CUP_V_B_GER_Armatus_BB_Fleck",
     "CUP_V_B_GER_Armatus_Trop",
+    "CUP_V_B_GER_Armatus_BB_Trop",
     "CUP_V_B_GER_Armatus_Fleck",
+    "CUP_V_B_GER_Armatus_BB_Fleck",
+    "CUP_V_B_Armatus_Black",
+    "CUP_V_B_Armatus_BB_Black",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // backpacks
@@ -99,22 +114,23 @@
     // ------------------------------------------------------------------
     "B_SCBA_01_F",
     "B_CombinationUnitRespirator_01_F",
+    
+    "CFP_Kitbag_Olive",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Helme
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    "H_crewHelmetHeli_B",
-    "H_pilotHelmetHeli_B",
-    "H_crewHelmetHeli_O",
-    "H_pilotHelmetHeli_O",
-    "H_Helmetcrew_B",
     "CUP_H_Ger_Boonie_Flecktarn",
     "CUP_H_Ger_Boonie_desert",
     "CUP_H_Ger_Boonie2_Flecktarn",
     "CUP_H_Ger_Boonie2_desert",
     "CUP_H_Ger_Cap_EP_Grn1",
     "CUP_H_Ger_Cap_EP_tan1",
+
+    "H_Helmetcrew_B",
+    "GerRng_helmets_helmet_pilot_b",
+    "GerRng_helmets_helmet_pilot_w",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // goggles
@@ -124,6 +140,7 @@
     "G_RegulatorMask_F",
     "G_Aviator",
     "G_Bandanna_aviator",
+    "G_Bandanna_blk",
     
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
