@@ -48,33 +48,24 @@
     "SPS_hk416_16_5_glm_hk_ctr_sf_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_a7_black_f",
 
-    "SPS_hk417_13_vfg_black_f",
-    "SPS_hk417_13_afg_black_f",
-    "SPS_hk417_13_glm_black_f",
-    "SPS_hk417_13_vfg_ral8000_f",
-    "SPS_hk417_13_afg_ral8000_f",
-    "SPS_hk417_13_glm_ral8000_f",
-    "SPS_hk417_13_vfg_fde_f",
-    "SPS_hk417_13_afg_fde_f",
-    "SPS_hk417_13_glm_fde_f",
+    "SPS_hk416_14_5_glm_hk_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_a7_ral8000_f",
 
-    "SPS_hk417_16_vfg_black_f",
-    "SPS_hk417_16_afg_black_f",
-    "SPS_hk417_16_glm_black_f",
-    "SPS_hk417_16_vfg_ral8000_f",
-    "SPS_hk417_16_afg_ral8000_f",
-    "SPS_hk417_16_glm_ral8000_f",
-    "SPS_hk417_16_vfg_fde_f",
-    "SPS_hk417_16_afg_fde_f",
-    "SPS_hk417_16_glm_fde_f",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Visiere
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    "CUP_optic_AIMM_MICROT1_BLK",
-    "CUP_optic_AIMM_MICROT1_tan",
-    "CUP_optic_AIMM_MICROT1_OD",
     "ACE_optic_Hamr_piP",
 
     //SPS
@@ -130,10 +121,12 @@
     "CUP_V_B_GER_Pvest_Fleck_TL_LT",
     "CUP_V_B_GER_Pvest_Trop_TL_LT",
     "CUP_V_B_GER_Tactical_Fleck",
-    "CUP_V_B_GER_Armatus_BB_Fleck",
-    "CUP_V_B_GER_Armatus_BB_Fleck",
     "CUP_V_B_GER_Armatus_Trop",
+    "CUP_V_B_GER_Armatus_BB_Trop",
     "CUP_V_B_GER_Armatus_Fleck",
+    "CUP_V_B_GER_Armatus_BB_Fleck",
+    "CUP_V_B_Armatus_Black",
+    "CUP_V_B_Armatus_BB_Black",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // backpacks
@@ -191,6 +184,8 @@
     
     "B_SCBA_01_F",
     "B_CombinationUnitRespirator_01_F",
+
+    "CFP_Kitbag_Olive",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Helme
@@ -202,15 +197,13 @@
     "CUP_H_Ger_Cap_EP_tan1",
     "CUP_H_Ger_Cap_Grn2",
     "H_Construction_basic_yellow_F",
-    "H_pilotHelmetFighter_B",
-    "H_crewHelmetHeli_O",
-    "H_pilotHelmetHeli_O",
     "H_Helmetcrew_B",
-    "H_crewHelmetHeli_B",
-    "H_pilotHelmetHeli_B",
     "H_HelmetSpecB_wdl",
     "H_HelmetSpecB_sand",
     "CUP_H_SPH4_khaki",
+    
+    "GerRng_helmets_helmet_pilot_b",
+    "GerRng_helmets_helmet_pilot_w",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // goggles
@@ -220,7 +213,7 @@
     "G_RegulatorMask_F",
     "G_Aviator",
     "G_Bandanna_aviator",
-    
+    "G_Bandanna_blk",    
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // NVGs
@@ -290,15 +283,6 @@
     //SPS
     "SPS_HKG3PMAG_30Rnd_556x45_B_BeOTMT",
     "SPS_HKG3PMAG_30Rnd_556x45_B_BeVLDT",
-    "SPS_20Rnd_762x51mm_M80A1_EPR",
-    "SPS_20Rnd_762x51mm_M80A1_EPR_IR",
-    "SPS_20Rnd_762x51mm_M80A1_EPR_Tracer",
-
-    "ACE_20Rnd_762x51_Mag_Tracer",
-    "ACE_20Rnd_762x51_M993_AP_Mag",
-
-    "CUP_20Rnd_762x51_DMR",
-    "CUP_20Rnd_TE1_Red_Tracer_762x51_DMR",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Grenades / throw
