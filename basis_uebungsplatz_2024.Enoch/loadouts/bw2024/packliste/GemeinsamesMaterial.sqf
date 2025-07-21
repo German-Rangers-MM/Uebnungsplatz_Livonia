@@ -59,8 +59,8 @@
     // vests
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    "GRE_PlateCarrier1_Flecktarn",
-    "GRE_PlateCarrier1_Tropentarn",
+    "gerrng_PlateCarrier1_Flecktarn",
+    "gerrng_PlateCarrier1_Tropentarn",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // backpacks
@@ -187,6 +187,52 @@
     "kat_chestSeal",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
+    // Provisions
+    // ------------------------------------------------------------------
+    // ------------------------------------------------------------------
+    "GerRng_rations_HydrationBladder_2L_Empty",
+    "GerRng_rations_HydrationBladder_2L_1_4",
+    "GerRng_rations_HydrationBladder_2L_2_4",
+    "GerRng_rations_HydrationBladder_2L_3_4",
+    "GerRng_rations_HydrationBladder_2L",
+    "GerRng_rations_HydrationBladder_3L_Empty",
+    "GerRng_rations_HydrationBladder_3L_1_6",
+    "GerRng_rations_HydrationBladder_3L_2_6",
+    "GerRng_rations_HydrationBladder_3L_3_6",
+    "GerRng_rations_HydrationBladder_3L_4_6",
+    "GerRng_rations_HydrationBladder_3L_5_6",
+    "GerRng_rations_HydrationBladder_3L",
+
+    "GerRng_rations_EPa_typ_i",
+    "GerRng_rations_EPa_typ_iia",
+    "GerRng_rations_EPa_typ_iib",
+    "GerRng_rations_EPa_typ_iii",
+    "GerRng_rations_EPa_typ_iv",
+    "GerRng_rations_EPa_typ_v",
+    "GerRng_rations_EPa_typ_vi",
+    "GerRng_rations_EPa_typ_vii",
+    "GerRng_rations_EPa_typ_viii",
+    "GerRng_rations_EPa_typ_ix",
+    "GerRng_rations_EPa_typ_x",
+    "GerRng_rations_EPa_typ_xi",
+    "GerRng_rations_EPa_typ_xii",
+    "GerRng_rations_EPa_typ_xiii",
+    "GerRng_rations_EPa_typ_xiv",
+    "GerRng_rations_EPa_typ_xv",
+    "GerRng_rations_EPa_typ_xvi",
+    "GerRng_rations_EPa_typ_xvii",
+    "GerRng_rations_EPa_typ_xviii",
+    "GerRng_rations_EPa_typ_xix",
+
+    "ACE_WaterBottle_Empty",
+    "ACE_WaterBottle_Half",
+    "ACE_WaterBottle",
+    "ACE_Canteen_Empty",
+    "ACE_Canteen_Half",
+    "ACE_Canteen",
+    "ACE_Humanitarian_Ration",
+    // ------------------------------------------------------------------
+    // ------------------------------------------------------------------
     // Misc 1
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
@@ -203,5 +249,6 @@
     "ACE_EarPlugs",
     "ACE_IR_strobe_Item",
     "ACE_rope3",
+    "tsp_lockpick",
     "ItemcTabHCam"
 ];
