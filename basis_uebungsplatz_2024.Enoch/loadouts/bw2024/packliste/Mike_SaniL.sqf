@@ -43,26 +43,6 @@
     "SPS_hk416_16_5_glm_hk_ctr_sf_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_a7_black_f",
 
-    "SPS_hk417_13_vfg_black_f",
-    "SPS_hk417_13_afg_black_f",
-    "SPS_hk417_13_glm_black_f",
-    "SPS_hk417_13_vfg_ral8000_f",
-    "SPS_hk417_13_afg_ral8000_f",
-    "SPS_hk417_13_glm_ral8000_f",
-    "SPS_hk417_13_vfg_fde_f",
-    "SPS_hk417_13_afg_fde_f",
-    "SPS_hk417_13_glm_fde_f",
-
-    "SPS_hk417_16_vfg_black_f",
-    "SPS_hk417_16_afg_black_f",
-    "SPS_hk417_16_glm_black_f",
-    "SPS_hk417_16_vfg_ral8000_f",
-    "SPS_hk417_16_afg_ral8000_f",
-    "SPS_hk417_16_glm_ral8000_f",
-    "SPS_hk417_16_vfg_fde_f",
-    "SPS_hk417_16_afg_fde_f",
-    "SPS_hk417_16_glm_fde_f",
-
     "SPS_hk416_20_black_f",
     "SPS_hk416_20_hk_sf_black_f",
     "SPS_hk416_20_hk_a7_black_f",
@@ -141,6 +121,103 @@
 
     "SPS_hk417_20_vfg_black_f",
     "SPS_hk417_20_afg_black_f",
+
+    "SPS_hk417_20_vfg_ral8000_f",
+    "SPS_hk417_20_afg_ral8000_f",
+    "SPS_hk417_20_vfg_fde_f",
+    "SPS_hk417_20_afg_fde_f",
+
+    "SPS_hk416_14_5_glm_hk_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_a7_ral8000_f",
+
+    "SPS_hk416_20_ral8000_f",
+    "SPS_hk416_20_hk_sf_ral8000_f",
+    "SPS_hk416_20_hk_a7_ral8000_f",
+    "SPS_hk416_20_vfg_ral8000_f",
+    "SPS_hk416_20_hk_vfg_sf_ral8000_f",
+    "SPS_hk416_20_hk_vfg_a7_ral8000_f",
+    "SPS_hk416_20_afg_ral8000_f",
+    "SPS_hk416_20_hk_afg_sf_ral8000_f",
+    "SPS_hk416_20_hk_afg_a7_ral8000_f",
+    "SPS_hk416_20_hk_ctr_ral8000_f",
+    "SPS_hk416_20_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_20_hk_ctr_a7_ral8000_f",
+    "SPS_hk416_20_hk_ctr_vfg_ral8000_f",
+    "SPS_hk416_20_hk_ctr_vfg_sf_ral8000_f",
+    "SPS_hk416_20_hk_ctr_vfg_a7_ral8000_f",
+    "SPS_hk416_20_hk_ctr_afg_ral8000_f",
+    "SPS_hk416_20_hk_ctr_afg_sf_ral8000_f",
+    "SPS_hk416_20_hk_ctr_afg_a7_ral8000_f",
+
+    "SPS_hk416_20_g95_ral8000_f",
+    "SPS_hk416_20_g95_hk_sf_ral8000_f",
+    "SPS_hk416_20_g95_hk_a7_ral8000_f",
+    "SPS_hk416_20_g95_vfg_ral8000_f",
+    "SPS_hk416_20_g95_hk_vfg_sf_ral8000_f",
+    "SPS_hk416_20_g95_hk_vfg_a7_ral8000_f",
+    "SPS_hk416_20_g95_afg_ral8000_f",
+    "SPS_hk416_20_g95_hk_afg_sf_ral8000_f",
+    "SPS_hk416_20_g95_hk_afg_a7_ral8000_f",
+    "SPS_hk416_20_g95_hk_ctr_ral8000_f",
+    "SPS_hk416_20_g95_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_20_g95_hk_ctr_a7_ral8000_f",
+    "SPS_hk416_20_g95_hk_ctr_vfg_ral8000_f",
+    "SPS_hk416_20_g95_hk_ctr_vfg_sf_ral8000_f",
+    "SPS_hk416_20_g95_hk_ctr_vfg_a7_ral8000_f",
+    "SPS_hk416_20_g95_hk_ctr_afg_ral8000_f",
+    "SPS_hk416_20_g95_hk_ctr_afg_sf_ral8000_f",
+    "SPS_hk416_20_g95_hk_ctr_afg_a7_ral8000_f",
+
+    "SPS_hk416_20_exsmr_ral8000_f",
+    "SPS_hk416_20_exsmr_hk_sf_ral8000_f",
+    "SPS_hk416_20_exsmr_hk_a7_ral8000_f",
+    "SPS_hk416_20_exsmr_vfg_ral8000_f",
+    "SPS_hk416_20_exsmr_hk_vfg_sf_ral8000_f",
+    "SPS_hk416_20_exsmr_hk_vfg_a7_ral8000_f",
+    "SPS_hk416_20_exsmr_afg_ral8000_f",
+    "SPS_hk416_20_exsmr_hk_afg_sf_ral8000_f",
+    "SPS_hk416_20_exsmr_hk_afg_a7_ral8000_f",
+    "SPS_hk416_20_exsmr_hk_ctr_ral8000_f",
+    "SPS_hk416_20_exsmr_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_20_exsmr_hk_ctr_a7_ral8000_f",
+    "SPS_hk416_20_exsmr_hk_ctr_vfg_ral8000_f",
+    "SPS_hk416_20_exsmr_hk_ctr_vfg_sf_ral8000_f",
+    "SPS_hk416_20_exsmr_hk_ctr_vfg_a7_ral8000_f",
+    "SPS_hk416_20_exsmr_hk_ctr_afg_ral8000_f",
+    "SPS_hk416_20_exsmr_hk_ctr_afg_sf_ral8000_f",
+    "SPS_hk416_20_exsmr_hk_ctr_afg_a7_ral8000_f",
+
+    "SPS_hk416_20_exsl_ral8000_f",
+    "SPS_hk416_20_exsl_hk_sf_ral8000_f",
+    "SPS_hk416_20_exsl_hk_a7_ral8000_f",
+    "SPS_hk416_20_exsl_vfg_ral8000_f",
+    "SPS_hk416_20_exsl_hk_vfg_sf_ral8000_f",
+    "SPS_hk416_20_exsl_hk_vfg_a7_ral8000_f",
+    "SPS_hk416_20_exsl_afg_ral8000_f",
+    "SPS_hk416_20_exsl_hk_afg_sf_ral8000_f",
+    "SPS_hk416_20_exsl_hk_afg_a7_ral8000_f",
+    "SPS_hk416_20_exsl_hk_ctr_ral8000_f",
+    "SPS_hk416_20_exsl_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_20_exsl_hk_ctr_a7_ral8000_f",
+    "SPS_hk416_20_exsl_hk_ctr_vfg_ral8000_f",
+    "SPS_hk416_20_exsl_hk_ctr_vfg_sf_ral8000_f",
+    "SPS_hk416_20_exsl_hk_ctr_vfg_a7_ral8000_f",
+    "SPS_hk416_20_exsl_hk_ctr_afg_ral8000_f",
+    "SPS_hk416_20_exsl_hk_ctr_afg_sf_ral8000_f",
+    "SPS_hk416_20_exsl_hk_ctr_afg_a7_ral8000_f",
+
+    "SPS_hk417_20_vfg_ral8000_f",
+    "SPS_hk417_20_afg_ral8000_f",
     "SPS_hk417_20_vfg_ral8000_f",
     "SPS_hk417_20_afg_ral8000_f",
     "SPS_hk417_20_vfg_fde_f",
@@ -153,6 +230,10 @@
     "CUP_optic_SB_11_4x20_PM_od",
     "CUP_optic_SB_11_4x20_PM_tan",
     "CUP_optic_SB_11_4x20_PM",
+
+    "optic_AMS",
+    "optic_AMS_khk",
+    "optic_AMS_snd",
 
     //SPS
     "SPS_Optic_SnB_HP_1_8_Black_PVS24LR",
@@ -190,6 +271,7 @@
     // ------------------------------------------------------------------
     "CUP_launch_M72A6",
     "CUP_launch_M136",
+    "kat_CarryStretcherBag",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // uniforms
@@ -210,10 +292,12 @@
     "CUP_V_B_GER_Pvest_Fleck_RFL_LT",
     "CUP_V_B_GER_Pvest_Trop_RFL_LT",
     "CUP_V_B_GER_Tactical_Fleck",
-    "CUP_V_B_GER_Armatus_BB_Fleck",
-    "CUP_V_B_GER_Armatus_BB_Trop",
     "CUP_V_B_GER_Armatus_Trop",
+    "CUP_V_B_GER_Armatus_BB_Trop",
     "CUP_V_B_GER_Armatus_Fleck",
+    "CUP_V_B_GER_Armatus_BB_Fleck",
+    "CUP_V_B_Armatus_Black",
+    "CUP_V_B_Armatus_BB_Black",
     "V_Chestrig_rgr",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
@@ -279,6 +363,9 @@
     "CUP_H_Ger_Boonie2_desert",
     "CUP_H_Ger_Cap_EP_Grn1",
     "CUP_H_Ger_Cap_EP_tan1",
+
+    "GerRng_helmets_crew_pilot_b",
+    "GerRng_helmets_crew_pilot_w",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // goggles
@@ -288,6 +375,7 @@
     "CUP_G_TK_roundGlasses_blk",
     "G_Aviator",
     "G_Bandanna_aviator",
+    "G_Bandanna_blk",
     "G_AirPurifyingRespirator_01_F",
     "G_RegulatorMask_F",
     // ------------------------------------------------------------------
@@ -335,15 +423,6 @@
     //SPS
     "SPS_HKG3PMAG_30Rnd_556x45_B_BeOTMT",
     "SPS_HKG3PMAG_30Rnd_556x45_B_BeVLDT",
-    "SPS_20Rnd_762x51mm_M80A1_EPR",
-    "SPS_20Rnd_762x51mm_M80A1_EPR_IR",
-    "SPS_20Rnd_762x51mm_M80A1_EPR_Tracer",
-
-    "ACE_20Rnd_762x51_Mag_Tracer",
-    "ACE_20Rnd_762x51_M993_AP_Mag",
-
-    "CUP_20Rnd_762x51_DMR",
-    "CUP_20Rnd_TE1_Red_Tracer_762x51_DMR",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Grenades / throw
@@ -385,6 +464,9 @@
     "kat_TXA",
     "kat_stethoscope",
     "kat_ncdKit",
+    
+    "GerRng_kat_changes_glucometerSet",
+    "GerRng_kat_changes_GSCI",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Misc 1
