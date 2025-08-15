@@ -37,7 +37,7 @@ if (_groupName in ["bravo","yankee"]) then {
 };
 
 // Scharfschützentrupps
-if (_groupName in ["sierra","whiskey"]) then {
+if (_groupName in ["sierra"]) then {
 	_groupRoles = GR_ScharfRollen;
 };
 
@@ -59,6 +59,11 @@ if (_groupName in ["mike"]) then {
 // Lima - Unterstützungstrupp
 if (_groupName in ["lima"]) then {
 	_groupRoles = GR_LimaRollen;
+};
+
+// Romeo - Feuerunterstützungstrupp
+if (_groupName in ["romeo"]) then {
+	_groupRoles = GR_RomeoRollen;
 };
 
 // fill listbox
