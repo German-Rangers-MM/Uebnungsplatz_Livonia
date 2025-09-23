@@ -10,9 +10,7 @@
     // Visiere
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    "CUP_optic_AIMM_MICROT1_BLK",
-    "CUP_optic_AIMM_MICROT1_tan",
-    "CUP_optic_AIMM_MICROT1_OD",
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Pointer
@@ -210,6 +208,9 @@
     "kat_TXA",
     "kat_stethoscope",
     "kat_ncdKit",
+    
+    "GerRng_kat_changes_glucometerSet",
+    "GerRng_kat_changes_GSCI",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Misc 1
@@ -219,7 +220,7 @@
     "ACE_PlottingBoard",
     "ACE_RangeCard",
     "ACE_M26_Clacker",
-    "Attachable_Helistretcher",
+    "kat_CarryStretcherBag",
     "ACE_RangeTable_82mm",
     
     "tfw_blade",

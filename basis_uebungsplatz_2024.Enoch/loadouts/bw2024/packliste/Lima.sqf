@@ -56,6 +56,19 @@
     "SPS_hk416_16_5_glm_hk_ctr_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_sf_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_a7_black_f",
+
+    "SPS_hk416_14_5_glm_hk_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_a7_ral8000_f",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Visiere
@@ -199,7 +212,7 @@
     "B_UGV_02_Science_backpack_F",
     "B_UAV_01_backpack_F",
     "B_UAV_06_backpack_F",
-    "C_IDAP_UAV_06_antimine_backpack_F",
+    "GerRng_faction_UAV_06_antimine_backpack_F",
     "CUP_B_Mk19_Gun_Bag",
     "CUP_B_Mk19_Tripod_Bag",
     "CUP_B_M2_Gun_Bag",
@@ -457,7 +470,7 @@
     "ACE_RangeCard",
     "ACE_SpottingScope",
     "ACE_Tripod",
-    "Attachable_Helistretcher",
+    "kat_CarryStretcherBag",
     "tfw_rf3080Item",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
