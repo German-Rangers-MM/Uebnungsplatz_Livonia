@@ -39,15 +39,16 @@
     // ------------------------------------------------------------------
     "CUP_toW2_carry",
     "ace_csw_m220CarryTripod",
-    "GerRng_HMG_M2_Sh_carry",
-    "GerRng_HMG_M2_ScSh_carry",
+    "GerRng_csw_M3M_carry",
+    "GerRng_csw_M3M_carry_Scope",
+    "GerRng_csw_M3M_carry_Shield",
+    "GerRng_csw_M3M_carry_ScopeShield",
+    "GerRng_csw_GraMaWa_carry",
     "ace_csw_m3CarryTripod",
     "ace_csw_m3CarryTripodLow",
-    "GerRng_GMG_Mk19",
     "CUP_MK19_carry",
     "CUP_m252_carry",
     "ace_csw_carryMortarBaseplate",
-    "GerRng_Equipment_GerRng_vz99_carryWeapon",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // uniforms
@@ -136,6 +137,9 @@
     "GerRng_MAAWS_GMM_MT",
     "MAA_MAAWS_ILLUM545",
     "MAA_MAAWS_SMOKE469",
+    "GerRng_maaws_munitions_MAAWS_GMM_HE",
+    "GerRng_maaws_munitions_MAAWS_GMM_HEAT",
+    "GerRng_maaws_munitions_MAAWS_GMM_MT",
     "CUP_compats_48Rnd_40mm_MK19_M",
     "CUP_compats_toW2_M",
     "ace_csw_100Rnd_127x99_mag",
@@ -144,11 +148,6 @@
     "ACE_1Rnd_82mm_Mo_Illum",
     "ACE_1Rnd_82mm_Mo_Smoke",
     "ACE_1Rnd_82mm_Mo_HE_LaserGuided",
-    "GerRng_Equipment_GerRng_vz99_flare_IR",
-    "GerRng_Equipment_GerRng_vz99_flare",
-    "GerRng_Equipment_GerRng_vz99_HE",
-    "GerRng_Equipment_GerRng_vz99_smokeWhite",
-    "GerRng_Equipment_GerRng_vz99_smokeWhiteVT",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Grenades / throw
@@ -187,6 +186,9 @@
     "kat_TXA",
     "kat_stethoscope",
     "kat_ncdKit",
+    
+    "GerRng_kat_changes_glucometerSet",
+    "GerRng_kat_changes_GSCI",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Misc 1
@@ -200,7 +202,7 @@
     "ACE_M26_Clacker",
     "ACE_PlottingBoard",
     "ACE_RangeCard",
-    "Attachable_Helistretcher",
+    "kat_CarryStretcherBag",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Misc 2
@@ -214,6 +216,9 @@
     "ace_marker_flags_white",
     "ace_marker_flags_yellow",
     "ace_marker_flags_green",
+    "GerRng_bandoliers_mg_4_4_m249_200Rnd",
+    "GerRng_bandoliers_mg_4_4_MG3_120Rnd",
+    "GerRng_bandoliers_mg_4_4_mk48_100Rnd",
     "kat_gasmaskFilter",
     "kat_sealant"
 ];

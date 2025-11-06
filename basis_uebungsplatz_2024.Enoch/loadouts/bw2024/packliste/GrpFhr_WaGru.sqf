@@ -33,6 +33,19 @@
     "SPS_hk416_16_5_glm_hk_ctr_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_sf_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_a7_black_f",
+
+    "SPS_hk416_14_5_glm_hk_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_a7_ral8000_f",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Visiere
@@ -67,15 +80,16 @@
     "CUP_launch_M72A6",
     "CUP_toW2_carry",
     "ace_csw_m220CarryTripod",
-    "GerRng_HMG_M2_Sh_carry",
-    "GerRng_HMG_M2_ScSh_carry",
+    "GerRng_csw_M3M_carry",
+    "GerRng_csw_M3M_carry_Scope",
+    "GerRng_csw_M3M_carry_Shield",
+    "GerRng_csw_M3M_carry_ScopeShield",
+    "GerRng_csw_GraMaWa_carry",
     "ace_csw_m3CarryTripod",
     "ace_csw_m3CarryTripodLow",
-    "GerRng_GMG_Mk19",
     "CUP_MK19_carry",
     "CUP_m252_carry",
     "ace_csw_carryMortarBaseplate",
-    "GerRng_Equipment_GerRng_vz99_carryWeapon",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // uniforms
@@ -222,6 +236,9 @@
     "MAA_MAAWS_GMM_MT",
     "MAA_MAAWS_ILLUM545",
     "MAA_MAAWS_SMOKE469",
+    "GerRng_maaws_munitions_MAAWS_GMM_HE",
+    "GerRng_maaws_munitions_MAAWS_GMM_HEAT",
+    "GerRng_maaws_munitions_MAAWS_GMM_MT",
     "CUP_compats_48Rnd_40mm_MK19_M",
     "CUP_compats_toW2_M",
     "ace_csw_100Rnd_127x99_mag",
@@ -230,11 +247,6 @@
     "ACE_1Rnd_82mm_Mo_Illum",
     "ACE_1Rnd_82mm_Mo_Smoke",
     "ACE_1Rnd_82mm_Mo_HE_LaserGuided",
-    "GerRng_Equipment_GerRng_vz99_flare_IR",
-    "GerRng_Equipment_GerRng_vz99_flare",
-    "GerRng_Equipment_GerRng_vz99_HE",
-    "GerRng_Equipment_GerRng_vz99_smokeWhite",
-    "GerRng_Equipment_GerRng_vz99_smokeWhiteVT",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Grenades / throw
@@ -279,5 +291,12 @@
     "ACE_Spraypaintgreen",
     "ACE_SpraypaintRed",
     "ACE_SpraypaintWhite",
-    "ACE_SpraypaintYellow"
+    "ACE_SpraypaintYellow",
+    "GerRng_bandoliers_grenade_8_8_exp_40mm",
+    "GerRng_bandoliers_grenade_8_8_flare_40mm",
+    "GerRng_bandoliers_grenade_8_8_smoke_40mm",
+    "GerRng_bandoliers_grenade_3_3_flare_hand",
+    "GerRng_bandoliers_mg_4_4_m249_200Rnd",
+    "GerRng_bandoliers_mg_4_4_MG3_120Rnd",
+    "GerRng_bandoliers_mg_4_4_mk48_100Rnd"
 ];

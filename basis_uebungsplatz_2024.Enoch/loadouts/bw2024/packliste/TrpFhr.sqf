@@ -34,25 +34,6 @@
     "SPS_hk416_16_5_glm_hk_ctr_sf_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_a7_black_f",
 
-    "SPS_hk417_13_vfg_black_f",
-    "SPS_hk417_13_afg_black_f",
-    "SPS_hk417_13_glm_black_f",
-    "SPS_hk417_13_vfg_ral8000_f",
-    "SPS_hk417_13_afg_ral8000_f",
-    "SPS_hk417_13_glm_ral8000_f",
-    "SPS_hk417_13_vfg_fde_f",
-    "SPS_hk417_13_afg_fde_f",
-    "SPS_hk417_13_glm_fde_f",
-
-    "SPS_hk417_16_vfg_black_f",
-    "SPS_hk417_16_afg_black_f",
-    "SPS_hk417_16_glm_black_f",
-    "SPS_hk417_16_vfg_ral8000_f",
-    "SPS_hk417_16_afg_ral8000_f",
-    "SPS_hk417_16_glm_ral8000_f",
-    "SPS_hk417_16_vfg_fde_f",
-    "SPS_hk417_16_afg_fde_f",
-    "SPS_hk417_16_glm_fde_f",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Visiere
@@ -61,9 +42,6 @@
     "CUP_optic_ZeissZPoint",
     "CUP_optic_ZeissZPoint_desert",
     "CUP_optic_ZeissZPoint_wood",
-    "CUP_optic_AIMM_MICROT1_BLK",
-    "CUP_optic_AIMM_MICROT1_tan",
-    "CUP_optic_AIMM_MICROT1_OD",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Pointer
@@ -158,14 +136,6 @@
     "1Rnd_SmokeRed_Grenade_shell",
     "1Rnd_SmokeGreen_Grenade_shell",
     "1Rnd_Smoke_Grenade_shell",
-
-    
-    "SPS_20Rnd_762x51mm_M80A1_EPR",
-    "SPS_20Rnd_762x51mm_M80A1_EPR_IR",
-    "SPS_20Rnd_762x51mm_M80A1_EPR_Tracer",
-
-    "CUP_20Rnd_762x51_DMR",
-    "CUP_20Rnd_TE1_Red_Tracer_762x51_DMR",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Grenades / throw
@@ -200,11 +170,15 @@
     "ACE_Clacker",
     "ACE_M26_Clacker",
     "tsp_breach_shock",
-    "tsp_lockpick"
+    "tsp_lockpick",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Misc 2
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    
+    "GerRng_bandoliers_grenade_8_8_exp_40mm",
+    "GerRng_bandoliers_grenade_8_8_flare_40mm",
+    "GerRng_bandoliers_grenade_8_8_smoke_40mm",
+    "GerRng_bandoliers_grenade_3_3_flare_hand",
+    "GerRng_bandoliers_rifle_5_5_417_30Rnd"
 ];
