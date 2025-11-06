@@ -30,14 +30,26 @@
     "SPS_hk416_16_5_glm_hk_ctr_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_sf_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_a7_black_f",
+
+    "SPS_hk416_14_5_glm_hk_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_a7_ral8000_f",
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Visiere
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    "CUP_optic_AIMM_MICROT1_BLK",
-    "CUP_optic_AIMM_MICROT1_tan",
-    "CUP_optic_AIMM_MICROT1_OD",
+    
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Pointer
@@ -320,6 +332,11 @@
     "ACE_SpraypaintRed",
     "ACE_SpraypaintWhite",
     "ACE_SpraypaintYellow",
+    "GerRng_bandoliers_grenade_8_8_exp_40mm",
+    "GerRng_bandoliers_grenade_8_8_flare_40mm",
+    "GerRng_bandoliers_grenade_8_8_smoke_40mm",
+    "GerRng_bandoliers_grenade_3_3_flare_hand",
+    "GerRng_bandoliers_rifle_5_5_417_30Rnd",
     "ACE_UAVBattery",
     "crowsew_tfar_icom",
     "crowsew_ctrack"

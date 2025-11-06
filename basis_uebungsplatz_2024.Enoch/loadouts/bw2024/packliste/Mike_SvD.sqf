@@ -33,11 +33,87 @@
     "SPS_hk416_16_5_glm_hk_ctr_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_sf_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_a7_black_f",
+
+    "SPS_hk416_14_5_glm_hk_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_a7_ral8000_f",
+
+	"SPS_hk416_11_sl_t_ctr_vfg_a7_black_f",
+	"SPS_hk416_11_sl_t_ctr_afg_a7_black_f",
+	"SPS_hk416_11_sl_t_ctr_a7_black_f",
+	"SPS_hk416_11_glm_t_ctr_a7_black_f",
+
+	"SPS_hk416_11_sl_t_ctr_vfg_a7_fde_f",
+	"SPS_hk416_11_sl_t_ctr_afg_a7_fde_f",
+	"SPS_hk416_11_sl_t_ctr_a7_fde_f",
+	"SPS_hk416_11_glm_t_ctr_a7_fde_f",
+
+	"SPS_hk416_14_5_g95_t_ctr_vfg_a7_black_f",
+	"SPS_hk416_14_5_g95_t_ctr_afg_a7_black_f",
+	"SPS_hk416_14_5_g95_t_ctr_a7_black_f",
+	"SPS_hk416_14_5_glm_t_ctr_a7_black_f",
+
+	"SPS_hk416_14_5_g95_t_ctr_vfg_a7_fde_f",
+	"SPS_hk416_14_5_g95_t_ctr_afg_a7_fde_f",
+	"SPS_hk416_14_5_g95_t_ctr_a7_fde_f",
+	"SPS_hk416_14_5_glm_t_ctr_a7_fde_f",
+
+	"SPS_hk416_16_5_g95_t_ctr_vfg_a7_black_f",
+	"SPS_hk416_16_5_g95_t_ctr_afg_a7_black_f",
+	"SPS_hk416_16_5_g95_t_ctr_a7_black_f",
+	"SPS_hk416_16_5_glm_t_ctr_a7_black_f",
+
+	"SPS_hk416_16_5_g95_t_ctr_vfg_a7_fde_f",
+	"SPS_hk416_16_5_g95_t_ctr_afg_a7_fde_f",
+	"SPS_hk416_16_5_g95_t_ctr_a7_fde_f",
+	"SPS_hk416_16_5_glm_t_ctr_a7_fde_f",
+
+	"SPS_hk417_13_vfg_black_f",
+	"SPS_hk417_13_afg_black_f",
+	"SPS_hk417_13_glm_black_f",
+	"SPS_hk417_13_vfg_fde_f",
+	"SPS_hk417_13_afg_fde_f",
+	"SPS_hk417_13_glm_fde_f",
+
+	"SPS_hk417_16_vfg_black_f",
+	"SPS_hk417_16_afg_black_f",
+	"SPS_hk417_16_glm_black_f",
+	"SPS_hk417_16_vfg_fde_f",
+	"SPS_hk417_16_afg_fde_f",
+	"SPS_hk417_16_glm_fde_f",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Visiere
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
+    "CUP_optic_SB_11_4x20_PM_od",
+    "CUP_optic_SB_11_4x20_PM_tan",
+    "CUP_optic_SB_11_4x20_PM",
+
+    "optic_AMS",
+    "optic_AMS_khk",
+    "optic_AMS_snd",
+
+    //SPS
+    "SPS_Optic_SnB_HP_1_8_Black_PVS24LR",
+    "SPS_Optic_SnB_HP_1_8_FDE_PVS24LR",
+    "SPS_Optic_SnB_HP_1_8_RAL8000_PVS24LR",
+    "SPS_Optic_SnB_HP_1_8_Black",
+    "SPS_Optic_SnB_HP_1_8_FDE",
+    "SPS_Optic_SnB_HP_1_8_RAL8000",
+    "SPS_EOTech_Vudu_Black_PVS24LR",
+    "SPS_EOTech_Vudu_Tan_PVS24LR",
+    "SPS_EOTech_Vudu_Black",
+    "SPS_EOTech_Vudu_Tan",
     
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
@@ -50,7 +126,7 @@
     // Bipods
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    
+	"sps_atlas_bipod_m_blk",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Secondarys
@@ -62,7 +138,7 @@
     // Launcher
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    
+    "kat_CarryStretcherBag",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // uniforms
@@ -82,10 +158,12 @@
     "CUP_V_B_GER_Pvest_Fleck_RFL_LT",
     "CUP_V_B_GER_Pvest_Trop_RFL_LT",
     "CUP_V_B_GER_Tactical_Fleck",
-    "CUP_V_B_GER_Armatus__BBFleck",
-    "CUP_V_B_GER_Armatus_BB_Fleck",
     "CUP_V_B_GER_Armatus_Trop",
+    "CUP_V_B_GER_Armatus_BB_Trop",
     "CUP_V_B_GER_Armatus_Fleck",
+    "CUP_V_B_GER_Armatus_BB_Fleck",
+    "CUP_V_B_Armatus_Black",
+    "CUP_V_B_Armatus_BB_Black",
     "V_Chestrig_rgr",
 
     "Aircrew_vest_2_NH",
@@ -149,6 +227,8 @@
     
     "B_SCBA_01_F",
     "B_CombinationUnitRespirator_01_F",
+
+    "CFP_Kitbag_Olive",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Helme
@@ -161,10 +241,10 @@
     "CUP_H_Ger_Cap_EP_Grn1",
     "CUP_H_Ger_Cap_EP_tan1",
 
-    "H_CrewHelmetHeli_B",
-    "H_PilotHelmetHeli_B",
-    "H_PilotHelmetHeli_I_E",
-    "H_CrewHelmetHeli_I_E",
+    "GerRng_helmets_helmet_pilot_w",
+    "GerRng_helmets_helmet_pilot_b",
+    "GerRng_helmets_crew_pilot_b",
+    "GerRng_helmets_crew_pilot_w",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // goggles
@@ -174,6 +254,7 @@
     "G_RegulatorMask_F",
     "G_Aviator",
     "G_Bandanna_aviator",
+    "G_Bandanna_blk",
     "CUP_G_TK_roundGlasses",
     "CUP_G_TK_roundGlasses_blk",
     // ------------------------------------------------------------------
@@ -278,12 +359,15 @@
     "kat_lorazepam",
     "kat_stethoscope",
     "kat_ncdKit",
+    
+    "GerRng_kat_changes_glucometerSet",
+    "GerRng_kat_changes_GSCI",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Misc 1
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    "Attachable_Helistretcher",
+    "kat_CarryStretcherBag",
     "tfw_rf3080Item",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
@@ -306,6 +390,11 @@
     "ace_flags_red",
     "ace_flags_white",
     "ace_flags_yellow",
+    "GerRng_bandoliers_grenade_8_8_exp_40mm",
+    "GerRng_bandoliers_grenade_8_8_flare_40mm",
+    "GerRng_bandoliers_grenade_8_8_smoke_40mm",
+    "GerRng_bandoliers_grenade_3_3_flare_hand",
+    "GerRng_bandoliers_rifle_5_5_417_30Rnd",
     "kat_gasmaskFilter",
     "kat_sealant"
 ];

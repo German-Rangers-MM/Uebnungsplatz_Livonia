@@ -30,14 +30,25 @@
     "SPS_hk416_16_5_glm_hk_ctr_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_sf_black_f",
     "SPS_hk416_16_5_glm_hk_ctr_a7_black_f",
+
+    "SPS_hk416_14_5_glm_hk_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_14_5_glm_hk_ctr_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_a7_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_sf_ral8000_f",
+    "SPS_hk416_16_5_glm_hk_ctr_a7_ral8000_f",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Visiere
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    "CUP_optic_AIMM_MICROT1_BLK",
-    "CUP_optic_AIMM_MICROT1_tan",
-    "CUP_optic_AIMM_MICROT1_OD",
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Pointer
@@ -266,7 +277,21 @@
     "ACE_Spraypaintgreen",
     "ACE_SpraypaintRed",
     "ACE_SpraypaintWhite",
-    "ACE_SpraypaintYellow",
+    "ACE_SpraypaintYellow",    
+    "GerRng_bandoliers_grenade_8_8_exp_40mm",
+    "GerRng_bandoliers_grenade_8_8_flare_40mm",
+    "GerRng_bandoliers_grenade_8_8_smoke_40mm",
+    "GerRng_bandoliers_grenade_3_3_exp_hand",
+    "GerRng_bandoliers_grenade_3_3_flare_hand",
+    "GerRng_bandoliers_mg_4_4_m249_200Rnd",
+    "GerRng_bandoliers_mg_4_4_MG3_120Rnd",
+    "GerRng_bandoliers_mg_4_4_mk48_100Rnd",
+    "GerRng_bandoliers_pistol_6_6_G17_17Rnd",
+    "GerRng_bandoliers_pistol_6_6_M17_21Rnd",
+    "GerRng_bandoliers_rifle_5_5_G36_30Rnd",
+    "GerRng_bandoliers_rifle_5_5_416_30Rnd",
+    "GerRng_bandoliers_rifle_5_5_417_30Rnd",
+    "GerRng_bandoliers_grenade_5_5_smoke_hand",
     "ACE_UAVBattery",
     "crowsew_tfar_icom",
     "crowsew_ctrack"
