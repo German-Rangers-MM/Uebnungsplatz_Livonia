@@ -58,15 +58,16 @@
     "launch_B_Titan_short_F",
     "CUP_toW2_carry",
     "ace_csw_m220CarryTripod",
-    "GerRng_HMG_M2_Sh_carry",
-    "GerRng_HMG_M2_ScSh_carry",
+    "GerRng_csw_M3M_carry",
+    "GerRng_csw_M3M_carry_Scope",
+    "GerRng_csw_M3M_carry_Shield",
+    "GerRng_csw_M3M_carry_ScopeShield",
+    "GerRng_csw_GraMaWa_carry",
     "ace_csw_m3CarryTripod",
     "ace_csw_m3CarryTripodLow",
-    "GerRng_GMG_Mk19",
     "CUP_MK19_carry",
     "CUP_m252_carry",
     "ace_csw_carryMortarBaseplate",
-    "GerRng_Equipment_GerRng_vz99_carryWeapon",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // uniforms
@@ -167,11 +168,11 @@
     "MAA_MAAWS_ASM509",
     "MAA_MAAWS_HEDP502",
     "MAA_MAAWS_MT756",
-    "GerRng_MAAWS_GMM_HE",
-    "GerRng_MAAWS_GMM_HEAT",
-    "GerRng_MAAWS_GMM_MT",
     "MAA_MAAWS_ILLUM545",
     "MAA_MAAWS_SMOKE469",
+    "GerRng_maaws_munitions_MAAWS_GMM_HE",
+    "GerRng_maaws_munitions_MAAWS_GMM_HEAT",
+    "GerRng_maaws_munitions_MAAWS_GMM_MT",
     "CUP_compats_48Rnd_40mm_MK19_M",
     "CUP_compats_toW2_M",
     "ace_csw_100Rnd_127x99_mag",
@@ -180,11 +181,6 @@
     "ACE_1Rnd_82mm_Mo_Illum",
     "ACE_1Rnd_82mm_Mo_Smoke",
     "ACE_1Rnd_82mm_Mo_HE_LaserGuided",
-    "GerRng_Equipment_GerRng_vz99_flare_IR",
-    "GerRng_Equipment_GerRng_vz99_flare",
-    "GerRng_Equipment_GerRng_vz99_HE",
-    "GerRng_Equipment_GerRng_vz99_smokeWhite",
-    "GerRng_Equipment_GerRng_vz99_smokeWhiteVT",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Grenades / throw
@@ -232,5 +228,14 @@
     "ace_marker_flags_yellow",
     "ace_marker_flags_green",
     "ACE_SpareBarrel",
+    "GerRng_bandoliers_grenade_3_3_exp_hand",
+    "GerRng_bandoliers_mg_4_4_m249_200Rnd",
+    "GerRng_bandoliers_mg_4_4_MG3_120Rnd",
+    "GerRng_bandoliers_mg_4_4_mk48_100Rnd",
+    "GerRng_bandoliers_pistol_6_6_G17_17Rnd",
+    "GerRng_bandoliers_pistol_6_6_M17_21Rnd",
+    "GerRng_bandoliers_rifle_5_5_G36_30Rnd",
+    "GerRng_bandoliers_rifle_5_5_416_30Rnd",
+    "GerRng_bandoliers_grenade_5_5_smoke_hand",
     "ItemMicroDAGRMisc"
 ];
