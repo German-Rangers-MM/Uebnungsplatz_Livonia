@@ -36,7 +36,7 @@
     // Launcher
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    
+    "kat_CarryStretcherBag",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // uniforms
@@ -55,10 +55,12 @@
     "CUP_V_B_GER_Pvest_Fleck_Med_LT",
     "CUP_V_B_GER_Pvest_Trop_Med_LT",
     "CUP_V_B_GER_Tactical_Fleck",
-    "CUP_V_B_GER_Armatus_BB_Fleck",
-    "CUP_V_B_GER_Armatus_BB_Fleck",
     "CUP_V_B_GER_Armatus_Trop",
+    "CUP_V_B_GER_Armatus_BB_Trop",
     "CUP_V_B_GER_Armatus_Fleck",
+    "CUP_V_B_GER_Armatus_BB_Fleck",
+    "CUP_V_B_Armatus_Black",
+    "CUP_V_B_Armatus_BB_Black",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // backpacks
@@ -127,6 +129,9 @@
     "CUP_H_Ger_Boonie2_desert",
     "CUP_H_Ger_Cap_EP_Grn1",
     "CUP_H_Ger_Cap_EP_tan1",
+    
+    "GerRng_helmets_crew_pilot_b",
+    "GerRng_helmets_crew_pilot_w",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // goggles
@@ -134,6 +139,7 @@
     // ------------------------------------------------------------------
     "G_Aviator",
     "G_Bandanna_aviator",
+    "G_Bandanna_blk",
     "CUP_G_TK_roundGlasses",
     "G_AirPurifyingRespirator_01_F",
     "G_RegulatorMask_F",
@@ -152,6 +158,9 @@
     "Rangefinder",
     "Laserdesignator_02_ghex_F",
     "ACE_Vector",
+    "GerRng_utils_Laserdesignator_khk",
+    "GerRng_utils_Laserdesignator_olv",
+    "GerRng_utils_Laserdesignator_snd",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // items
@@ -235,6 +244,9 @@
     "kat_phenylephrine",
     "kat_stethoscope",
     "kat_ncdKit",
+    
+    "GerRng_kat_changes_glucometerSet",
+    "GerRng_kat_changes_GSCI",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Misc 1
@@ -252,7 +264,7 @@
     "ACE_RangeCard",
     "ACE_SpottingScope",
     "ACE_Tripod",
-    "Attachable_Helistretcher",
+    "kat_CarryStretcherBag",
     "tfw_rf3080Item",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
@@ -288,6 +300,7 @@
     "ACE_SpraypaintRed",
     "ACE_SpraypaintWhite",
     "ACE_SpraypaintYellow",
+    "GerRng_bandoliers_grenade_3_3_flare_hand",
     "ACE_UAVBattery",
     "kat_gasmaskFilter",
     "kat_sealant"
