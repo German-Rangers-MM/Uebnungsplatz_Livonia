@@ -54,13 +54,15 @@
     "CUP_U_B_GER_Fleck_Crye2",
     "CUP_U_B_GER_Crye",
     "CUP_U_B_GER_Crye2",
+    "gerrng_uniform_fleck_tee",
+    "gerrng_uniform_trop_tee",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // vests
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    "GRE_PlateCarrier1_Flecktarn",
-    "GRE_PlateCarrier1_Tropentarn",
+    "gerrng_PlateCarrier1_Flecktarn",
+    "gerrng_PlateCarrier1_Tropentarn",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // backpacks
@@ -187,6 +189,38 @@
     "kat_chestSeal",
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
+    // Provisions
+    // ------------------------------------------------------------------
+    // ------------------------------------------------------------------
+    "GerRng_rations_HydrationBladder_2L",
+    "GerRng_rations_HydrationBladder_3L",
+
+    "GerRng_rations_EPa_typ_i",
+    "GerRng_rations_EPa_typ_iia",
+    "GerRng_rations_EPa_typ_iib",
+    "GerRng_rations_EPa_typ_iii",
+    "GerRng_rations_EPa_typ_iv",
+    "GerRng_rations_EPa_typ_v",
+    "GerRng_rations_EPa_typ_vi",
+    "GerRng_rations_EPa_typ_vii",
+    "GerRng_rations_EPa_typ_viii",
+    "GerRng_rations_EPa_typ_ix",
+    "GerRng_rations_EPa_typ_x",
+    "GerRng_rations_EPa_typ_xi",
+    "GerRng_rations_EPa_typ_xii",
+    "GerRng_rations_EPa_typ_xiii",
+    "GerRng_rations_EPa_typ_xiv",
+    "GerRng_rations_EPa_typ_xv",
+    "GerRng_rations_EPa_typ_xvi",
+    "GerRng_rations_EPa_typ_xvii",
+    "GerRng_rations_EPa_typ_xviii",
+    "GerRng_rations_EPa_typ_xix",
+
+    "ACE_WaterBottle",
+    "ACE_Canteen",
+    "ACE_Humanitarian_Ration",
+    // ------------------------------------------------------------------
+    // ------------------------------------------------------------------
     // Misc 1
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
@@ -203,5 +237,13 @@
     "ACE_EarPlugs",
     "ACE_IR_strobe_Item",
     "ACE_rope3",
+    "GerRng_bandoliers_grenade_3_3_exp_hand",
+    "GerRng_bandoliers_grenade_3_3_flare_hand",
+    "GerRng_bandoliers_pistol_6_6_G17_17Rnd",
+    "GerRng_bandoliers_pistol_6_6_M17_21Rnd",
+    "GerRng_bandoliers_rifle_5_5_G36_30Rnd",
+    "GerRng_bandoliers_rifle_5_5_416_30Rnd",
+    "GerRng_bandoliers_grenade_5_5_smoke_hand",
+    "tsp_lockpick",
     "ItemcTabHCam"
 ];
