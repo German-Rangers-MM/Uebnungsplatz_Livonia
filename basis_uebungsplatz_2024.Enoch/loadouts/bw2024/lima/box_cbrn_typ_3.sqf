@@ -1,9 +1,14 @@
 [
     "CBRN Typ 3 - CBRN-UGV",
-    "Land_PlasticCase_01_medium_olive_CBRN_F",
+    "GerRng_faction_Box_P_CBRN_III",
+
+    //ACE
+    ["ACE_Chemlight_UltraHiOrange", 20],
     ["ace_marker_flags_orange", 10],
     ["ACE_UAVBattery", 2],
+    
+    //ARMA 3
     ["B_UavTerminal", 1],
-    ["ACE_Chemlight_UltraHiOrange", 20],
     ["B_UGV_02_Science_backpack_F",1]
+
 ];

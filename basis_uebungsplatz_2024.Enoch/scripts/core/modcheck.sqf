@@ -6,8 +6,24 @@ _whitelistedMods = 	[
 						"@Zeus Enhanced", "1779063631",
 						"@Zeus Enhanced - ACE3 Compatibility", "2018593688",
 						"@NR6 Hal Evolved - Experimental Branch","3375984704",
-						"@LAFS - Light AI Fire Support","3323604819",
-						"@Dynamic AI Minefields - RCO","2650906858",
+
+						// Kampagnen Mods
+						"@FPV Drone Crocus", "3045129955",
+						"@AET Plan Importer", "3488328833",
+						"@User Input Menus", "1673595418",
+						"@Hate's Digital Camera", "2577441180",
+						"@GRAD Civilians", "2140453587",
+						"@Animate - Radio", "3283635033",
+						"@Metis Marker", "1508091616",
+						"@LAFS - Light AI Fire Support", "3323604819",
+						"@Dynamic AI Minefields - RCO", "2650906858",
+						"@Global Ops Terrains", "2917444360",
+						"@North Takistan", "2829330653",
+						"@ITC Addons - Rover LAD (Fixed)", "3442884220",
+						"@Fifty Shades of Female (formerly FEMAL3 Heads)", "374775446",
+						"@Fifty Shades of Gen3 (formerly FEMAL3 Uniforms)", "374780664",
+						"@MT-LB - The Soviet Workhorse", "3615518979",
+						"@Immersion Cigs - Rewrite", "3375788189",
 
 						// Missionmaker Mods
 						"@3den Enhanced", "623475643",
@@ -19,6 +35,11 @@ _whitelistedMods = 	[
 						"@Eden Mirror Function", "2807516605",
 						"@Snapping for Eden and Zeus","2961167812",
 						"@3DEN Better Inventory","1124993203",
+						"@LAMBS_Danger.fsm","1858075458",
+						"@LAMBS_RPG","1858070328",
+						"@LAMBS_Suppression","1808238502",
+						"@LAMBS_Turrets","1862208264",
+						"@Advanced Developer Tools", "3499977893",
 						
 						// CUP
 						"@CUP Terrains - Core", "583496184",
@@ -36,17 +57,20 @@ _whitelistedMods = 	[
 						//TFAR
 						"@Task Force Arrowhead Radio (BETA!!!)", "894678801",
 						"@Radio Animations for Task Force Radio", "1480333388",
+						"@TFAR - ACE Radio Setter - Extended","2526965189",
 
 						//German Rangers Extras
 						"@NATO Markers+", "1340701737",
-						"@cTab", "871504836",
 						"@Enhanced Movement", "333310405",
 						"@Enhanced Movement Rework", "2034363662",
 						"@German Rangers Equipment", "2996640864",
+						"@cTAB Connect [BETA]", "3438247879",
+						"@cTAB Advanced [BETA]", "3438246217",
 						"@cTab 1erGTD", "2262006564",
 						"@SIT 1erGTD", "2262009445",
 						"@Breach - Rewrite", "3283645995",
 						"@Speshal Core", "3283642267",
+						"@Drongos Artillery", "1675485070",
 
 						//Gameplay & Ausrüstung
 						"@Crows Electronic Warfare", "2515887728",
@@ -65,6 +89,9 @@ _whitelistedMods = 	[
 						"@A3 Thermal Improvement", "2041057379",
 						"@SPS Weapons V2", "2811886291",
 						"@SPS Equipment", "1187306764",
+
+						"@USAF Mod - Main", "2397360831",
+						"@USAF Mod - Utility", "2397376046",
 
 						//Additional Maps
 						"@Jbad", "520618345",
@@ -114,6 +141,9 @@ _whitelistedMods = 	[
 						"@BackpackOnChest - Redux", "2372036642",
 						"@Arma 3 PiShock", "3024239355",
 						"@AWESome : Aerial Warfare Enhanced Somehow", "1301399507",
+						"@Turret Enhanced", "1623498241",
+						"@Hidden Passwords", "2236038667",
+						"@CQB Weapon Stance", "2288108304",
 						
 						//Visual
 						"@Blastcore Edited (standalone version)", "767380317",
@@ -132,8 +162,14 @@ _whitelistedMods = 	[
 						"@Lushify", "2638049909",
 						"@ReColor", "649832908",
 						"@Fawks' Enhanced NVGs", "2513044572",
-						"@BettIR (Legacy v0.2.1)", "2260572637",
+						"@BettIR NVG", "2260572637",
+						"@Aaren's Blast Effects", "2424322922",
 						"@German Rangers Intro 29-04-2024", "3234631841",
+						"@Enhanced Missile Smoke + Lighting Efx Mod v1.4", "1484261993",
+						"@Helicopter Dust Efx Mod", "1537745369",
+						"@ANZACSAS Helicopter Dust Efx Mod - Lite", "2866924390",
+						"@「RSS」 Immersive Hud", "3581479215",
+						"@Blastcore Compiled By isky", "2884936024",
 						
 						
 						//Sound
@@ -145,8 +181,7 @@ _whitelistedMods = 	[
 						"@JSRS SOUNDMOD - CUP WEAPONS MOD SOUND SUPPORT", "1624803912",
 						"@JSRS SOUNDMOD - CUP VEHICLES MOD SOUND SUPPORT", "1624804924",
 						"@JSRS SOUNDMOD - Reloading Sounds", "1429098683",
-						"@JSRS SOUNDMOD 2025 Beta - RC2.2", "3407948300",
-						"@JSRS SOUNDMOD 2025 Beta - AiO Compat Files RC2.2", "3407970596",
+						"@JSRS SOUNDMOD 2025", "3407948300",
 						
 						
 						//Zeus Mods
