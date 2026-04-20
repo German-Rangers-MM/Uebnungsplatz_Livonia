@@ -6,7 +6,6 @@
 //------------------------------------------------------------------
 //------------------------------------------------------------------
 [
-
 	"SPS_hk416_11_sl_t_ctr_vfg_a7_black_f",
 	"SPS_hk416_11_sl_t_ctr_afg_a7_black_f",
 	"SPS_hk416_11_sl_t_ctr_a7_black_f",
@@ -73,7 +72,6 @@
 	"CUP_smg_MP7_desert",
 	"CUP_smg_MP7_woodland",
 
-
 //------------------------------------------------------------------
 //------------------------------------------------------------------
 //
@@ -82,15 +80,10 @@
 //------------------------------------------------------------------
 //------------------------------------------------------------------
 
-	"CUP_optic_MicroT1",
-	"CUP_optic_MicroT1_coyote",
-	"CUP_optic_MicroT1_OD",
-	"CUP_optic_MicroT1_low",
-	"CUP_optic_MicroT1_low_coyote",
-	"CUP_optic_MicroT1_low_OD",
-	"CUP_optic_AIMM_MICROT1_BLK",
-	"CUP_optic_AIMM_MICROT1_tan",
-	"CUP_optic_AIMM_MICROT1_OD",
+	"CUP_optic_AC11704_Black",
+	"CUP_optic_AC11704_Jungle",
+	"CUP_optic_AC11704_OD",
+	"CUP_optic_AC11704_Tan",
 
 	"SPS_EOTech_Black",
 	"SPS_EOTech_Black_3xMAG_up",
@@ -98,6 +91,11 @@
 	"SPS_EOTech_Tan",
 	"SPS_EOTech_Tan_3xMAG_up",
 	"SPS_EOTech_Tan_5xMAG_up",
+
+	"CUP_optic_Elcan_SpecterDR_RMR_black",
+	"CUP_optic_Elcan_SpecterDR_KF_RMR_black",
+	"CUP_optic_Elcan_SpecterDR_RMR",
+	"CUP_optic_Elcan_SpecterDR_KF_RMR",
 
 	"sps_vortex_spitfire_gen2_x5_black",
 	"sps_vortex_spitfire_gen2_x5_RMR_black",
@@ -243,6 +241,9 @@
 	"CUP_launch_M136",
 	"CUP_launch_M72A6",
 
+	"GerRng_utils_remote_designator_d",
+	"GerRng_utils_remote_designator_w",
+	
 //------------------------------------------------------------------
 //------------------------------------------------------------------
 //
@@ -264,6 +265,8 @@
 	"U_B_FullGhillie_sard",
 	"U_B_T_FullGhillie_tna_F",
 
+	"U_B_Wetsuit",
+
 //------------------------------------------------------------------
 //------------------------------------------------------------------
 //
@@ -275,6 +278,8 @@
 	"CUP_V_B_Armatus_BB_Black",
 	"CUP_V_B_GER_Armatus_BB_Fleck",
 	"CUP_V_B_GER_Armatus_BB_Trop",
+
+	"V_RebreatherB",
 
 //------------------------------------------------------------------
 //------------------------------------------------------------------
@@ -299,7 +304,7 @@
 	"CFP_Kitbag_Tropentarn",
 
 	"B_UAV_01_backpack_F",
-	"B_UAV_06_backpack_F",
+	"GerRng_faction_UAV_06_backpack_F",
 
 //------------------------------------------------------------------
 //------------------------------------------------------------------
@@ -349,6 +354,13 @@
 	"CUP_G_PMC_Facewrap_Black_Glasses_Dark",
 	"CUP_G_PMC_Facewrap_Tropical_Glasses_Dark",
 	"CUP_G_PMC_Facewrap_Tan_Glasses_Dark",
+
+	"G_B_Diving",
+
+	"CUP_G_PMC_RadioHeadset_Glasses_Dark",
+    "CUP_G_PMC_RadioHeadset_Glasses_Ember",
+    "CUP_G_PMC_RadioHeadset_Glasses",
+    "CUP_G_PMC_RadioHeadset",
 
 //------------------------------------------------------------------
 //------------------------------------------------------------------
@@ -541,9 +553,11 @@
 //------------------------------------------------------------------
 
 	"tsp_flashbang_m84",
+	"tsp_flashbang_m84s",
 	
 	"tsp_lockpick",
 	"tsp_paperclip",
+
 
 //------------------------------------------------------------------
 //------------------------------------------------------------------
@@ -584,6 +598,13 @@
 
 	"ACE_SpraypaintBlack",
 	"ACE_SpraypaintGreen",
-	"ACE_SpraypaintWhite"
+	"ACE_SpraypaintWhite",
+
+	"GerRng_bandoliers_grenade_8_8_exp_40mm",
+    "GerRng_bandoliers_grenade_8_8_flare_40mm",
+    "GerRng_bandoliers_grenade_8_8_smoke_40mm",
+    "GerRng_bandoliers_grenade_3_3_flare_hand",
+    "GerRng_bandoliers_rifle_5_5_417_30Rnd",
+    "GerRng_bandoliers_grenade_5_5_smoke_hand"
 
 ];

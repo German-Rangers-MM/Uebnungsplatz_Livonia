@@ -1,6 +1,11 @@
 [
     "WaGru ST Typ 1 - M2 Waffe",
-    "Box_NATO_WpsLaunch_F",
-    ["GerRng_HMG_M2_Sh_carry", 1],
-    ["ace_csw_kordCarryTripod", 1]
+    "GerRng_faction_Box_E_WaGru_st_I",
+
+    //ACE
+    ["ace_csw_m3CarryTripod", 1],
+    ["ace_csw_m3CarryTripodLow", 1],
+
+    //GerRng
+    ["GerRng_csw_M3M_carry_ScopeShield", 1]
 ]

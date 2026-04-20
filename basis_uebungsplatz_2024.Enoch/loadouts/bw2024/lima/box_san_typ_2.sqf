@@ -1,5 +1,7 @@
 [
     "San Typ 2 - Leichensäcke",
-    "Land_PlasticCase_01_medium_black_F",
+    "GerRng_faction_Box_P_SAN_II",
+
+    //ACE
     ["ACE_bodyBag",16]
 ];
