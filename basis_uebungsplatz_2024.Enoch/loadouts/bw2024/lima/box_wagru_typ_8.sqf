@@ -1,15 +1,11 @@
 [
     "WaGru Typ 8 - Combat Engineering",
-    "Box_NATO_WpsLaunch_F",
-    ["CUP_launch_BF3", 2],
-    ["ACE_EntrenchingTool", 6],
-    ["ACE_Fortify", 4],
-    ["DemoCharge_Remote_Mag", 2],
-    ["tsp_breach_package_mag", 2],
-    ["tsp_breach_stick_mag", 5],
-    ["tsp_breach_block_mag", 2],
-    ["SatchelCharge_Remote_Mag", 2],
+    "GerRng_faction_Box_WS_WaGru_VIII",
+
+    //ACE
     ["ACE_Clacker", 2],
+    ["ACE_Fortify", 4],
+    ["ACE_EntrenchingTool", 6],
     ["ace_marker_flags_black", 10],
     ["ace_marker_flags_blue", 10],
     ["ace_marker_flags_green", 10],
@@ -18,5 +14,20 @@
     ["ACE_SpraypaintBlue", 2],
     ["ACE_SpraypaintGreen", 2],
     ["ACE_SpraypaintRed", 2],
-    ["ACE_wirecutter", 6]
+    ["ACE_wirecutter", 6],
+
+    //ARMA 3
+    ["DemoCharge_Remote_Mag", 2],
+    ["SatchelCharge_Remote_Mag", 2],
+
+    //TSP
+    ["tsp_breach_block_mag", 2],
+    ["tsp_breach_package_mag", 2],
+    ["tsp_breach_stick_mag", 5],
+
+    //GR Mod 
+        //GR Mod
+    ["GerRng_weapons_PzF3",2],
+    ["GerRng_weapons_PTFHE_M",2]
+    
 ];

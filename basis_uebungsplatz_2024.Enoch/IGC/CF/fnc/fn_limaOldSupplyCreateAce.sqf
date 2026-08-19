@@ -62,7 +62,7 @@ _iconVerpflegung ="z\ace\addons\field_rations\ui\icon_hud_hungerstatus.paa";
         _zug11 = ["Zug11","Zug Typ 11 - Munition HK417",_icon,{params ["_object"]; [_object,"box_zug_typ_11"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
         [_x, 0, ["ACE_MainActions", "Zug Boxen"], _zug11] call ace_interact_menu_fnc_addActionToObject;
 
-        _zug12 = ["Zug12","Zug Typ 12 - Flashbangs",_icon,{params ["_object"]; [_object,"box_zug_typ_11"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
+        _zug12 = ["Zug12","Zug Typ 12 - Flashbangs",_icon,{params ["_object"]; [_object,"box_zug_typ_12"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
         [_x, 0, ["ACE_MainActions", "Zug Boxen"], _zug12] call ace_interact_menu_fnc_addActionToObject;
         //------------------------------------------------------------------
     // Parent Action für WaGru Boxen
@@ -78,10 +78,10 @@ _iconVerpflegung ="z\ace\addons\field_rations\ui\icon_hud_hungerstatus.paa";
         _wagru3 = ["wagru3","WaGru Typ 3 - MAAWS",_icon,{params ["_object"]; [_object,"box_wagru_typ_3"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
         [_x, 0, ["ACE_MainActions", "WaGru Boxen"], _wagru3] call ace_interact_menu_fnc_addActionToObject;
 
-        _wagru4 = ["wagru4","WaGru Typ 4 - MAAWS Sondermunition",_icon,{params ["_object"]; [_object,"box_wagru_typ_4"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
+        _wagru4 = ["wagru4","WaGru Typ 4 - MAAWS GMM",_icon,{params ["_object"]; [_object,"box_wagru_typ_4"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
         [_x, 0, ["ACE_MainActions", "WaGru Boxen"], _wagru4] call ace_interact_menu_fnc_addActionToObject;
                     
-        _wagru5 = ["wagru4","WaGru Typ 5 - Titan AT",_icon,{params ["_object"]; [_object,"box_wagru_typ_5"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
+        _wagru5 = ["wagru5","WaGru Typ 5 - Titan AT",_icon,{params ["_object"]; [_object,"box_wagru_typ_5"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
         [_x, 0, ["ACE_MainActions", "WaGru Boxen"], _wagru5] call ace_interact_menu_fnc_addActionToObject;
                     
         _wagru6 = ["wagru6","WaGru Typ 6 - Titan AA",_icon,{params ["_object"]; [_object,"box_wagru_typ_6"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
@@ -92,6 +92,9 @@ _iconVerpflegung ="z\ace\addons\field_rations\ui\icon_hud_hungerstatus.paa";
         
         _wagru8 = ["wagru8","WaGru Typ 8 - Combat Engineering",_icon,{params ["_object"]; [_object,"box_wagru_typ_8"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
         [_x, 0, ["ACE_MainActions", "WaGru Boxen"], _wagru8] call ace_interact_menu_fnc_addActionToObject;
+
+        _wagru9 = ["wagru9","WaGru Typ 9 - MAAWS Sondermunition",_icon,{params ["_object"]; [_object,"box_wagru_typ_9"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
+        [_x, 0, ["ACE_MainActions", "WaGru Boxen"], _wagru9] call ace_interact_menu_fnc_addActionToObject;
 
     
     _waGruBoxenStatic = ["WaGru Boxen Static","WaGru Boxen Static",_iconWaGruStatic,{ },{true}] call ace_interact_menu_fnc_createAction;
@@ -124,13 +127,6 @@ _iconVerpflegung ="z\ace\addons\field_rations\ui\icon_hud_hungerstatus.paa";
         _wagrustat9 = ["WaGruStat9","WaGruStat Typ 9 - 82mm Sondermunition",_icon,{params ["_object"]; [_object,"box_wagrustat_typ_9"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
         [_x, 0, ["ACE_MainActions", "WaGru Boxen Static"], _wagrustat9] call ace_interact_menu_fnc_addActionToObject;
 
-        _wagrustat10 = ["WaGruStat10","WaGruStat Typ 10 - 60mm Mörser und Standardmunition",_icon,{params ["_object"]; [_object,"box_wagrustat_typ_10"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
-        [_x, 0, ["ACE_MainActions", "WaGru Boxen Static"], _wagrustat10] call ace_interact_menu_fnc_addActionToObject;
-
-        _wagrustat11 = ["WaGruStat1","WaGruStat Typ 11 - 60mm Sondermunition",_icon,{params ["_object"]; [_object,"box_wagrustat_typ_11"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
-        [_x, 0, ["ACE_MainActions", "WaGru Boxen Static"], _wagrustat11] call ace_interact_menu_fnc_addActionToObject;
-
-
         //------------------------------------------------------------------
     // Parent Action für EOD Boxen
     _eodBoxen = ["EOD Boxen","EOD Boxen",_iconEod,{ },{true}] call ace_interact_menu_fnc_createAction;
@@ -152,13 +148,13 @@ _iconVerpflegung ="z\ace\addons\field_rations\ui\icon_hud_hungerstatus.paa";
     _cbrnBoxen = ["CBRN Boxen","CBRN Boxen",_iconCBRN,{ },{true}] call ace_interact_menu_fnc_createAction;
     [_x, 0, ["ACE_MainActions"], _cbrnBoxen] call ace_interact_menu_fnc_addActionToObject;
         //------------------------------------------------------------------
-        _cbrn1 = ["CBRN1","Typ 1 - CBRN-Schutz",_icon,{params ["_object"]; [_object,"cbrn1"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
+        _cbrn1 = ["CBRN1","Typ 1 - CBRN-Schutz",_icon,{params ["_object"]; [_object,"box_cbrn_typ_1"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
         [_x, 0, ["ACE_MainActions", "CBRN Boxen"], _cbrn1] call ace_interact_menu_fnc_addActionToObject;
 
-        _cbrn2 = ["CBRN2","Typ 2 - CBRN-Erkundung",_icon,{params ["_object"]; [_object,"cbrn2"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
+        _cbrn2 = ["CBRN2","Typ 2 - CBRN-Erkundung",_icon,{params ["_object"]; [_object,"box_cbrn_typ_2"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
         [_x, 0, ["ACE_MainActions", "CBRN Boxen"], _cbrn2] call ace_interact_menu_fnc_addActionToObject;
 
-        _cbrn3 = ["CBRN3","Typ 3 - CBRN-UGV",_icon,{params ["_object"]; [_object,"cbrn3"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
+        _cbrn3 = ["CBRN3","Typ 3 - CBRN-UGV",_icon,{params ["_object"]; [_object,"box_cbrn_typ_3"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
         [_x, 0, ["ACE_MainActions", "CBRN Boxen"], _cbrn3] call ace_interact_menu_fnc_addActionToObject;
         //------------------------------------------------------------------
     // Parent Action für San Boxen
@@ -169,11 +165,26 @@ _iconVerpflegung ="z\ace\addons\field_rations\ui\icon_hud_hungerstatus.paa";
         [_x, 0, ["ACE_MainActions", "San Boxen"], _san1] call ace_interact_menu_fnc_addActionToObject;	
     
         _san2 = ["San2","San Typ 2 - Leichensäcke",_iconBodybags,{params ["_object"]; [_object,"box_san_typ_2"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
-        [_x, 0, ["ACE_MainActions", "San Boxen"], _san2] call ace_interact_menu_fnc_addActionToObject;	
-        /*
-        _san3 = ["San3","San Typ 3 - Verpflegung",_iconVerpflegung,{params ["_object"]; [_object,"box_san_typ_3"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
-        [_x, 0, ["ACE_MainActions", "San Boxen"], _san3] call ace_interact_menu_fnc_addActionToObject;
-        */
+        [_x, 0, ["ACE_MainActions", "San Boxen"], _san2] call ace_interact_menu_fnc_addActionToObject;
+        //------------------------------------------------------------------
+    // Parent Action für Verpflegungs Boxen
+    _vpflBoxen = ["Verpflegungs Boxen","Verpflegungs Boxen",_iconVerpflegung,{ },{true}] call ace_interact_menu_fnc_createAction;
+    [_x, 0, ["ACE_MainActions"], _vpflBoxen] call ace_interact_menu_fnc_addActionToObject;
+        //------------------------------------------------------------------
+        _vpfl1 = ["Vpfl1","Verpflegung 1 - EPa Typ 1-4",_icon,{params ["_object"]; [_object,"box_vpfl_typ_1"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
+        [_x, 0, ["ACE_MainActions", "Verpflegungs Boxen"], _vpfl1] call ace_interact_menu_fnc_addActionToObject;  
+    
+        _vpfl2 = ["Vpfl2","Verpflegung 2 - EPa Typ 5-9",_icon,{params ["_object"]; [_object,"box_vpfl_typ_2"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
+        [_x, 0, ["ACE_MainActions", "Verpflegungs Boxen"], _vpfl2] call ace_interact_menu_fnc_addActionToObject;  
+
+        _vpfl3 = ["Vpfl3","Verpflegung 3 - EPa Typ 10-14",_icon,{params ["_object"]; [_object,"box_vpfl_typ_3"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
+        [_x, 0, ["ACE_MainActions", "Verpflegungs Boxen"], _vpfl3] call ace_interact_menu_fnc_addActionToObject;  
+    
+        _vpfl4 = ["Vpfl4","Verpflegung 4 - EPa Typ 16-19",_icon,{params ["_object"]; [_object,"box_vpfl_typ_4"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
+        [_x, 0, ["ACE_MainActions", "Verpflegungs Boxen"], _vpfl4] call ace_interact_menu_fnc_addActionToObject;
+
+        _vpfl5 = ["Vpfl6","Verpflegung 5 - Notration",_icon,{params ["_object"]; [_object,"box_vpfl_typ_5"] call IGC_CF_fnc_limaOldSupplySpawnCrate},{true}] call ace_interact_menu_fnc_createAction;
+        [_x, 0, ["ACE_MainActions", "Verpflegungs Boxen"], _vpfl5] call ace_interact_menu_fnc_addActionToObject;  
         //------------------------------------------------------------------
     // Parent Action für Ersatzteile
     /*

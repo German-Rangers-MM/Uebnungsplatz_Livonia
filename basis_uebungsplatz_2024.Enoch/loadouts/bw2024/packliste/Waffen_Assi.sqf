@@ -4,25 +4,103 @@
     // Waffen
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
+
+    //Kurzwaffen
+
+    "CUP_arifle_G36C",
+    "CUP_arifle_G36C_camo",
+    "CUP_arifle_G36C_wdl",
+
+    "CUP_arifle_G36CA3",
+    "CUP_arifle_G36CA3_camo",
+    "CUP_arifle_G36CA3_wdl",
+
+    //LMG 
+
+    "CUP_lmg_m249_pip3",
+	"CUP_lmg_m249_pip4",
+    
     "CUP_lmg_minimi_railed",
-    "CUP_arifle_MG36",
-    "CUP_arifle_MG36_camo",
-    "CUP_arifle_MG36_wdl",
+
     "LMG_03_F",
-    "CUP_lmg_MG3_rail",
-    "CUP_lmg_Mk48_nohg",
+
+    //Vehicle Crew 
+
     "CUP_smg_MP5A5",
     "SMG_05_F",
+
     "CUP_smg_MP7",
+	"CUP_smg_MP7_desert",
+	"CUP_smg_MP7_woodland",
+
+    // ==================================================================
+    //SPS 
+    // ==================================================================
+
+   //Kurzwaffen
+
+    // ----------416D_10_4----------
+    "SPS_hk416d_10_4_hk_black_f",
+    "SPS_hk416d_10_4_hk_vfg_black_f",
+    "SPS_hk416d_10_4_hk_afg_black_f",
+    "SPS_hk416d_10_4_hk_ctr_black_f",
+    "SPS_hk416d_10_4_hk_ctr_vfg_black_f",
+    "SPS_hk416d_10_4_hk_ctr_afg_black_f",
+
+    "SPS_hk416d_10_4_smr_hk_black_f",
+    "SPS_hk416d_10_4_smr_hk_sf_black_f",
+    "SPS_hk416d_10_4_smr_hk_vfg_black_f",
+    "SPS_hk416d_10_4_smr_hk_vfg_sf_black_f",
+    "SPS_hk416d_10_4_smr_hk_afg_black_f",
+    "SPS_hk416d_10_4_smr_hk_afg_sf_black_f",
+    "SPS_hk416d_10_4_smr_hk_ctr_black_f",
+    "SPS_hk416d_10_4_smr_hk_ctr_sf_black_f",
+    "SPS_hk416d_10_4_smr_hk_ctr_vfg_black_f",
+    "SPS_hk416d_10_4_smr_hk_ctr_vfg_sf_black_f",
+    "SPS_hk416d_10_4_smr_hk_ctr_afg_black_f",
+    "SPS_hk416d_10_4_smr_hk_ctr_afg_sf_black_f",
+
+    "SPS_hk416d_10_4_hk_ral8000_f",
+    "SPS_hk416d_10_4_hk_vfg_ral8000_f",
+    "SPS_hk416d_10_4_hk_afg_ral8000_f",
+    "SPS_hk416d_10_4_hk_ctr_ral8000_f",
+    "SPS_hk416d_10_4_hk_ctr_vfg_ral8000_f",
+    "SPS_hk416d_10_4_hk_ctr_afg_ral8000_f",
+
+    "SPS_hk416d_10_4_smr_hk_ral8000_f",
+    "SPS_hk416d_10_4_smr_hk_sf_ral8000_f",
+    "SPS_hk416d_10_4_smr_hk_vfg_ral8000_f",
+    "SPS_hk416d_10_4_smr_hk_vfg_sf_ral8000_f",
+    "SPS_hk416d_10_4_smr_hk_afg_ral8000_f",
+    "SPS_hk416d_10_4_smr_hk_afg_sf_ral8000_f",
+    "SPS_hk416d_10_4_smr_hk_ctr_ral8000_f",
+    "SPS_hk416d_10_4_smr_hk_ctr_sf_ral8000_f",
+    "SPS_hk416d_10_4_smr_hk_ctr_vfg_ral8000_f",
+    "SPS_hk416d_10_4_smr_hk_ctr_vfg_sf_ral8000_f",
+    "SPS_hk416d_10_4_smr_hk_ctr_afg_ral8000_f",
+    "SPS_hk416d_10_4_smr_hk_ctr_afg_sf_ral8000_f",
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Visiere
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    "CUP_optic_SMAW_Scope",
-    "CUP_optic_AIMM_MICROT1_BLK",
-    "CUP_optic_AIMM_MICROT1_tan",
-    "CUP_optic_AIMM_MICROT1_OD",
+    
+    //WaGru 
+
+    "CUP_optic_SB_11_4x20_PM_od",
+    "CUP_optic_SB_11_4x20_PM_tan",
+    "CUP_optic_SB_11_4x20_PM",
+
+    // ==================================================================
+    //SPS 
+    // ==================================================================
+
+    //WaGru
+
+    "SPS_EOTech_Vudu_Tan_RMR",
+    "SPS_EOTech_Vudu_Black_RMR",
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Pointer
@@ -31,56 +109,131 @@
     
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
+    // Muzzle
+    // ------------------------------------------------------------------
+    // ------------------------------------------------------------------
+
+    // ==================================================================
+    //Supressors
+    // ==================================================================
+
+    // ==================================================================
+    //Flashhiders
+    // ==================================================================
+
+    // ==================================================================
+    //Utility 
+    // ==================================================================
+    
+    // ------------------------------------------------------------------
+    // ------------------------------------------------------------------
     // Bipods
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Secondarys
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Launcher
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
+
+    //Standard
+
+    "CUP_launch_M72A6",
+
+    "CUP_launch_M136",
+
     "CUP_launch_BF3",
     "CUP_launch_HCPF3",
-    "CUP_launch_M72A6",
+
+    "GerRng_weapons_PzF3",
+
+    "CUP_launch_FIM92Stinger",
+
+    //WaGru
+
+    "launch_MRAWS_green_F",
+    "launch_MRAWS_sand_F",
+
+    "launch_O_Vorona_green_F",
+    "launch_O_Vorona_brown_F",
+
+    "CUP_launch_Mk153mod0",
+
+    "launch_B_Titan_olive_F",
+    "launch_B_Titan_F",
+
+    "launch_I_Titan_short_F",
+    "launch_B_Titan_short_F",
+
+    "ace_spike_launcher",
+    "ace_spike_launcher_olive",
+
+    //Statics 
+
+    "GerRng_utils_remote_designator_d",
+    "GerRng_utils_remote_designator_w",
+
     "CUP_toW2_carry",
     "ace_csw_m220CarryTripod",
-    "GerRng_HMG_M2_Sh_carry",
-    "GerRng_HMG_M2_ScSh_carry",
+    "GerRng_csw_M3M_carry",
+    "GerRng_csw_M3M_carry_Scope",
+    "GerRng_csw_M3M_carry_Shield",
+    "GerRng_csw_M3M_carry_ScopeShield",
+    "GerRng_csw_GraMaWa_carry",
     "ace_csw_m3CarryTripod",
     "ace_csw_m3CarryTripodLow",
-    "GerRng_GMG_Mk19",
     "CUP_MK19_carry",
     "CUP_m252_carry",
     "ace_csw_carryMortarBaseplate",
-    "GerRng_Equipment_GerRng_vz99_carryWeapon",
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // uniforms
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
+
+    //Vehicle Crew
+
     "CUP_U_B_GER_Fleck_Overalls_tank",
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // vests
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
+
+    //Standard
+
+    "CUP_V_B_GER_Pvest_Fleck_MG",
+    "CUP_V_B_GER_Pvest_Trop_MG",
+
     "CUP_V_B_GER_Pvest_Fleck_RFL",
     "CUP_V_B_GER_Pvest_Trop_RFL",
+
+    "CUP_V_B_GER_Pvest_Fleck_MG_LT",
+    "CUP_V_B_GER_Pvest_Trop_MG_LT",
+
     "CUP_V_B_GER_Pvest_Fleck_RFL_LT",
     "CUP_V_B_GER_Pvest_Trop_RFL_LT",
-    "V_Chestrig_rgr",
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // backpacks
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
+
+    //Statics 
+
+    "GerRng_csw_GMG_GraMaWa_Gun_Bag",
+    "GerRng_csw_GMG_GraMaWa_Tripod_bag",
+
     "CUP_B_Mk19_Gun_Bag",
     "CUP_B_Mk19_Tripod_Bag",
     "CUP_B_M2_Gun_Bag",
@@ -91,132 +244,211 @@
     "CUP_B_toW2_Tripod_Bag",
     "CUP_B_tow_Gun_Bag",
     "CUP_B_toW_Tripod_Bag",
+
+    // ==================================================================
+    //Funk
+    // ==================================================================
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Helme
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
+
+    //Vehicle Crew 
+
     "H_Helmetcrew_B",
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // goggles
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // NVGs
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // binoculars
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
+
     "Rangefinder",
+
     "ACE_Vector",
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // items
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     
+    //cTab & GPS
+
+    "ItemMicroDAGR",
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // magazines
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
+
+    //LMG
+
+    "CUP_200Rnd_TE1_Red_Tracer_556x45_M249",
     "CUP_200Rnd_TE4_Red_Tracer_556x45_M249",
-    "CUP_100Rnd_556x45_BetaCMag",
-    "CUP_100Rnd_556x45_BetaCMag_camo",
-    "CUP_100Rnd_556x45_BetaCMag_wdl",
-    "CUP_100Rnd_TE1_Red_Tracer_556x45_BetaCMag",
-    "CUP_100Rnd_TE1_Red_Tracer_556x45_BetaCMag_camo",
-    "CUP_100Rnd_TE1_Red_Tracer_556x45_BetaCMag_wdl",
+
+    "CUP_200Rnd_TE1_Red_Tracer_556x45_M249_Pouch",
+	"CUP_200Rnd_TE4_Red_Tracer_556x45_M249_Pouch",
+
+    //Regular Anti-Tank
+    
+    "GerRng_weapons_PTFHC_M",
+    "GerRng_weapons_PTFHE_M",
+
+    //WaGru
+
+    "CUP_100Rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M",
     "CUP_200Rnd_TE1_LRT4_Red_Tracer_762x51_Belt_M",
+
     "CUP_120Rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M",
-    "130Rnd_338_Mag",
-    "150Rnd_93x64_Mag",
-    "CUP_30Rnd_9x19_MP5",
-    "CUP_40Rnd_46x30_MP7",
+
     "CUP_SMAW_HEAA_M",
+    "CUP_SMAW_HEDP_M",
+    "CUP_SMAW_NE_M",
     "CUP_SMAW_Spotting",
+
     "Titan_AA",
     "Titan_AT",
     "Titan_AP",
+
+    "ace_spike_lr",
+
     "Vorona_HEAT",
     "Vorona_HE",
+
     "MRAWS_HE_F",
     "MRAWS_HEAT55_F",
     "MRAWS_HEAT_F",
     "MAA_MAAWS_ASM509",
     "MAA_MAAWS_HEDP502",
     "MAA_MAAWS_MT756",
+    "MAA_MAAWS_ILLUM545",
+    "MAA_MAAWS_SMOKE469",
+
     "GerRng_MAAWS_GMM_HE",
     "GerRng_MAAWS_GMM_HEAT",
     "GerRng_MAAWS_GMM_MT",
-    "MAA_MAAWS_ILLUM545",
-    "MAA_MAAWS_SMOKE469",
+
+    //WaGru Static Weapon Ammo
+
     "CUP_compats_48Rnd_40mm_MK19_M",
     "CUP_compats_toW2_M",
+
     "ace_csw_100Rnd_127x99_mag",
     "ace_csw_100Rnd_127x99_mag_red",
+
+    "GerRng_100Rnd_127x99_mag_csw",
+    "GerRng_100Rnd_127x99_mag_slap_csw",
+    "GerRng_100Rnd_127x99_mag_slap_tracer_red_csw",
+    "GerRng_100Rnd_127x99_mag_red_csw",
+
+    "GerRng_150Rnd_127x99_mag_csw",
+    "GerRng_150Rnd_127x99_mag_slap_csw",
+    "GerRng_150Rnd_127x99_mag_slap_tracer_red_csw",
+    "GerRng_150Rnd_127x99_mag_red_csw",
+
+    "GerRng_200Rnd_127x99_mag_csw",
+    "GerRng_200Rnd_127x99_mag_slap_csw",
+    "GerRng_200Rnd_127x99_mag_slap_tracer_red_csw",
+    "GerRng_200Rnd_127x99_mag_red_csw",
+
     "ACE_1Rnd_82mm_Mo_HE",
     "ACE_1Rnd_82mm_Mo_Illum",
     "ACE_1Rnd_82mm_Mo_Smoke",
     "ACE_1Rnd_82mm_Mo_HE_LaserGuided",
-    "GerRng_Equipment_GerRng_vz99_flare_IR",
-    "GerRng_Equipment_GerRng_vz99_flare",
-    "GerRng_Equipment_GerRng_vz99_HE",
-    "GerRng_Equipment_GerRng_vz99_smokeWhite",
-    "GerRng_Equipment_GerRng_vz99_smokeWhiteVT",
+
+    //Vehcile Crew 
+
+    "CUP_20Rnd_46x30_MP7",
+	"CUP_40Rnd_46x30_MP7",
+	"CUP_40Rnd_46x30_MP7_Red_Tracer",
+
+    "CUP_30Rnd_9x19_MP5",
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Grenades / throw
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // explosives / Put
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    "DemoCharge_Remote_Mag",
-    "SatchelCharge_Remote_Mag",
-    "CUP_mine_M",
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Medical
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    
+
+    // ------------------------------------------------------------------
+    // ------------------------------------------------------------------
+    // Provisions
+    // ------------------------------------------------------------------
+    // ------------------------------------------------------------------
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Misc 1
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    "ACE_artilleryTable",
-    "ACE_ATragMX",
-    "ACE_DefusalKit",
-    "ACE_fortify",
-    "ACE_Clacker",
-    "ACE_M26_Clacker",
+
+    //Electronics 
+
+    "ACE_microDAGR",
+
+    //MapItems
+
     "ACE_PlottingBoard",
-    "ACE_RangeCard",
+
+    //Other 
+
+    "ACE_artilleryTable",
+
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
     // Misc 2
     // ------------------------------------------------------------------
     // ------------------------------------------------------------------
-    "ace_marker_flags_black",
-    "ace_marker_flags_blue",
-    "ace_marker_flags_orange",
-    "ace_marker_flags_purple",
-    "ace_marker_flags_red",
-    "ace_marker_flags_white",
-    "ace_marker_flags_yellow",
-    "ace_marker_flags_green",
-    "ACE_SpareBarrel",
-    "ItemMicroDAGRMisc"
+
+    //Ropes 
+
+    "ACE_rope3",
+    "ACE_rope12",
+    "ACE_rope15",
+    "ACE_rope18",
+    "ACE_rope27",
+    "ACE_rope36",
+
+    //Bandos
+
+    "GerRng_bandoliers_mg_4_4_m249_200Rnd",
+    "GerRng_bandoliers_mg_4_4_MG3_120Rnd",
+    "GerRng_bandoliers_mg_4_4_mk48_100Rnd",
+
+    //cTab 
+
+    "ItemMicroDAGRMisc",
+
+    //Other 
+
+    "ACE_SpareBarrel"
+
 ];
