@@ -1,6 +1,11 @@
 [
     "Sierra Typ 6 - Trupp 2 - U",
-    "Land_PlasticCase_01_medium_black_F",
-    ["CUP_launch_PzF3", 2],
-    ["CUP_launch_M136", 2]
+    "GerRng_faction_Box_P_Sierra_VI",
+
+    //CUP
+    ["CUP_launch_M136", 2],
+
+    //GR Mod
+    ["GerRng_weapons_PzF3",2],
+    ["GerRng_weapons_PTFHC_M",2]
 ];
